@@ -5,6 +5,10 @@ import { makeStyles, fade } from '@material-ui/core/styles';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 
+import AutoPlaySwipeableViews from '../AutoPlaySwipeableViews';
+
+import Slider from '../Slider';
+
 import {Hidden, Container, GridListTileBar, Grid, Paper,
 GridListTile, IconButton, Zoom, CardMedia, GridList } from '@material-ui/core';
 
@@ -27,6 +31,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-around',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
+  },
+  divSlider: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center'
   },
   gridList: {
     width: "100%",
@@ -72,6 +81,7 @@ const styles = {
 
 
 export default function ContainerImage(props) {
+  const [setNumberSwipeable, onSetNumberSwipeable] = React.useState(0);
   const [onLoadImg, setOnLoadImg] = React.useState(false);
   const classes = useStyles();
 
@@ -146,16 +156,24 @@ export default function ContainerImage(props) {
   }
 
   function retornarSwipeableViews(){
-  const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+  // const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
     return (
-      <AutoPlaySwipeableViews enableMouseEvents style={{height: "450px"}}>
+      // <>
+      <AutoPlaySwipeableViews />
+/*       
+      <AutoPlaySwipeableViews  index={setNumberSwipeable} enableMouseEvents onChangeIndex={(e)=>onSetNumberSwipeable(e)} style={{height: "450px"}}>
         {retornarImagem("450px", "100%", Imagem1)}
         {retornarImagem("450px", "100%", Imagem2)}
         {retornarImagem("450px", "100%", Imagem3)}
-        {/* <div style={Object.assign({}, styles.slide, styles.slide1)}>slide n°1</div>
+
+        <div style={Object.assign({}, styles.slide, styles.slide1)}>slide n°1</div>
         <div style={Object.assign({}, styles.slide, styles.slide2)}>slide n°2</div>
-        <div style={Object.assign({}, styles.slide, styles.slide3)}>slide n°3</div> */}
+        <div style={Object.assign({}, styles.slide, styles.slide3)}>slide n°3</div>
       </AutoPlaySwipeableViews>
+            <div className={classes.divSlider}>
+              <Slider max={3} numberImage={()=>setNumberSwipeable} setarNumberImage={(e)=>console.log(e)} />
+            </div>
+            </> */
     )
   }
 

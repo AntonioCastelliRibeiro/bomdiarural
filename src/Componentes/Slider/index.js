@@ -87,9 +87,10 @@ export default function Slider(props) {
     const lvDataIndex = AElement.getAttribute('data-index');
     console.log(lvDataIndex);
     if (lvDataIndex  !== null){
-      // props.setarNumberImage(Number(lvDataIndex) + 1);
+      props.setarNumberImage(Number(lvDataIndex));
     }
   }
+  console.log(props.numberImage);
 
   return (
     <div className={classes.root}>
@@ -99,12 +100,12 @@ export default function Slider(props) {
           defaultValue={1}
           // getAriaValueText={valuetext}
           aria-labelledby="discrete-slider"
-          valueLabelDisplay="off"
+          // valueLabelDisplay="true"
           value={props.numberImage}
-          step={1}
+          // step={1}
           marks
-          min={1}
-          max={6}
+          min={0}
+          max={props.max}
           onChange={(e)=>setarNumberClick(e.target)}
           // onChangeCommitted={(e)=>console.log(e.target)}
         />
