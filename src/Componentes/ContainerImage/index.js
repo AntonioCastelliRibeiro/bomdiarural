@@ -97,7 +97,7 @@ export default function ContainerImage(props) {
           <Grid item xs={12}>
             <Zoom key="princi" in timeout={250} >
             {retornarSwipeableViews()}
-            {retornarArrowContainer()}
+            {/* {retornarArrowContainer()} */}
               {/* <GridListTile key="test" style={{listStyleType: 'none'}} >
 
               {/* {retornarImagem("450px", "100%")} */}
