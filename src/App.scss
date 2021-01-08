@@ -1,0 +1,23 @@
+// html, body, main, #root {
+//   height: 100%;
+// }
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(37, 118, 39, 0.25)
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #69756a; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
