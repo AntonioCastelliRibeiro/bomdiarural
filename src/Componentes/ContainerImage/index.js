@@ -2,6 +2,8 @@ import React from 'react';
 
 import { makeStyles, fade } from '@material-ui/core/styles';
 
+import SwipeableViews from 'react-swipeable-views';
+
 import {Hidden, Container, GridListTileBar, Grid, Paper,
 GridListTile, IconButton, Zoom, CardMedia, GridList } from '@material-ui/core';
 
@@ -46,6 +48,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const styles = {
+  slide: {
+    height: 450,
+    padding: 15,
+    minHeight: 100,
+    color: '#fff',
+  },
+  slide1: {
+    backgroundColor: '#FEA900',
+  },
+  slide2: {
+    backgroundColor: '#B3DC4A',
+  },
+  slide3: {
+    backgroundColor: '#6AC0FF',
+  },
+};
+
+
 export default function ContainerImage(props) {
   const [onLoadImg, setOnLoadImg] = React.useState(false);
   const classes = useStyles();
@@ -72,19 +93,22 @@ export default function ContainerImage(props) {
     return (
       <>
         <Hidden >
-        <Grid container spacing={3}>
+        <Grid  container spacing={3}>
           <Grid item xs={12}>
             <Zoom key="princi" in timeout={250} >
-              <GridListTile key="test" style={{listStyleType: 'none'}} >
-              {retornarImagem("450px", "100%")}
-              {retornarArrowContainer()}
+            {retornarSwipeableViews()}
+            {retornarArrowContainer()}
+              {/* <GridListTile key="test" style={{listStyleType: 'none'}} >
+
+              {/* {retornarImagem("450px", "100%")} */}
+              {/* {retornarArrowContainer()}
               <GridListTileBar
                 titlePosition="bottom"
                 title="Imagem Teste"
                 style={{backgroundColor: '#fff0', borderRadius: 2}}
                 subtitle={<span>by: Antonio</span>}
-              />
-              </GridListTile>
+              /> */}
+              {/* </GridListTile> */} 
             </Zoom>            
           </Grid>
         </Grid>
@@ -117,6 +141,19 @@ export default function ContainerImage(props) {
     )
   }
 
+  function retornarSwipeableViews(){
+    return (
+      <SwipeableViews enableMouseEvents style={{height: "450px"}}>
+        {retornarImagem("450px", "100%")}
+        {retornarImagem("450px", "100%")}
+        {retornarImagem("450px", "100%")}
+        {/* <div style={Object.assign({}, styles.slide, styles.slide1)}>slide n°1</div>
+        <div style={Object.assign({}, styles.slide, styles.slide2)}>slide n°2</div>
+        <div style={Object.assign({}, styles.slide, styles.slide3)}>slide n°3</div> */}
+      </SwipeableViews>
+    )
+  }
+
   function retornarContainer(){
     return (
       <div style={{ height: '100%', paddingTop: "10px", paddingBottom: "10px" }}>
@@ -137,9 +174,9 @@ export default function ContainerImage(props) {
         <>
           <CardMedia
             style={lvStyle}
-            className={classes.gridListImg}
+            // className={classes.gridListImg}
             image={img.src}
-            title="Paella dish"
+            // title="Paella dish"
           />
       </>
       )
