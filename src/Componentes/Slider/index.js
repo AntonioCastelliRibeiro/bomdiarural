@@ -12,64 +12,67 @@ const theme = createMuiTheme({
     MuiSlider: {
       // Name of the rule
       thumb: {
-        width: 10,
-        height: 10,
-        marginTop: -2,
-        marginLeft: -0.8,
-        transition: '0.3s ease',
+        width: 15,
+        height: 15,
+        marginTop: 0,
+        marginLeft: 0,
+        transition: "0.3s ease"
       },
       colorPrimary: {
-        color: 'white'
+        color: "white"
       },
       thumbColorPrimary: {
-        '&$focusVisible,&:hover': {
-          boxShadow: 'none',
-        },
+        "&$focusVisible,&:hover": {
+          boxShadow: "none"
+        }
       },
 
-      '&$active': {
-        boxShadow:  'none',
+      "&$active": {
+        boxShadow: "none"
       },
-        track: {
-          display: 'block',
-          position: 'absolute',
-          marginTop: 2,
-          height: 2,
-          borderRadius: 1,
-          transition: 'width 300ms',
-          backgroundColor: 'currentColor',
-          '$vertical &': {
-            width: 2,
-          },
-        },
-        trackFalse: {
-          '& $track': {
-            display: 'none',
-          },
-        },
-        rail: {
-          display: 'none',
-          position: 'absolute',
-          width: '100%',
-          height: 2,
-          borderRadius: 1,
-          backgroundColor: 'currentColor',
-          opacity: 0.38,
-          '$vertical &': {
-            height: '100%',
-            width: 2,
-          },
-        },
-        mark: {
-          position: 'absolute',
-          width: 7,
-          height: 7,
-          borderRadius: 7,
-          backgroundColor: 'currentColor',
-        },
+      track: {
+        display: "block",
+        position: "absolute",
+        opacity: '80%',
+        marginTop: 6,
+        height: 3,
+        borderRadius: 1,
+        transition: "width 300ms",
+        backgroundColor: "currentColor",
+        "$vertical &": {
+          width: 2
+        }
       },
-    },
+      trackFalse: {
+        "& $track": {
+          display: "none"
+        }
+      },
+      rail: {
+        display: "none",
+        position: "absolute",
+        width: "100%",
+        height: 4,
+        borderRadius: 1,
+        backgroundColor: "currentColor",
+        opacity: 0.38,
+        "$vertical &": {
+          height: "100%",
+          width: 4
+        }
+      },
+      mark: {
+        position: "absolute",
+        // border: 6,
+        width: 15,
+        height: 15,
+        borderRadius: 7,
+        backgroundColor: "currentColor"
+      }
+    }
+  }
 });
+
 
 const useStyles = makeStyles({
   root: {
