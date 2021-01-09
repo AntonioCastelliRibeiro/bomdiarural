@@ -96,7 +96,7 @@ class Swipe extends React.Component {
     return (
       <>
       <CardMedia
-        style={{height: 550, width: '100%', borderRadius: 2}}
+        style={{height: 500, width: '100%', borderRadius: 2}}
         // className={classes.gridListImg}
         image={AImage}
         // title="Paella dish"
