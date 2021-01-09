@@ -23,6 +23,9 @@ const styles = {
     minHeight: 100,
     color: '#fff',
   },
+  gridListImg: {
+
+  },
   divSlider: {
     width: '100%',
     display: 'flex',
@@ -54,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   },
   gridList: {
     width: "100%",
-    height: 450,
+    height: 100,
   },
   gridListImg: {
     cursor: 'pointer',
@@ -76,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-class DemoAutoPlay extends React.Component {
+class Swipe extends React.Component {
   state = {
     index: 0,
   };
@@ -93,7 +96,7 @@ class DemoAutoPlay extends React.Component {
     return (
       <>
       <CardMedia
-        style={{height: 450, width: '100%', borderRadius: 2}}
+        style={{height: 550, width: '100%', borderRadius: 2}}
         // className={classes.gridListImg}
         image={AImage}
         // title="Paella dish"
@@ -124,4 +127,4 @@ class DemoAutoPlay extends React.Component {
   }
 }
 
-export default DemoAutoPlay;
+export default Swipe;

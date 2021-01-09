@@ -47,62 +47,10 @@ const useStyles = makeStyles((theme) => ({
       opacity: '90%',
     },
   },
-  divArrowContainer: {
-    bottom: '50%',
-    left: 0,
-    right: 0,
-    height: '48px',
-    position: 'absolute',
-    background: '#fff0',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignContent: 'center',
-  },
+
 }));
 
-const styles = {
-  slide: {
-    height: 450,
-    padding: 15,
-    minHeight: 100,
-    color: '#fff',
-  },
-  slide1: {
-    backgroundColor: '#FEA900',
-  },
-  slide2: {
-    backgroundColor: '#B3DC4A',
-  },
-  slide3: {
-    backgroundColor: '#6AC0FF',
-  },
-};
-
-
 export default function ContainerImage(props) {
-  const [setNumberSwipeable, onSetNumberSwipeable] = React.useState(0);
-  const [onLoadImg, setOnLoadImg] = React.useState(false);
-  const classes = useStyles();
-
-  function retornarArrowContainer(){
-    return (
-      <div className={classes.divArrowContainer}>
-        <div>
-          <IconButton onClick={()=>setOnLoadImg(false)} aria-label={`info about Antonio`}>
-            <ArrowBackIosIcon style={{color: '#424242'}} />
-          </IconButton>  
-        </div>
-        <div>
-          <IconButton aria-label={`info about Antonio`}>
-            <ArrowForwardIosIcon style={{color: '#424242'}} />
-          </IconButton>
-        </div>
-      </div>
-
-    )
-  }
-
   function retornarConteudoImage(){
     return (
       <>
@@ -128,30 +76,6 @@ export default function ContainerImage(props) {
         </Grid>
       </Hidden>
     </>
-    )
-  }
-
-  function retornarImageGridList(){
-    const img = new Image();
-    img.onload = () =>{setOnLoadImg(true)};
-    img.src = "https://source.unsplash.com/random";
-    return (
-      <div >
-        <GridList cellHeight={300} className={classes.gridList} cols={3}>
-          <GridListTile key={1} cols={1}>
-            <img src={img.src} alt="teste" />
-          </GridListTile>
-          <GridListTile key={1} cols={1}>
-            <img src={img.src} alt="teste" />
-          </GridListTile>
-          <GridListTile key={1} cols={1}>
-            <img src={img.src} alt="teste" />
-          </GridListTile>
-          <GridListTile key={1} cols={3}>
-            <img src={img.src} alt="teste" />
-          </GridListTile>
-        </GridList>
-    </div>
     )
   }
 
@@ -186,31 +110,31 @@ export default function ContainerImage(props) {
     )
   }
 
-  function retornarImagem(AHeight, AWidth, ALink){
-    const img = new Image();
-    img.onload = () =>{setOnLoadImg(true)};
-    img.src = ALink;
+  // function retornarImagem(AHeight, AWidth, ALink){
+  //   const img = new Image();
+  //   img.onload = () =>{setOnLoadImg(true)};
+  //   img.src = ALink;
     
-    const lvStyle = (AHeight && AWidth !== 0) ? ({height: AHeight, width: AWidth, borderRadius: 2}) : ({});
-    if (onLoadImg){
-      return (
-        <>
-          <CardMedia
-            style={lvStyle}
-            // className={classes.gridListImg}
-            image={img.src}
-            // title="Paella dish"
-          />
-      </>
-      )
-    } else {
-     return (
-      <Skeleton variant="rect" width="100%">
-        <div style={lvStyle} />
-      </Skeleton>
-     )
-    }
-  }
+  //   const lvStyle = (AHeight && AWidth !== 0) ? ({height: AHeight, width: AWidth, borderRadius: 2}) : ({});
+  //   if (onLoadImg){
+  //     return (
+  //       <>
+  //         <CardMedia
+  //           style={lvStyle}
+  //           // className={classes.gridListImg}
+  //           image={img.src}
+  //           // title="Paella dish"
+  //         />
+  //     </>
+  //     )
+  //   } else {
+  //    return (
+  //     <Skeleton variant="rect" width="100%">
+  //       <div style={lvStyle} />
+  //     </Skeleton>
+  //    )
+  //   }
+  // }
 
   return(
     retornarContainer()
