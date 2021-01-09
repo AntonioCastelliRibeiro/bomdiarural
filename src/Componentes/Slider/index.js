@@ -11,6 +11,10 @@ const theme = createMuiTheme({
     // Style sheet name ⚛️
     MuiSlider: {
       // Name of the rule
+      root: {
+        width: 185,
+        height: '0px',
+      },
       thumb: {
         width: 15,
         height: 15,

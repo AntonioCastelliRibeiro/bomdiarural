@@ -55,7 +55,7 @@ export default function ContainerImage(props) {
     return (
       <>
         <Hidden >
-        <Grid  container spacing={3}>
+        <Grid  container spacing={0}>
           <Grid item xs={12}>
             <Zoom key="princi" in timeout={250} >
             {retornarSwipeableViews()}
