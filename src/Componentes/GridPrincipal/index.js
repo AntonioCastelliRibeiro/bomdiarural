@@ -2,6 +2,9 @@ import React from 'react';
 
 import CardFood from '../CardFood';
 import ContainerImage from '../ContainerImage';
+import TimeLine from '../TimeLine';
+
+import CardItem from '../TimeLine/CardItem';
 
 import { makeStyles, fade } from '@material-ui/core/styles';
 
@@ -68,10 +71,11 @@ export default function GridPrincipal(props) {
   function retornarGridPrincipal(){
     return (
       <div 
-        style={{paddingTop: "10px", backgroundColor: fade('#257627', 0.25)}}>
+        style={{paddingTop: "10px", paddingBottom: 20, backgroundColor: fade('#257627', 0.25)}}>
         <Container maxWidth="md">
           {/* {retornarCarousel()} */}
           <ContainerImage />
+          {/* <TimeLine /> */}
           {retornarConteudo()}
         </Container>
       </div>
@@ -138,6 +142,7 @@ export default function GridPrincipal(props) {
       <div className={classes.divPrincipalConteudo}>
         <div className={classes.divContainer}>
           <Grid container spacing={3} >
+
             {retornarCarFood()}
           </Grid>
         </div>
@@ -165,9 +170,10 @@ export default function GridPrincipal(props) {
       >
           {/* <Grid item xs={12} sm={6} md={4} lg={3}> */}
           <Grid  item xs={12} sm={6} md={6} lg={6}>
-            <CardFood 
+            <CardItem />
+            {/* <CardFood 
               className={classes.paper} 
-            />
+            /> */}
           </Grid>
       </Zoom>
     )

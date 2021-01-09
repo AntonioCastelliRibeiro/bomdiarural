@@ -2,6 +2,8 @@ import React from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 
+import ImageComp from '../ImageComp';
+
 import { makeStyles } from '@material-ui/core/styles';
 
 import { CardMedia } from '@material-ui/core';
@@ -93,16 +95,7 @@ class Swipe extends React.Component {
   };
 
   retornarImage(AImage){
-    return (
-      <>
-      <CardMedia
-        style={{height: 500, width: '100%', borderRadius: 2}}
-        // className={classes.gridListImg}
-        image={AImage}
-        // title="Paella dish"
-      />
-  </>
-    )
+    return <ImageComp image={AImage} />
   }
 
   render() {

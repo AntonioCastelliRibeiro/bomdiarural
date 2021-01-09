@@ -109,7 +109,7 @@ class App extends React.Component {
           </main>
           <footer >
             <div style={{ display: 'flex', height: 50 ,backgroundColor: '#257627'}}>
-              <span style={{ paddingTop: 27, paddingLeft: 10, color: '#ffff'}}>© Copyright 2020-2020 Antonio Castelli Ribeiro</span>
+              <span style={{ paddingTop: 27, paddingLeft: 10, color: '#ffff'}}>© Copyright 2020-2021 Antonio Castelli Ribeiro</span>
             </div>
           </footer>
         </BrowserRouter>
