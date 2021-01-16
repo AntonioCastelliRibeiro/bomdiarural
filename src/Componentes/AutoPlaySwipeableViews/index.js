@@ -95,9 +95,9 @@ class Swipe extends React.Component {
     });
   };
 
-  retornarImage(AImage){
-    return <ImageComp image={AImage} />
-  }
+  // retornarImage(AImage){
+  //   return 
+  // }
 
   render() {
     const { index } = this.state;
@@ -109,9 +109,9 @@ class Swipe extends React.Component {
     return (
       <div style={styles.root}>
         <SwipeableViews index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
-          {this.retornarImage(lvImagem1)}
-          {this.retornarImage(lvImagem2)}
-          {this.retornarImage(lvImagem3)}
+          <ImageComp image={lvImagem1}  text1="O Programa" text2="de quem" text3="Planta e" text4="Produz" />
+          <ImageComp image={lvImagem2}  text1="As 9 Horas" text2="todo Sábado" text3="na Tv" text4="Sudoeste"/>
+          <ImageComp image={lvImagem3} text1="Conteúdo" text2="Exclusivo" text3="do Campo" text4="e Lavoura" />
         </SwipeableViews>
         <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
           <Slider max={2} numberImage={index} setarNumberImage={this.handleChangeIndex} />

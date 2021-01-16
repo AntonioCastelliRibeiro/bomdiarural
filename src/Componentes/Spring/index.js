@@ -41,10 +41,10 @@ function App(props) {
   const [open, set] = useState(true);
   return (
     <Trail open={props.open} onClick={() => set((state) => !state)}>
-      <span>O Programa </span>
-      <span>de quem</span>
-      <span>Planta</span>
-      <span>e Produz</span>
+      <span>{props.text1}</span>
+      <span>{props.text2}</span>
+      <span>{props.text3}</span>
+      <span>{props.text4}</span>
     </Trail>
   )
 }
