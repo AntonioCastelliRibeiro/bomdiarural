@@ -13,7 +13,7 @@ function Trail({ open, children, ...props }) {
         height: open ? 110 : 0,
       })
       await next({
-        config: { mass: 2, tension: 5000, friction: 600 },
+        config: { mass: 2, tension: 1000, friction: 500 },
         opacity: 0,
         x: 100,
         height: 0,
@@ -43,7 +43,7 @@ function App(props) {
     <Trail open={props.open} onClick={() => set((state) => !state)}>
       <span>O Programa </span>
       <span>de quem</span>
-      <span>Colhe</span>
+      <span>Planta</span>
       <span>e Produz</span>
     </Trail>
   )
