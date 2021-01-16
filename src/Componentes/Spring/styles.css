@@ -24,7 +24,6 @@ body {
   width: 100%;
   height: 100%;
   /* font-family: 'Inter', sans-serif; */
-  font-family:  'Amaranth', sans-serif
 }
 
 .trails-main {
@@ -39,6 +38,7 @@ body {
 }
 
 .trails-text {
+  font-family:  'Amaranth', sans-serif;
   position: relative;
   width: 100%;
   height: 110px;
