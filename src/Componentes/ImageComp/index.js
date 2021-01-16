@@ -3,6 +3,9 @@ import React from 'react';
 import Skeleton from '@material-ui/lab/Skeleton';
 
 import { CardMedia } from '@material-ui/core';
+import { Parallax, Background } from "react-parallax";
+
+import Spring from '../Spring';
 
   export default function ImageComp(props) {
   const [onLoadImage, setOnLoadImage] = React.useState(false);
@@ -18,10 +21,13 @@ import { CardMedia } from '@material-ui/core';
   function retornarImagem(){
     if (onLoadImage){
       return (
-        <CardMedia
-        style={{height: 500, width: '100%', borderRadius: 2}}
-        image={img.src}
-      />
+        <Parallax bgImage={img.src} strength={150} children={<div style={{height: 500, width: '100%'}}><Spring open={onLoadImage}/></div>}>
+          
+        </Parallax>
+      //   <CardMedia
+      //   style={{height: 500, width: '100%', borderRadius: 2}}
+      //   image={img.src}
+      // />
       )
     } else {
       return (

@@ -10,9 +10,10 @@ import { CardMedia } from '@material-ui/core';
 
 import Slider from '../Slider';
 
-import Imagem1 from '../../Image/Imagem4.jpg';
-import Imagem2 from '../../Image/Imagem5.jpg';
-import Imagem3 from '../../Image/Imagem6.jpg';
+import Imagem1 from '../../Image/Imagem7.jpg';
+import Imagem2 from '../../Image/Imagem8.jpg';
+import Imagem3 from '../../Image/Imagem9.jpg';
+
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
