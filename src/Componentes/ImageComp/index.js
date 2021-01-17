@@ -21,15 +21,11 @@ import Spring from '../Spring';
   function retornarImagem(){
     if (onLoadImage){
       return (
-        <Parallax bgImage={img.src} strength={100}>
+        <Parallax key={props.key} bgImage={img.src} renderLayer={(e)=>console.log(e)} strength={100}>
            <div style={{height: 500, width: '100%'}}>
-            <Spring open={onLoadImage} text1={props.text1} text2={props.text2}  text3={props.text3}  text4={props.text4} />
+            <Spring key={props.key} open={true} text1={props.text1} text2={props.text2}  text3={props.text3}  text4={props.text4} />
            </div>
         </Parallax>
-      //   <CardMedia
-      //   style={{height: 500, width: '100%', borderRadius: 2}}
-      //   image={img.src}
-      // />
       )
     } else {
       return (

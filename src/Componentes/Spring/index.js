@@ -13,9 +13,9 @@ function Trail({ open, children, ...props }) {
         height: open ? 110 : 0,
       })
       await next({
-        config: { mass: 2, tension: 1000, friction: 500 },
+        config: { mass: 5, tension: 2000, friction: 600 },
         opacity: 0,
-        x: 100,
+        x: 110,
         height: 0,
       })
     },
@@ -26,7 +26,7 @@ function Trail({ open, children, ...props }) {
       <div>
         {trail.map(({ x, height, ...rest }, index) => (
           <a.div
-            key={items[index]}
+            key={items[index*props.key]}
             className="trails-text"
             style={{ ...rest, transform: x.interpolate((x) => `translate3d(0,${x}px,0)`) }}>
             <a.div style={{ height }}>{items[index]}</a.div>
@@ -38,9 +38,9 @@ function Trail({ open, children, ...props }) {
 }
 
 function App(props) {
-  const [open, set] = useState(true);
+  const [open, set] = useState(false);
   return (
-    <Trail open={props.open} onClick={() => set((state) => !state)}>
+    <Trail key={props.key} open={props.open} onClick={() => set((state) => !state)}>
       <span>{props.text1}</span>
       <span>{props.text2}</span>
       <span>{props.text3}</span>
