@@ -26,18 +26,30 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      pageHome: true,
+      pageFoto: false,
       SwipeableDrawerLeft : false,
       onCarousel: false
     }
+  }
+
+  componentDidMount(){
+    this.onSetarPageFoto(document.location.pathname);
   }
 
   retornarNavbar(){
     return(
       <NavbarTop
         refresh={()=>this.setState({SwipeableDrawerLeft: this.SwipeableDrawerLeft })} 
+        onClose={(e)=>this.setState({ pageHome: e})}
         onClickSwipeableLeft={()=>this.setState({SwipeableDrawerLeft: true})} 
       />
     )
+  }
+
+  onCloseSwipeableLeft(e){
+    this.setState({SwipeableDrawerLeft: e.state});
+    this.onSetarPageFoto(e.page);
   }
 
   retornarSwipeableDrawerLeft(){
@@ -46,16 +58,27 @@ class App extends React.Component {
       <SwipeableDrawerLeft
         setarRouter={(e)=>this.setarRouter(e)}
         open={this.state.SwipeableDrawerLeft}
-        onClose={()=>this.setState({SwipeableDrawerLeft: false})} 
+        onClose={(e)=>this.onCloseSwipeableLeft(e)} 
+        onSetarPageFoto={(e)=>this.onSetarPageFoto(e)}
       />)
     // }
   }
 
+  onSetarPageFoto(e){
+    if (e === '/fotos'){
+      this.setState({pageFoto: true, pageHome: false})
+    }
+    else if (e === '/'){
+      this.setState({pageFoto: false, pageHome: true})
+    }
+  }
+
   retornarGridPrincipal(){
-    if (document.location.pathname !== '/') return
+    if (this.state.pageHome){
     return (
       <GridPrincipal />
-    )
+      )
+    }
   }
 
   retornarProgressLinear(){

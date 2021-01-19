@@ -50,11 +50,6 @@ export default function MediaCard() {
     <Card className={classes.root}>
       <CardActionArea>
         {retornarCardMedia()}
-        {/* <CardMedia
-          className={classes.media}
-          image={Imagem1}
-          title="Contemplative Reptile"
-        /> */}
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             Conteúdo Exclusivo

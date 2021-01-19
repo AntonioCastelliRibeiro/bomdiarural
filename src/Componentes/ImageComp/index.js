@@ -21,9 +21,9 @@ import Spring from '../Spring';
   function retornarImagem(){
     if (onLoadImage){
       return (
-        <Parallax key={props.key} bgImage={img.src} renderLayer={(e)=>console.log(e)} strength={100}>
+        <Parallax key={props.key} bgImage={img.src} strength={100}>
            <div style={{height: 500, width: '100%'}}>
-            <Spring key={props.key} open={true} text1={props.text1} text2={props.text2}  text3={props.text3}  text4={props.text4} />
+            <Spring key={props.key} index={props.index} open={true} text1={props.text1} text2={props.text2}  text3={props.text3}  text4={props.text4} />
            </div>
         </Parallax>
       )

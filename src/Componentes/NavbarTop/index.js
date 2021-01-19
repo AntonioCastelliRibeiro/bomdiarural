@@ -107,6 +107,7 @@ function NavbarTop(AProps) {
   function setarRouter(AQueryParams){
       history.push(AQueryParams);
       AProps.refresh();
+      AProps.onClose(true);
   }
 
   function retornarTitulo(){

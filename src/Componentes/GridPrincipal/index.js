@@ -64,90 +64,30 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function GridPrincipal(props) {
-  const [onLoadImg, setOnLoadImg] = React.useState(false);
   const classes = useStyles();
-
 
   function retornarGridPrincipal(){
     return (
       <div 
         style={{paddingTop: "10px", paddingBottom: 20, backgroundColor: fade('#257627', 0.25)}}>
         <Container maxWidth="md">
-          {/* {retornarCarousel()} */}
-          <ContainerImage />
-          {/* <TimeLine /> */}
+          <ContainerImage /> 
           {retornarConteudo()}
         </Container>
       </div>
     )
   }
 
-  function retornarImagem(AHeight, AWidth){
-    const img = new Image();
-    img.onload = () =>{setOnLoadImg(true)};
-    img.src = "https://source.unsplash.com/random";
-
-    const lvStyle = {height: AHeight, width: AWidth, borderRadius: 2};
-    if (onLoadImg){
-      return (
-        <>
-          <CardMedia
-            style={lvStyle}
-            className={classes.gridListImg}
-            image={img.src}
-            title="Paella dish"
-          />
-      </>
-      )
-    } else {
-     return (
-      <Skeleton variant="rect" width="100%">
-        <div style={lvStyle} />
-      </Skeleton>
-     )
-    }
-  }
-
-  function retornarGridListTittle(AHeight, AWidth, ATimeOut){
-    return (
-      <Zoom key="princi" in timeout={ATimeOut} >
-        <GridListTile key="test" style={{listStyleType: 'none'}} >
-        {retornarImagem(AHeight, AWidth)}
-        <GridListTileBar
-          titlePosition="top"
-          style={{ backgroundColor: '#fff0', borderRadius: 2}}        
-          actionIcon={
-          <IconButton  >
-            <IconClose style={{color: '#f7f7f78c'}} />
-          </IconButton>}
-        />
-        <GridListTileBar
-          titlePosition="bottom"
-          title="Imagem Teste"
-          style={{backgroundColor: '#fff0', borderRadius: 2}}
-          subtitle={<span>by: Antonio</span>}
-          actionIcon={
-            <IconButton aria-label={`info about Antonio`}>
-              <InfoIcon style={{color: '#f7f7f78c'}} />
-            </IconButton>
-          }
-        />
-        </GridListTile>
-      </Zoom>
-    )
-  }
-
   function retornarConteudo(){
     return (
-      <div className={classes.divPrincipalConteudo}>
-        <div className={classes.divContainer}>
-          <Grid container spacing={3} >
-
-            {retornarCarFood()}
-          </Grid>
-        </div>
-    </div>
-        );
+    <div className={classes.divPrincipalConteudo}>
+      <div className={classes.divContainer}>
+        <Grid container spacing={3} >
+          {retornarCarFood()}
+        </Grid>
+      </div>
+      </div>
+    );
   }
 
   function retornarCarFood(){
@@ -168,12 +108,8 @@ export default function GridPrincipal(props) {
         in  
         timeout={(lvTransition === 0 )? (420) : (lvTransition) }
       >
-          {/* <Grid item xs={12} sm={6} md={4} lg={3}> */}
           <Grid  item xs={12} sm={6} md={6} lg={6}>
             <CardItem />
-            {/* <CardFood 
-              className={classes.paper} 
-            /> */}
           </Grid>
       </Zoom>
     )

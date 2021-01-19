@@ -83,11 +83,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 class Swipe extends React.Component {
-  state = {
-    index: 0,
-  };
-
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      index: 0,
+    };
+  }
 
   handleChangeIndex = index => {
     this.setState({
@@ -95,23 +96,18 @@ class Swipe extends React.Component {
     });
   };
 
-  // retornarImage(AImage){
-  //   return 
-  // }
-
   render() {
     const { index } = this.state;
 
     const lvImagem1 = Imagem1;
     const lvImagem2 = Imagem2;
     const lvImagem3 = Imagem3;
-    
     return (
       <div style={styles.root}>
         <AutoPlaySwipeableViews interval={7500} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
-          <ImageComp key={1} image={lvImagem1}  text1="O Programa" text2="de quem" text3="Planta e" text4="Produz" />
-          <ImageComp key={2} image={lvImagem2}  text1="As 08h30" text2="todo Sábado" text3="na Tv" text4="Sudoeste 7.1"/>
-          <ImageComp key={3} image={lvImagem3} text1="Conteúdo" text2="Exclusivo" text3="do Campo" text4="e Lavoura" />
+          <ImageComp key={1} index={index} image={lvImagem1}  text1="O Programa" text2="de quem" text3="Planta e" text4="Produz" />
+          <ImageComp key={2} index={index} image={lvImagem2}  text1="As 08h30" text2="todo Sábado" text3="na Tv" text4="Sudoeste 7.1"/>
+          <ImageComp key={3} index={index} image={lvImagem3} text1="Conteúdo" text2="Exclusivo" text3="do Campo" text4="e Lavoura" />
         </AutoPlaySwipeableViews>
         <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
           <Slider max={2} numberImage={index} setarNumberImage={this.handleChangeIndex} />

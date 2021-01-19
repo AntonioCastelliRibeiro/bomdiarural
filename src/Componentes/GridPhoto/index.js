@@ -305,10 +305,8 @@ export default function GridPhoto(props) {
   function retornarGridListTile(ACols, AKey){
       return (
         <GridListTile className={classes.gridListItem} key={AKey} cols={ACols}>
-          {/* {retornarModal()} */}
           {retornarSkeleton()}
           <GridListTileBar
-            // key={AKey}
             title="Imagem"
             titlePosition="top"
             className={classes.titleBar}
@@ -318,7 +316,6 @@ export default function GridPhoto(props) {
                 className={classes.icon}
                 onClick={()=>setModalShare(true)} 
               >
-                {/* <StarBorderIcon /> */}
                 <ShareIcon 
                 />
               </IconButton>
@@ -352,14 +349,6 @@ export default function GridPhoto(props) {
     )
   }
 
-  function retornarConteudoGrid(){
-    let rows = [];
-    for(let i=1; i<4; i++){ rows.push(i) }
-    return ( 
-      rows.map((cont, aKey)=>retornarCarousel((cont%2 === 1) ? (false) : (true)))
-    )
-  }
-
   function retornarArrowContainer(){
     return (
       <div className={classes.divArrowContainer}>
@@ -375,31 +364,6 @@ export default function GridPhoto(props) {
         </div>
       </div>
 
-    )
-  }
-
-  function retornarConteudoImage(){
-    return (
-      <>
-        <Hidden mdUp>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <Zoom key="princi" in timeout={250} >
-              <GridListTile key="test" style={{listStyleType: 'none'}} >
-              {retornarImagem("450px", "100%")}
-              {retornarArrowContainer()}
-              <GridListTileBar
-                titlePosition="bottom"
-                title="Imagem Teste"
-                style={{backgroundColor: '#fff0', borderRadius: 2}}
-                subtitle={<span>by: Antonio</span>}
-              />
-              </GridListTile>
-            </Zoom>            
-          </Grid>
-        </Grid>
-      </Hidden>
-    </>
     )
   }
 
@@ -442,33 +406,6 @@ export default function GridPhoto(props) {
       />
   }
 
-  function retornarConteudoModal(){
-    const img = new Image();
-    img.onload = () =>{setOnLoadImgModal(true)};
-    img.src = "https://source.unsplash.com/random";
-    return (
-      <div className={classes.divModal}>
-        {retornarSkeletonModal()}
-        <div className={classes.divIcon}>
-          <IconButton 
-            aria-label={`info about antonio`} 
-            className={classes.iconModal}
-            onClick={()=>setOnModalShare(true)}
-            >
-            <ShareIcon />
-          </IconButton>
-          <IconButton  
-            aria-label={`info about antonio`} 
-            className={classes.iconModal}
-            onClick={()=>onCloseModal(false)}
-          >
-            <IconClose />
-          </IconButton>
-        </div>
-      </div>
-    )
-  }
-
   function retornarModal(){
     return (
       <FModalPhoto 
@@ -477,23 +414,6 @@ export default function GridPhoto(props) {
       />
     )
     }
-    // if (onModal) {
-    //   return (
-    //     <Carousel open={onModal} onClose={(e)=>setarOnModal(e)} />
-    //   )
-    //   return (
-    //     <Modal
-    //       style={{border: 'none'}}
-    //       open={onModal}
-    //       onClose={()=>setarOnModal(false)}
-    //   >
-    //     <Zoom key="princi" in timeout={300} >
-    //       {retornarConteudoModal()}          
-    //     </Zoom>
-    //   </Modal>
-    //   )
-    // }
-  // }
 
   function retornarSnackBar(){
     const { open, message, success } = onSnackBar;

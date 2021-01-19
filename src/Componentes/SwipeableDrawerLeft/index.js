@@ -47,14 +47,14 @@ export default function SwipeableDrawerLeft(props) {
 
   function setarRouter(AQueryParams){
     history.push(AQueryParams);
-    props.onClose();
+    onClose({state: false, page: AQueryParams});
   }
 
   function retornarListItemLeft(){
     return (
       <div role="presentation">
         <div className={classes.toolbar}>
-          <IconButton onClick={()=>onClose()}>
+          <IconButton onClick={()=>setarRouter(document.location.pathname)}>
              <ChevronLeftIcon />
           </IconButton>
         </div>
@@ -90,8 +90,8 @@ export default function SwipeableDrawerLeft(props) {
     )
   }
 
-  function onClose(){
-    props.onClose();
+  function onClose(AObject){
+    props.onClose(AObject);
   }
 
   function retornarSwipe(a){
@@ -103,7 +103,7 @@ export default function SwipeableDrawerLeft(props) {
             // disableSwipeToOpen
             anchor="left"
             open={props.open}
-            onClose={()=>onClose()}
+            onClose={()=>setarRouter(document.location.pathname)}
             onOpen={()=>console.log('open')}
             disableBackdropTransition={!iOS} 
             disableDiscovery={iOS}
