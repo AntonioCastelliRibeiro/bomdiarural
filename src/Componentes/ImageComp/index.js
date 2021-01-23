@@ -1,10 +1,6 @@
 import React from 'react';
-
 import Skeleton from '@material-ui/lab/Skeleton';
-
-import { CardMedia } from '@material-ui/core';
 import { Parallax, Background } from "react-parallax";
-
 import Spring from '../Spring';
 
   export default function ImageComp(props) {
@@ -17,14 +13,14 @@ import Spring from '../Spring';
   const handleChangeLoadImg = AStatus => {
     setOnLoadImage(AStatus);
   };
- 
+
   function retornarImagem(){
     if (onLoadImage){
       return (
-        <Parallax key={props.key} bgImage={img.src} strength={100}>
-           <div style={{height: 500, width: '100%'}}>
+        <Parallax bgImage ={props.image} strength= {100}>
+          <div style={{height: 500, width: '100%'}}>
             <Spring key={props.key} index={props.index} open={true} text1={props.text1} text2={props.text2}  text3={props.text3}  text4={props.text4} />
-           </div>
+          </div>
         </Parallax>
       )
     } else {

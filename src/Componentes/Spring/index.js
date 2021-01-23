@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTrail, a } from 'react-spring'
 import './styles.css'
 
-function Trail({ open, children, ...props }) {
-  const [refresh, setRefresh] = React.useState(false);
+function Trail({open, children, ...props }) {
+  const [onChange, setOnChange] = React.useState(false);
+
 
   const items = React.Children.toArray(children);
   const trail = useTrail(items.length, {
@@ -14,18 +15,29 @@ function Trail({ open, children, ...props }) {
         x: 0,
         height: 110,
       })
+    },
+
       // await next({
       // //   config: { mass: 5, tension: 2000, friction: 600 },
       //   opacity: 0,
       //   x: -50,
       //   height: 0,
       // })
-    },
+    // reverse: props.index === 2,
+    reset: props.index === 2,
     reverse: props.index === 2,
-    delay: ( props.index === 0 ) ? (500) : (2500),
+
+    delay: ( props.index === 2 ) ? (2800) : (500),
+    // immediate: props.index = 1,
+    // delay: 500,
     from: {
       opacity: 1, x: -50, height: 0  },
   })
+
+  useEffect(() => {
+    setOnChange(true)
+  }, [props.index]);
+
   return (
     <div className="trails-main" {...props}>
       <div>
