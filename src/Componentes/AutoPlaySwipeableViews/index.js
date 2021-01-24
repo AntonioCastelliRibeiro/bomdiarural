@@ -61,9 +61,8 @@ class Swipe extends React.Component {
     });
   };
 
-  render() {
+  retornarAutoPlaySwipe(){
     const { index } = this.state;
-    
     return (
       <div style={styles.root}>
         <AutoPlaySwipeableViews  interval={7500} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
@@ -71,6 +70,7 @@ class Swipe extends React.Component {
             this.state.ConteudoImageComp.map((AConteudo, ACont) => {
               return (
                 <ImageComp 
+                  retornarDescricao={this.props.retornarDescricao}
                   key={ACont} 
                   index={index} 
                   image={AConteudo.Image} 
@@ -87,7 +87,40 @@ class Swipe extends React.Component {
           <Slider max={2} numberImage={index} setarNumberImage={this.handleChangeIndex} />
         </div>
       </div>
-    );
+    )
+  }
+
+  retornarSwipe(){
+    const { index } = this.state;
+    return (
+      <div style={styles.root}>
+        <SwipeableViews onClick={()=>this.props.onClick()} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
+          {
+            this.state.ConteudoImageComp.map((AConteudo, ACont) => {
+              return (
+                <ImageComp 
+                  key={ACont} 
+                  index={index} 
+                  image={AConteudo.Image} 
+                  text1={AConteudo.text1} 
+                  text2={AConteudo.text2}
+                  text3={AConteudo.text3}
+                  text4={AConteudo.text4}
+                />
+              )
+            })
+          }
+        </SwipeableViews>
+        <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
+          <Slider max={2} numberImage={index} setarNumberImage={this.handleChangeIndex} />
+        </div>
+      </div>
+    )
+  }
+
+  render() {
+    const SwipeableViews = (this.props.autoPlay) ? (this.retornarAutoPlaySwipe()) : (this.retornarSwipe())
+    return SwipeableViews
   }
 }
 

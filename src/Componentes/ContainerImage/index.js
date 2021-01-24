@@ -26,7 +26,7 @@ class ContainerImage extends React.Component {
   }
 
   retornarSwipeableViews(){
-    return <AutoPlaySwipeableViews open={this.props.open} />
+    return <AutoPlaySwipeableViews open={this.props.open} autoPlay retornarDescricao/>
   }
 
   render() {

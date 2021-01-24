@@ -11,12 +11,12 @@ class Photo extends React.Component {
   }
 
   componentDidMount(){
-    console.log('Montei')
+    // console.log('Montei')
     this.setState({open: true})
   }
 
   componentWillUnmount(){
-    console.log('desmontei')
+    // console.log('desmontei')
     this.setState({open: false})
 
   }

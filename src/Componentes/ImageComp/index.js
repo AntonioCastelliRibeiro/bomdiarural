@@ -9,33 +9,35 @@ class ImageComp extends React.Component {
     this.state = {
       index: 0,
       onLoadImage: true,
-      // Image: new Image()
     };
-  }
-
-  componentDidMount(){
-    // this.state.Image.src = this.props.image;
-    // this.state.Image.onload = () => this.setState({onLoadImage: true});
   }
 
   handleChangeIndex = AIndex => {
     this.setState({index: AIndex});
   };
 
+  retornarSpring(){
+    if (this.props.retornarDescricao){
+      return (
+        <Spring 
+          key={this.props.key} 
+          index={this.props.index} 
+          open={this.state.onLoadImage} 
+          text1={this.props.text1} 
+          text2={this.props.text2} 
+          text3={this.props.text3}
+          text4={this.props.text4} 
+        />
+      ) 
+    } else return false
+  }
+
   retornarImagem(){
   if (this.state.onLoadImage){
       return (
         <Parallax  bgImage ={this.props.image} parent={this.props.key+2} key={this.props.key+1} strength= {100}>
-          <div style={{height: 500, width: '100%'}}>
-            <Spring 
-              key={this.props.key} 
-              index={this.props.index} 
-              open={this.state.onLoadImage} 
-              text1={this.props.text1} 
-              text2={this.props.text2} 
-              text3={this.props.text3}
-              text4={this.props.text4} 
-            />
+          <div style={{height: (this.props.retornarDescricao)? (500) : (310), width: '100%'}}>
+            {this.retornarSpring()}
           </div>
         </Parallax>
       )

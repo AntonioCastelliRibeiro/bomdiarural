@@ -1,4 +1,5 @@
 import React from 'react';
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import { makeStyles, fade } from '@material-ui/core/styles';
 
@@ -7,9 +8,8 @@ GridListTile, IconButton, Zoom, CardMedia, Card } from '@material-ui/core';
 
 import FModalPhoto from '../FModalPhoto';
 
-import IconClose from '@material-ui/icons/Close';
-import InfoIcon from '@material-ui/icons/StarBorderOutlined';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
+import AutoPlaySwipeableViews from '../AutoPlaySwipeableViews';
+
 import ShareIcon from '@material-ui/icons/Share';
 
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     height: 'inherit',
   },
   imgGridListTile: {
-    height: '300px',
+    height: '350px',
     borderRadius: '7px',
     backgroundColor: '#25762712',
     color: '#fff',
@@ -225,6 +225,9 @@ export default function GridPhoto(props) {
   const [onSnackBar, setOnSnackBar] = React.useState(false);
   const classes = useStyles();
 
+  const IsMobile = useMediaQuery("(max-width:600px)");
+
+
   function retornarCarousel(AReverse){
     if (AReverse){
       return (
@@ -260,6 +263,10 @@ export default function GridPhoto(props) {
     // props.onSetarCarousel(true);
   }
 
+  function retornarSwipeableViews(){
+    return <AutoPlaySwipeableViews onClick={()=>setarModal('https://source.unsplash.com/random')} open={true} autoPlay={false} />
+  }
+
   function retornarSkeleton(){
     const img = new Image();
     img.onload = () =>{setOnLoadImg(true)};
@@ -269,18 +276,28 @@ export default function GridPhoto(props) {
         <Card
           className={classes.imgGridListTile}
         >
-          <CardActionArea
+          {/* <CardActionArea
             className={classes.imgGridListTile}
-          >
-            <CardMedia
+          > */}
+            {retornarSwipeableViews()}
+            {/* <ImageComp 
+                  key={1} 
+                  index={1} 
+                  image={img.src} 
+                  text1=""
+                  text2=""
+                  text3=""
+                  text4=""
+                /> */}
+            {/* <CardMedia
               component="img"
               alt="Album de Fotos"
               className={classes.imgGridListTile}
               image={img.src}
               onClick={()=>setarModal(img.src)}
-            >
-            </CardMedia>
-          </CardActionArea>
+            > */}
+            {/* </CardMedia> */}
+          {/* </CardActionArea> */}
         </Card>
         // <img 
         // onClick={()=>setarModal(img.src)}
@@ -330,7 +347,7 @@ export default function GridPhoto(props) {
     return (
       <div >
         <Zoom key="princi" in timeout={300} >
-          <GridList cellHeight={300} className={classes.gridList} spacing={11} cols={2}>
+          <GridList cellHeight={350} className={classes.gridList} spacing={11} cols={(IsMobile)?(1):(2)}>
             {retornarGridListTile(1, 0)}
             {retornarGridListTile(1, 1)}
             {retornarGridListTile(1, 2)}
