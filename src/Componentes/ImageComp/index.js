@@ -3,23 +3,39 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import { Parallax, Background } from "react-parallax";
 import Spring from '../Spring';
 
-  export default function ImageComp(props) {
-  const [onLoadImage, setOnLoadImage] = React.useState(false);
+class ImageComp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      index: 0,
+      onLoadImage: true,
+      // Image: new Image()
+    };
+  }
 
-  const img = new Image();
-  img.onload = () =>{handleChangeLoadImg(true)};
-  img.src = props.image;
+  componentDidMount(){
+    // this.state.Image.src = this.props.image;
+    // this.state.Image.onload = () => this.setState({onLoadImage: true});
+  }
 
-  const handleChangeLoadImg = AStatus => {
-    setOnLoadImage(AStatus);
+  handleChangeIndex = AIndex => {
+    this.setState({index: AIndex});
   };
 
-  function retornarImagem(){
-    if (onLoadImage){
+  retornarImagem(){
+  if (this.state.onLoadImage){
       return (
-        <Parallax bgImage ={props.image} strength= {100}>
+        <Parallax  bgImage ={this.props.image} parent={this.props.key+2} key={this.props.key+1} strength= {100}>
           <div style={{height: 500, width: '100%'}}>
-            <Spring key={props.key} index={props.index} open={true} text1={props.text1} text2={props.text2}  text3={props.text3}  text4={props.text4} />
+            <Spring 
+              key={this.props.key} 
+              index={this.props.index} 
+              open={this.state.onLoadImage} 
+              text1={this.props.text1} 
+              text2={this.props.text2} 
+              text3={this.props.text3}
+              text4={this.props.text4} 
+            />
           </div>
         </Parallax>
       )
@@ -34,7 +50,9 @@ import Spring from '../Spring';
     }
   }
 
-    return (
-      retornarImagem()
-    );
+  render() {
+    return this.retornarImagem()
+  }
 }
+
+  export default ImageComp;

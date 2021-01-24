@@ -5,7 +5,6 @@ import './styles.css'
 function Trail({open, children, ...props }) {
   const [onChange, setOnChange] = React.useState(false);
 
-
   const items = React.Children.toArray(children);
   const trail = useTrail(items.length, {
     to: async (next, cancel) => {
@@ -27,16 +26,16 @@ function Trail({open, children, ...props }) {
     reset: props.index === 2,
     reverse: props.index === 2,
 
-    delay: ( props.index === 2 ) ? (2800) : (500),
+    delay: retornarTimeDelay(),
     // immediate: props.index = 1,
     // delay: 500,
     from: {
-      opacity: 1, x: -50, height: 0  },
+      opacity: 1, x: -5, height: 0  },
   })
 
-  useEffect(() => {
-    setOnChange(true)
-  }, [props.index]);
+  function retornarTimeDelay(){
+    return (props.index === 2 ) ? (2800) : (500)
+  }
 
   return (
     <div className="trails-main" {...props}>
@@ -56,7 +55,6 @@ function Trail({open, children, ...props }) {
 }
 
 class App extends React.Component {
-
 constructor(props){
   super(props);
   this.state = {

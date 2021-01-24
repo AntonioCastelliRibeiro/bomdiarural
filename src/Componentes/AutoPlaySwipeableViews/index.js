@@ -26,7 +26,7 @@ class Swipe extends React.Component {
   }
 
   componentDidMount(){
-    this.carregarConteudoImageComp()
+    this.carregarConteudoImageComp();
   }
 
   carregarConteudoImageComp(){
@@ -66,7 +66,7 @@ class Swipe extends React.Component {
     
     return (
       <div style={styles.root}>
-        <AutoPlaySwipeableViews interval={7500} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
+        <AutoPlaySwipeableViews  interval={7500} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
           {
             this.state.ConteudoImageComp.map((AConteudo, ACont) => {
               return (
