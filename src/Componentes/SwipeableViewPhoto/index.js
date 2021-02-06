@@ -28,8 +28,6 @@ class SwipePhoto extends React.Component {
     };
   }
 
-
-
   componentDidMount(){
     this.carregarConteudoImageComp();
   }

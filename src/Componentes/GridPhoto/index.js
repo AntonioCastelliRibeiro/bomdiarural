@@ -250,7 +250,9 @@ export default function GridPhoto(props) {
   function retornarSkeleton(){
     return (
       <Card className={classes.imgGridListTile} >
-        {retornarSwipeableViews()}
+        <CardActionArea>
+          {retornarSwipeableViews()}
+        </CardActionArea>
       </Card>
     )
   }
