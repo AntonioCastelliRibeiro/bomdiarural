@@ -2,7 +2,8 @@ import React from 'react';
 import SwipeableViews from 'react-swipeable-views';
 
 import ImageCompPhoto from '../ImageCompPhoto';
-import SliderPhoto from '../SliderPhoto';
+import Slider from '../Slider';
+import themePhoto from './themePhoto';
 
 import Imagem11 from '../../Image/Imagem11.jpg';
 import Imagem2 from '../../Image/Imagem8.jpg';
@@ -26,6 +27,8 @@ class SwipePhoto extends React.Component {
       }],
     };
   }
+
+
 
   componentDidMount(){
     this.carregarConteudoImageComp();
@@ -85,7 +88,7 @@ class SwipePhoto extends React.Component {
           }
         </SwipeableViews>
         <div style={{width: '100%', display: 'flex', alignItems: 'flex-start',  justifyContent: 'center'}}>
-          <SliderPhoto max={2} numberImage={index} setarNumberImage={this.handleChangeIndex} />
+          <Slider theme={themePhoto} max={2} numberImage={index} setarNumberImage={this.handleChangeIndex} />
         </div>
       </div>
     )

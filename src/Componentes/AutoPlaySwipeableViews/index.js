@@ -84,7 +84,7 @@ class Swipe extends React.Component {
           }
         </AutoPlaySwipeableViews>
         <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
-          <Slider max={2} numberImage={index} setarNumberImage={this.handleChangeIndex} />
+          {/* <Slider theme={themeAutoPlay} max={2} numberImage={index} setarNumberImage={this.handleChangeIndex} /> */}
         </div>
       </div>
     )

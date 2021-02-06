@@ -1,12 +1,6 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import SliderComp from '@material-ui/core/Slider';
+import { createMuiTheme } from '@material-ui/core/styles';
 
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-
-import Amber from '@material-ui/core/colors/amber';
-
-const theme = createMuiTheme({
+const themePhoto = createMuiTheme({
   overrides: {
     // Style sheet name ⚛️
     MuiSlider: {
@@ -78,45 +72,4 @@ const theme = createMuiTheme({
   }
 });
 
-
-const useStyles = makeStyles({
-  root: {
-    width: '200px',
-  },
-  rail: {
-    display: 'none'
-  }
-});
-
-export default function Slider(props) {
-  const classes = useStyles();
-
-  function setarNumberClick(AElement){
-    const lvDataIndex = AElement.getAttribute('data-index');
-    if (lvDataIndex  !== null){
-      props.setarNumberImage(Number(lvDataIndex));
-    }
-  }
-  console.log(props.numberImage);
-
-  return (
-    <div className={classes.root}>
-      <ThemeProvider theme={theme} >
-        <SliderComp
-          track="normal"
-          defaultValue={1}
-          // getAriaValueText={valuetext}
-          aria-labelledby="discrete-slider"
-          // valueLabelDisplay="true"
-          value={props.numberImage}
-          // step={1}
-          marks
-          min={0}
-          max={props.max}
-          onChange={(e)=>setarNumberClick(e.target)}
-          // onChangeCommitted={(e)=>console.log(e.target)}
-        />
-      </ThemeProvider>
-    </div>
-  );
-}
+export default themePhoto;
