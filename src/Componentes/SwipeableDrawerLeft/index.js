@@ -48,6 +48,7 @@ export default function SwipeableDrawerLeft(props) {
   function setarRouter(AQueryParams){
     history.push(AQueryParams);
     onClose({state: false, page: AQueryParams});
+    props.onSetarPageFoto(AQueryParams);
   }
 
   function retornarListItemLeft(){

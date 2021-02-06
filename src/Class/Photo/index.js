@@ -11,25 +11,17 @@ class Photo extends React.Component {
   }
 
   componentDidMount(){
-    // console.log('Montei')
     this.setState({open: true})
   }
 
   componentWillUnmount(){
-    // console.log('desmontei')
     this.setState({open: false})
 
   }
   
-  render()
-  {
-    return (
-      <>
-        <GridPhoto onSetarCarousel={(e)=>this.props.onSetarCarousel(e)}
-        />
-      </>
-      );
-    }
+  render() {
+    return <GridPhoto onSetarCarousel={(e)=>this.props.onSetarCarousel(e)} />
+  }
 }
 
 export default Photo;

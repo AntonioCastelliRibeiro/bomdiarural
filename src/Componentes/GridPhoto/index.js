@@ -8,7 +8,7 @@ GridListTile, IconButton, Zoom, CardMedia, Card } from '@material-ui/core';
 
 import FModalPhoto from '../FModalPhoto';
 
-import AutoPlaySwipeableViews from '../AutoPlaySwipeableViews';
+import SwipeableViewPhoto from '../SwipeableViewPhoto';
 
 import ShareIcon from '@material-ui/icons/Share';
 
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     height: 'inherit',
   },
   imgGridListTile: {
-    height: '350px',
+    height: '340px',
     borderRadius: '7px',
     backgroundColor: '#25762712',
     color: '#fff',
@@ -217,130 +217,64 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function GridPhoto(props) {
-  const [onModal, setarOnModal] = React.useState(false);
-  const [onImage, setarOnImage] = React.useState('');
-  const [onLoadImg, setOnLoadImg] = React.useState(false);
-  const [onLoadImgModal, setOnLoadImgModal] = React.useState(false);
+  const [onModal, setarOnModal] = React.useState({open: false, Image: ''});
+  // const [onImage, setarOnImage] = React.useState('');
+  // const [onLoadImg, setOnLoadImg] = React.useState(false);
   const [onModalShare, setOnModalShare] = React.useState(false);
   const [onSnackBar, setOnSnackBar] = React.useState(false);
   const classes = useStyles();
-
   const IsMobile = useMediaQuery("(max-width:600px)");
 
+  const GridListItem = [
+    { cols: 0  },
+    { cols: 0  },
+    { cols: 0  },
+    { cols: 0  },
+    { cols: 0  },
+    { cols: 0  },
+    { cols: 0  },
+    { cols: 0  },
+    { cols: 0  },
+    { cols: 0  },
+  ]
 
-  function retornarCarousel(AReverse){
-    if (AReverse){
-      return (
-      <div style={{ height: '100%', paddingTop: 10}} className={classes.gridContainer}>
-        <Hidden >
-        {retornarGridListTittle(300, 'FirstItemList')}   
-          <div className={classes.divItemGrid1}>
-            <div style={{display: ('block')}}>{retornarGridListTittle(350, 'SecondItemList')}</div>
-            <div style={{display: ('block'), paddingTop: 10}}>{retornarGridListTittle(400, 'SecondItemList')}</div>         
-          </div>
-        </Hidden>        
-      </div>
-      )
-    }
-    else{
-    return (
-      <div className={classes.gridContainer}>
-        <Hidden >
-          <div className={classes.divItemGrid1}>
-            {retornarGridListTittle(300, 'FirstItemList')}          
-          </div>
-          <div style={{display: ('block')}}>{retornarGridListTittle(350,  'SecondItemList')}</div>
-          <div style={{display: ('block')}}>{retornarGridListTittle(400,  'SecondItemList')}</div>  
-        </Hidden>
-      </div>
-    )
-    }
-  }
-
-  function setarModal(AImg){
-    setarOnImage(AImg);
-    setarOnModal(true);
-    // props.onSetarCarousel(true);
+  function setarModal(AStateProps){
+    // setarOnImage(AImg);
+    setarOnModal({open: true, Image: AStateProps});
   }
 
   function retornarSwipeableViews(){
-    return <AutoPlaySwipeableViews onClick={()=>setarModal('https://source.unsplash.com/random')} open={true} autoPlay={false} />
+    return <SwipeableViewPhoto onClick={(AStateProps)=>setarModal(AStateProps)} open={true} />
   }
 
   function retornarSkeleton(){
-    const img = new Image();
-    img.onload = () =>{setOnLoadImg(true)};
-    img.src = "https://source.unsplash.com/random";
-    if (onLoadImg) {
-      return (
-        <Card
-          className={classes.imgGridListTile}
-        >
-          {/* <CardActionArea
-            className={classes.imgGridListTile}
-          > */}
-            {retornarSwipeableViews()}
-            {/* <ImageComp 
-                  key={1} 
-                  index={1} 
-                  image={img.src} 
-                  text1=""
-                  text2=""
-                  text3=""
-                  text4=""
-                /> */}
-            {/* <CardMedia
-              component="img"
-              alt="Album de Fotos"
-              className={classes.imgGridListTile}
-              image={img.src}
-              onClick={()=>setarModal(img.src)}
-            > */}
-            {/* </CardMedia> */}
-          {/* </CardActionArea> */}
-        </Card>
-        // <img 
-        // onClick={()=>setarModal(img.src)}
-        // className={classes.imgGridListTile}
-        // src={img.src} 
-        // alt="teste" />
-      )
-    } else {
-      return (
-        <Skeleton 
-          style={{borderRadius: '7px'}}
-          animation="wave"
-          variant="rect" 
-          width="100%" 
-          height="100%" 
-
-        />
-      )
-    }
+    return (
+      <Card className={classes.imgGridListTile} >
+        {retornarSwipeableViews()}
+      </Card>
+    )
   }
 
   function retornarGridListTile(ACols, AKey){
-      return (
-        <GridListTile className={classes.gridListItem} key={AKey} cols={ACols}>
-          {retornarSkeleton()}
-          <GridListTileBar
-            title="Imagem"
-            titlePosition="top"
-            className={classes.titleBar}
-            actionIcon={
-              <IconButton 
-                aria-label="Imagem" 
-                className={classes.icon}
-                onClick={()=>setModalShare(true)} 
-              >
-                <ShareIcon 
-                />
-              </IconButton>
-            }
-            actionPosition="left"
-          />
-        </GridListTile>
-      )
+    return (
+      <GridListTile className={classes.gridListItem} key={AKey} cols={ACols}>
+        {retornarSkeleton()}
+        <GridListTileBar
+          title="Imagem"
+          titlePosition="top"
+          className={classes.titleBar}
+          actionPosition="left"
+          actionIcon={
+            <IconButton 
+              aria-label="Imagem" 
+              className={classes.icon}
+              onClick={()=>setModalShare(true)} 
+              children={<ShareIcon />}
+            />
+          }
+        />
+      </GridListTile>
+    )
   }
 
   function retornarImageGridList(){
@@ -348,62 +282,12 @@ export default function GridPhoto(props) {
       <div >
         <Zoom key="princi" in timeout={300} >
           <GridList cellHeight={350} className={classes.gridList} spacing={11} cols={(IsMobile)?(1):(2)}>
-            {retornarGridListTile(1, 0)}
-            {retornarGridListTile(1, 1)}
-            {retornarGridListTile(1, 2)}
-            {retornarGridListTile(1, 3)}
-            {retornarGridListTile(1, 4)}
-            {retornarGridListTile(1, 5)}
-            {retornarGridListTile(1, 6)}
-            {retornarGridListTile(1, 7)}
-            {retornarGridListTile(1, 8)}
-            {retornarGridListTile(1, 9)}
-            {retornarGridListTile(1, 10)}
-            {retornarGridListTile(1, 11)}
+            {GridListItem.map((AConteudo, ACont)=>{
+              return retornarGridListTile(AConteudo.cols, ACont)
+            })}
           </GridList>
         </Zoom>
     </div>
-    )
-  }
-
-  function retornarArrowContainer(){
-    return (
-      <div className={classes.divArrowContainer}>
-        <div>
-          <IconButton onClick={()=>setOnLoadImg(false)} aria-label={`info about Antonio`}>
-            <ArrowBackIosIcon style={{color: '#424242'}} />
-          </IconButton>  
-        </div>
-        <div>
-          <IconButton aria-label={`info about Antonio`}>
-            <ArrowForwardIosIcon style={{color: '#424242'}} />
-          </IconButton>
-        </div>
-      </div>
-
-    )
-  }
-
-  function onCloseModal(AClose){
-    setarOnModal(AClose);
-    setOnLoadImgModal(AClose);
-  }
-
-  function retornarSkeletonModal(){
-    if (onLoadImgModal){
-      return (
-        <div style={{display: 'flex'}}>
-          <div>
-            <img src={onImage} alt="teste" style={{borderRadius: '7px', height: '100%',width: '100%'}} />
-          </div>
-          <h1>testee</h1>
-          <h1>testee</h1>
-          <h1>testee</h1>
-        </div>
-      )
-    } else
-    return (
-        <Skeleton variant="rect" style={{opacity: '0%', backgroundColor: '#616161', borderRadius: '7px'}} height="100%" width="100%" />
     )
   }
 
@@ -426,7 +310,8 @@ export default function GridPhoto(props) {
   function retornarModal(){
     return (
       <FModalPhoto 
-        open={onModal}
+        open={onModal.open}
+        Image={onModal.Image}
         onClose={(e)=>setarOnModal(e)}
       />
     )
@@ -449,50 +334,6 @@ export default function GridPhoto(props) {
         {retornarModalShare()}
         {retornarSnackBar()}
       </div>
-    )
-  }
-
-  function retornarImagem(AClassName){
-    const img = new Image();
-    img.onload = () =>{setOnLoadImg(true)};
-    img.src = "https://source.unsplash.com/random";
-    
-    if (onLoadImg){
-      return (
-        <>
-          <CardMedia
-            className={(AClassName === 'FirstItemList')?(classes.FirstItemList): (classes.SecondItemList)}
-            image={img.src}
-            title="Paella dish"
-          />
-      </>
-      )
-    } else {
-     return (
-      <Skeleton variant="rect" width="100%">
-        <div className={(AClassName === 'FirstItemList')?(classes.FirstItemList): (classes.SecondItemList)} />
-      </Skeleton>
-     )
-    }
-  }
-
-  function retornarGridListTittle(ATimeOut, AClassName){
-    return (
-      <Zoom key="princi" in timeout={ATimeOut} >
-        <GridListTile key="test" style={{listStyleType: 'none'}} >
-        {retornarImagem(AClassName)}
-        <GridListTileBar
-          titlePosition="top"
-          style={{ backgroundColor: '#fff0', borderRadius: 2}}        
-        />
-        <GridListTileBar
-          titlePosition="bottom"
-          title="Imagem Teste"
-          style={{backgroundColor: '#fff0', borderRadius: 2}}
-          subtitle={<span>by: Antonio</span>}
-        />
-        </GridListTile>
-      </Zoom>
     )
   }
 

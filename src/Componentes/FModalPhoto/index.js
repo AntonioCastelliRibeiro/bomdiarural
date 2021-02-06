@@ -164,7 +164,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FModalPhoto(props) {
   const [onRefreshRoom, setOnRefreshRoom] = React.useState(false);
-  // const [onImage, setOnImage] = React.useState(setarImage());
+  const [onImage, setOnImage] = React.useState(setarImage());
   const [onNumberImage, setOnNumberImage] = React.useState(1);
   const [onLoadImgModal, setOnLoadImgModal] = React.useState(false);
   const Image1 = Imagem1;
@@ -331,8 +331,8 @@ export default function FModalPhoto(props) {
 
 
   function onClose(){
-    setOnNumberImage(1);
-    props.onClose(false);
+    // setOnNumberImage(1);
+    props.onClose({open: false, img: props.Image});
   }
 
   function retornarGridImagem(AImagem){
@@ -368,7 +368,7 @@ export default function FModalPhoto(props) {
 
   function retornarSwipeableViews(){
     return (
-      <Zoom key="princi" in={props.open} timeout={500} >
+      <Zoom key="princi" in={props.open} timeout={0} >
         <div className={(matches)?(classes.divModalPhone) : (classes.divModal)} >
             {/* <IconButton 
               aria-label={`info about antonio`} 
@@ -378,10 +378,10 @@ export default function FModalPhoto(props) {
             <ArrowBackIcon />
             </IconButton> */}
           <SwipeableViews style={{height: '100%', width: '100%',  overflowX: 'hidden', overflowY: 'scroll'}} enableMouseEvents>
-            {retornarGridImagem(Imagem1)}
-            {retornarGridImagem(Imagem2)}
-            {retornarGridImagem(Imagem3)}
-            {retornarGridImagem(Imagem4)}
+            {retornarGridImagem(props.Image)}
+            {retornarGridImagem(props.Image)}
+            {retornarGridImagem(props.Image)}
+            {/* {retornarGridImagem(props.Image[0].Image)} */}
           </SwipeableViews>
         </div>
       </Zoom>

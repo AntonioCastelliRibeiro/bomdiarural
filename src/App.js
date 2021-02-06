@@ -8,11 +8,8 @@ import { BrowserRouter } from 'react-router-dom';
 import SwipeableDrawerLeft from './Componentes/SwipeableDrawerLeft';
 import NavbarTop from './Componentes/NavbarTop';
 import GridPrincipal from './Componentes/GridPrincipal';
-import GridPhoto from './Componentes/GridPhoto';
 
 import FModalPhoto from './Componentes/FModalPhoto';
-
-import Carousel from './Componentes/Carousel';
 
 import ReactRouter from './Componentes/ReactRouter';
 
@@ -41,7 +38,7 @@ class App extends React.Component {
     return(
       <NavbarTop
         refresh={()=>this.setState({SwipeableDrawerLeft: this.SwipeableDrawerLeft })} 
-        onClose={(e)=>this.setState({ pageHome: e})}
+        onClose={(e)=>this.onSetarPageFoto(e)}
         onClickSwipeableLeft={()=>this.setState({SwipeableDrawerLeft: true})} 
       />
     )
@@ -86,7 +83,7 @@ class App extends React.Component {
   }
 
   retornarGridPhoto(){
-    return (document.location.pathname === '/fotos') ? (<Photo onSetarCarousel={(e)=>this.setState({onCarousel: e})} /> /*<GridPhoto />*/) : (false)
+    return (this.state.pageFoto) ? (<Photo onSetarCarousel={(e)=>this.setState({onCarousel: e})} /> /*<GridPhoto />*/) : (false)
   }
 
   retornarCarousel(){
