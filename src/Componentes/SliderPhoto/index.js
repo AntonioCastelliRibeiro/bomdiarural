@@ -11,8 +11,8 @@ const theme = createMuiTheme({
     // Style sheet name ⚛️
     MuiSlider: {
       // Name of the rule
-      root: {
-        // display: 'flex',
+      root: { // top do slider
+        top: '-37px',// Altura que ele ficará no componente
         width: 185,
         height: '0px',
       },

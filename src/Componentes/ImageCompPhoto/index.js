@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './styles';
 
 class ImageComp extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class ImageComp extends React.Component {
   retornarImagem(){
     return (
       <img 
-        style={{ display: 'flex', height: '309px', width: '100%'}}  
+        style={styles.Image}  
         src={this.props.image}
         key={this.props.key+1}
         alt="afs"
