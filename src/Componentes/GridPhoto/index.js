@@ -257,6 +257,7 @@ export default function GridPhoto(props) {
 
   function retornarGridListTile(ACols, AKey){
     return (
+      <Zoom key="princi" in={true} timeout={500} >
       <GridListTile className={classes.gridListItem} key={AKey} cols={ACols}>
         {retornarSkeleton()}
         <GridListTileBar
@@ -274,19 +275,18 @@ export default function GridPhoto(props) {
           }
         />
       </GridListTile>
+      </Zoom>
     )
   }
 
   function retornarImageGridList(){
     return (
       <div >
-        <Zoom key="princi" in timeout={0} >
           <GridList cellHeight={340} className={classes.gridList} spacing={11} cols={(IsMobile)?(1):(2)}>
             {GridListItem.map((AConteudo, ACont)=>{
               return retornarGridListTile(AConteudo.cols, ACont)
             })}
           </GridList>
-        </Zoom>
     </div>
     )
   }
