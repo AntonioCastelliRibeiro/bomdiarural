@@ -5,7 +5,9 @@ import ImageCompPhoto from '../ImageCompPhoto';
 import Slider from '../Slider';
 import themePhoto from './themePhoto';
 
-import CardActionArea from '@material-ui/core/CardActionArea';
+import ShareIcon from '@material-ui/icons/Share';
+
+import {CardActionArea, GridListTileBar, IconButton} from '@material-ui/core';
 
 import Imagem11 from '../../Image/Imagem11.jpg';
 import Imagem2 from '../../Image/Imagem8.jpg';
@@ -64,11 +66,13 @@ class SwipePhoto extends React.Component {
     this.setState({
       index,
     });
+    this.props.handleChangeIndex(index);
   };
 
   retornarSwipe(){
     const { index } = this.state;
     return (
+      <>
       <div style={styles.root}>
         <SwipeableViews style={{display: 'flex'}} draggable={'false'} onClick={()=>this.props.onClick(this.state.index)} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
           {
@@ -93,6 +97,21 @@ class SwipePhoto extends React.Component {
           <Slider theme={themePhoto} max={2} numberImage={index} setarNumberImage={this.handleChangeIndex} />
         </div>
       </div>
+        <GridListTileBar
+          // title="Imagem"
+          titlePosition="top"
+          className={this.props.titleBarClass}
+          actionPosition="left"
+          actionIcon={
+            <IconButton 
+              aria-label="Imagem" 
+              className={this.props.iconClass}
+              onClick={()=>this.props.setModalShare(true, this.state.index)} 
+              children={<ShareIcon />}
+            />
+          }
+        />
+      </>
     )
   }
 

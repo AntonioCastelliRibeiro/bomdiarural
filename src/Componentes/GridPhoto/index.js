@@ -216,6 +216,7 @@ export default function GridPhoto(props) {
   //   Image: ''
   // }], Index: ''
   // });
+  const [onIndex, setarOnIndex] = React.useState(0);
 
   const [onModal, setarOnModal] = React.useState({open: false,
     ConteudoImageComp: [
@@ -260,12 +261,21 @@ export default function GridPhoto(props) {
 
   }
 
+  function setarModalShare(AVisible, AIndex){
+    setarOnIndex(AIndex);
+    setModalShare(AVisible);
+  }
+
   function retornarSwipeableViews(){
     return (
       <SwipeableViewPhoto 
+        iconClass={classes.icon}
+        titleBarClass={classes.titleBar}
         listImage={onModal.ConteudoImageComp} 
+        handleChangeIndex={(e)=>setarOnIndex(e)}
         onClick={(AIndex)=>setarOnModal({open: true, ConteudoImageComp: onModal.ConteudoImageComp, Index: AIndex})} 
         open={true} 
+        setModalShare={(AVisible, AIndex)=>setarModalShare(AVisible, AIndex)}
       />
       )
   }
@@ -275,7 +285,7 @@ export default function GridPhoto(props) {
       <Zoom key="princi" in={true} timeout={500} >
       <GridListTile className={classes.gridListItem} key={AKey} cols={ACols}>
         {retornarSwipeableViews()}
-        <GridListTileBar
+        {/* <GridListTileBar
           // title="Imagem"
           titlePosition="top"
           className={classes.titleBar}
@@ -288,7 +298,7 @@ export default function GridPhoto(props) {
               children={<ShareIcon />}
             />
           }
-        />
+        /> */}
       </GridListTile>
       </Zoom>
     )
@@ -319,7 +329,7 @@ export default function GridPhoto(props) {
       open={onModalShare} 
       onSetClose={()=>setModalShare(false)} 
       onSetSnackBar={(AObject)=>setSnackBar(AObject)}
-      image={onModal.ConteudoImageComp[0].Image}
+      image={onModal.ConteudoImageComp[onIndex].Image}
       />
   }
 
