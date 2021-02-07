@@ -5,6 +5,8 @@ import ImageCompPhoto from '../ImageCompPhoto';
 import Slider from '../Slider';
 import themePhoto from './themePhoto';
 
+import CardActionArea from '@material-ui/core/CardActionArea';
+
 import Imagem11 from '../../Image/Imagem11.jpg';
 import Imagem2 from '../../Image/Imagem8.jpg';
 import Imagem3 from '../../Image/Imagem9.jpg';
@@ -68,10 +70,11 @@ class SwipePhoto extends React.Component {
     const { index } = this.state;
     return (
       <div style={styles.root}>
-        <SwipeableViews style={{display: 'flex'}} onClick={()=>this.props.onClick(this.onClick())} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
+        <SwipeableViews style={{display: 'flex'}} draggable={'false'} onClick={()=>this.props.onClick(this.onClick())} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
           {
             this.state.ConteudoImageComp.map((AConteudo, ACont) => {
               return (
+                <CardActionArea>
                   <ImageCompPhoto 
                     key={ACont} 
                     index={index} 
@@ -81,6 +84,8 @@ class SwipePhoto extends React.Component {
                     text3={AConteudo.text3}
                     text4={AConteudo.text4}
                   />
+                </CardActionArea>
+
               )
             })
           }

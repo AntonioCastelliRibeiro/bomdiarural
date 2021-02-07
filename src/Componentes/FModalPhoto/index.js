@@ -208,7 +208,7 @@ export default function FModalPhoto(props) {
     img.src = "https://source.unsplash.com/random";
     if (onLoadImgModal){
       return ( 
-        // <Zoom key="princi" in={onLoadImgModal} timeout={500} >
+        // <Zoom key="princi" in={true} timeout={800} >
         <img 
           src={retornarImage()} 
           alt="teste" 
@@ -218,12 +218,12 @@ export default function FModalPhoto(props) {
       )
     } else {
       return (
-          <Skeleton 
-            variant="rect" 
-            style={{backgroundColor: '#616161', borderRadius: '2px'}} 
-            height="100%"
-            width="100%" 
-          />
+        <Skeleton 
+          variant="rect" 
+          style={{backgroundColor: 'black', borderRadius: '2px'}} 
+          height="100%"
+          width="100%" 
+        />
       )
     }
   }
