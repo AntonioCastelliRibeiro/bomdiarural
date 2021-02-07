@@ -98,8 +98,12 @@ class SwipePhoto extends React.Component {
   }
 
   onClick(){
-    return this.state.ConteudoImageComp[this.state.index].Image;
-  }
+    return { 
+      Image: this.state.ConteudoImageComp,
+      Index: this.state.index} 
+    }
+
+//[this.state.index].Image;
 
   render() {
     return (

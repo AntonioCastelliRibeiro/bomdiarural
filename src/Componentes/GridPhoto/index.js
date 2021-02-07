@@ -217,7 +217,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function GridPhoto(props) {
-  const [onModal, setarOnModal] = React.useState({open: false, Image: ''});
+  const [onModal, setarOnModal] = React.useState({open: false, Image: [{
+    Image: ''
+  }], Index: ''
+  });
   // const [onImage, setarOnImage] = React.useState('');
   // const [onLoadImg, setOnLoadImg] = React.useState(false);
   const [onModalShare, setOnModalShare] = React.useState(false);
@@ -240,7 +243,7 @@ export default function GridPhoto(props) {
 
   function setarModal(AStateProps){
     // setarOnImage(AImg);
-    setarOnModal({open: true, Image: AStateProps});
+    setarOnModal({open: true, Image: AStateProps.Image, Index: AStateProps.Index});
   }
 
   function retornarSwipeableViews(){
@@ -304,6 +307,7 @@ export default function GridPhoto(props) {
       open={onModalShare} 
       onSetClose={()=>setModalShare(false)} 
       onSetSnackBar={(AObject)=>setSnackBar(AObject)}
+      image={()=>onModal.Image[onModal.Index].Image}
       />
   }
 
@@ -311,8 +315,10 @@ export default function GridPhoto(props) {
     return (
       <FModalPhoto 
         open={onModal.open}
-        Image={onModal.Image}
+        image={onModal.Image.length > 1}
+        retornarImage={(e)=>onModal.Image[e].Image}
         onClose={(e)=>setarOnModal(e)}
+        index={onModal.Index}
       />
     )
     }

@@ -332,7 +332,7 @@ export default function FModalPhoto(props) {
 
   function onClose(){
     // setOnNumberImage(1);
-    props.onClose({open: false, img: props.Image});
+    props.onClose({open: false, Image: [{ Image: '' }] });
   }
 
   function retornarGridImagem(AImagem){
@@ -366,6 +366,19 @@ export default function FModalPhoto(props) {
     )
   }
 
+  function setarImagem(AIndex){
+    if (props.image){
+      return props.retornarImage(AIndex)
+    }
+  }
+
+  function retornarIndexProps(){
+    if (props.image){
+      return props.index
+    }
+    return 0
+  }
+
   function retornarSwipeableViews(){
     return (
       <Zoom key="princi" in={props.open} timeout={0} >
@@ -377,10 +390,10 @@ export default function FModalPhoto(props) {
               >
             <ArrowBackIcon />
             </IconButton> */}
-          <SwipeableViews style={{height: '100%', width: '100%',  overflowX: 'hidden', overflowY: 'scroll'}} enableMouseEvents>
-            {retornarGridImagem(props.Image)}
-            {retornarGridImagem(props.Image)}
-            {retornarGridImagem(props.Image)}
+          <SwipeableViews index={retornarIndexProps()} style={{height: '100%', width: '100%',  overflowX: 'hidden', overflowY: 'scroll'}} enableMouseEvents>
+            {retornarGridImagem(setarImagem(0))}
+            {retornarGridImagem(setarImagem(1))}
+            {retornarGridImagem(setarImagem(2))}
             {/* {retornarGridImagem(props.Image[0].Image)} */}
           </SwipeableViews>
         </div>
