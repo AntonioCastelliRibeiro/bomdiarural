@@ -72,15 +72,15 @@ class SwipePhoto extends React.Component {
           {
             this.state.ConteudoImageComp.map((AConteudo, ACont) => {
               return (
-                <ImageCompPhoto 
-                  key={ACont} 
-                  index={index} 
-                  image={AConteudo.Image} 
-                  text1={AConteudo.text1} 
-                  text2={AConteudo.text2}
-                  text3={AConteudo.text3}
-                  text4={AConteudo.text4}
-                />
+                  <ImageCompPhoto 
+                    key={ACont} 
+                    index={index} 
+                    image={AConteudo.Image} 
+                    text1={AConteudo.text1} 
+                    text2={AConteudo.text2}
+                    text3={AConteudo.text3}
+                    text4={AConteudo.text4}
+                  />
               )
             })
           }
@@ -98,9 +98,7 @@ class SwipePhoto extends React.Component {
 
   render() {
     return (
-    
-      this.retornarSwipe()
-    
+        this.retornarSwipe()
     )
   }
 }

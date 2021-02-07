@@ -15,17 +15,19 @@ class ImageComp extends React.Component {
 
   retornarImagem(){
     return (
-      <img 
-        style={styles.Image}  
-        src={this.props.image}
-        key={this.props.key+1}
-        alt="afs"
-      ></img>
+        <img 
+          style={styles.Image}  
+          src={this.props.image}
+          key={this.props.key+1}
+          alt="afs"
+        ></img>
     )
   }
 
   render() {
-    return this.retornarImagem()
+    return <React.Suspense fallback={<div style={{ fontSize: '30px', height: '350px', width: '100%'}}>carregando...</div>}>
+      {this.retornarImagem()}
+    </React.Suspense>
   }
 }
 

@@ -244,7 +244,7 @@ export default function GridPhoto(props) {
   }
 
   function retornarSwipeableViews(){
-    return <SwipeableViewPhoto onClick={(AStateProps)=>setarModal(AStateProps)} open={true} />
+    return <SwipeableViewPhoto onClick={(AStateProps)=>console.log(AStateProps)} open={true} />
   }
 
   function retornarSkeleton(){
@@ -262,7 +262,7 @@ export default function GridPhoto(props) {
       <GridListTile className={classes.gridListItem} key={AKey} cols={ACols}>
         {retornarSkeleton()}
         <GridListTileBar
-          title="Imagem"
+          // title="Imagem"
           titlePosition="top"
           className={classes.titleBar}
           actionPosition="left"
@@ -282,7 +282,7 @@ export default function GridPhoto(props) {
   function retornarImageGridList(){
     return (
       <div >
-        <Zoom key="princi" in timeout={300} >
+        <Zoom key="princi" in timeout={0} >
           <GridList cellHeight={350} className={classes.gridList} spacing={11} cols={(IsMobile)?(1):(2)}>
             {GridListItem.map((AConteudo, ACont)=>{
               return retornarGridListTile(AConteudo.cols, ACont)
