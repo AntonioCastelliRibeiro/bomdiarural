@@ -163,8 +163,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function FModalPhoto(props) {
-  const [onRefreshRoom, setOnRefreshRoom] = React.useState(false);
-  const [onImage, setOnImage] = React.useState(setarImage());
   const [onNumberImage, setOnNumberImage] = React.useState(1);
   const [onLoadImgModal, setOnLoadImgModal] = React.useState(false);
   const Image1 = Imagem1;
@@ -332,7 +330,9 @@ export default function FModalPhoto(props) {
 
   function onClose(){
     // setOnNumberImage(1);
-    props.onClose({open: false, Image: [{ Image: '' }] });
+    // props.onClose({open: false, Image: [{ Image: '' }] });
+    props.onClose(false);
+    
   }
 
   function retornarGridImagem(AImagem){
@@ -394,7 +394,7 @@ export default function FModalPhoto(props) {
             {retornarGridImagem(setarImagem(0))}
             {retornarGridImagem(setarImagem(1))}
             {retornarGridImagem(setarImagem(2))}
-            {/* {retornarGridImagem(props.Image[0].Image)} */}
+            {/* {retornarGridImagem(console.log(props.Image))} */}
           </SwipeableViews>
         </div>
       </Zoom>

@@ -20,7 +20,7 @@ class Photo extends React.Component {
   }
   
   render() {
-    return <GridPhoto onSetarCarousel={(e)=>this.props.onSetarCarousel(e)} />
+    return <GridPhoto cols={this.props.cols} cont={this.props.ACont}  onSetarCarousel={(e)=>this.props.onSetarCarousel(e)} />
   }
 }
 

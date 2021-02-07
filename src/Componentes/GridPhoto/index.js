@@ -3,8 +3,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import { makeStyles, fade } from '@material-ui/core/styles';
 
-import {Hidden, Container, GridListTileBar, Grid, Paper, GridList, Modal, CardActionArea,
-GridListTile, IconButton, Zoom, CardMedia, Card } from '@material-ui/core';
+import { Container, GridListTileBar, GridList, GridListTile, IconButton, Zoom } from '@material-ui/core';
 
 import FModalPhoto from '../FModalPhoto';
 
@@ -12,16 +11,12 @@ import SwipeableViewPhoto from '../SwipeableViewPhoto';
 
 import ShareIcon from '@material-ui/icons/Share';
 
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-
 import FShare from '../FShare';
 import SnackBar from '../SnackBar';
 
-import Skeleton from '@material-ui/lab/Skeleton';
-
-import Carousel from '../Carousel';
-
+import Imagem11 from '../../Image/Imagem11.jpg';
+import Imagem2 from '../../Image/Imagem8.jpg';
+import Imagem3 from '../../Image/Imagem9.jpg';
 
 const useStyles = makeStyles((theme) => ({
   divPrincipalConteudo: {
@@ -217,10 +212,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function GridPhoto(props) {
-  const [onModal, setarOnModal] = React.useState({open: false, Image: [{
-    Image: ''
-  }], Index: ''
+  // const [onModal, setarOnModal] = React.useState({open: false, Image: [{
+  //   Image: ''
+  // }], Index: ''
+  // });
+
+  const [onModal, setarOnModal] = React.useState({open: false,
+    ConteudoImageComp: [
+      {
+        Image: Imagem11
+      },
+      {
+        Image: Imagem2
+      },
+      {
+        Image: Imagem3
+      },
+    ]
+  , Index: ''
   });
+
+
   // const [onImage, setarOnImage] = React.useState('');
   // const [onLoadImg, setOnLoadImg] = React.useState(false);
   const [onModalShare, setOnModalShare] = React.useState(false);
@@ -241,28 +253,28 @@ export default function GridPhoto(props) {
     { cols: 0  },
   ]
 
-  function setarModal(AStateProps){
+  function setarModal(AOpen){
     // setarOnImage(AImg);
-    setarOnModal({open: true, Image: AStateProps.Image, Index: AStateProps.Index});
+    // setarOnModal({open: true, Image: AStateProps.Image, Index: AStateProps.Index});
+    setarOnModal({open: AOpen, ConteudoImageComp: onModal.ConteudoImageComp, Index: onModal.Index});
+
   }
 
   function retornarSwipeableViews(){
-    return <SwipeableViewPhoto onClick={(AStateProps)=>setarModal(AStateProps)} open={true} />
-  }
-
-  function retornarSkeleton(){
     return (
-      <Card className={classes.imgGridListTile} >
-          {retornarSwipeableViews()}
-      </Card>
-    )
+      <SwipeableViewPhoto 
+        listImage={onModal.ConteudoImageComp} 
+        onClick={(AIndex)=>setarOnModal({open: true, ConteudoImageComp: onModal.ConteudoImageComp, Index: AIndex})} 
+        open={true} 
+      />
+      )
   }
 
   function retornarGridListTile(ACols, AKey){
     return (
       <Zoom key="princi" in={true} timeout={500} >
       <GridListTile className={classes.gridListItem} key={AKey} cols={ACols}>
-        {retornarSkeleton()}
+        {retornarSwipeableViews()}
         <GridListTileBar
           // title="Imagem"
           titlePosition="top"
@@ -307,7 +319,7 @@ export default function GridPhoto(props) {
       open={onModalShare} 
       onSetClose={()=>setModalShare(false)} 
       onSetSnackBar={(AObject)=>setSnackBar(AObject)}
-      image={()=>onModal.Image[onModal.Index].Image}
+      image={onModal.ConteudoImageComp[0].Image}
       />
   }
 
@@ -315,9 +327,9 @@ export default function GridPhoto(props) {
     return (
       <FModalPhoto 
         open={onModal.open}
-        image={onModal.Image.length > 1}
-        retornarImage={(e)=>onModal.Image[e].Image}
-        onClose={(e)=>setarOnModal(e)}
+        image={onModal.ConteudoImageComp.length > 1}
+        retornarImage={(e)=>onModal.ConteudoImageComp[e].Image}
+        onClose={(e)=>setarModal(e)}
         index={onModal.Index}
       />
     )

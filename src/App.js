@@ -83,7 +83,12 @@ class App extends React.Component {
   }
 
   retornarGridPhoto(){
-    return (this.state.pageFoto) ? (<Photo onSetarCarousel={(e)=>this.setState({onCarousel: e})} /> /*<GridPhoto />*/) : (false)
+    if (this.state.pageFoto) {
+      return (
+        <Photo 
+        onSetarCarousel={(e)=>this.setState({onCarousel: e})} />
+      ) 
+    } else return false
   }
 
   retornarCarousel(){
