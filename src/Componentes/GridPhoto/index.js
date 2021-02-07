@@ -262,7 +262,7 @@ export default function GridPhoto(props) {
   }
 
   function setarModalShare(AVisible, AIndex){
-    // setarOnIndex(AIndex);
+    setarOnIndex(AIndex);
     setModalShare(AVisible);
   }
 
