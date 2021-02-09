@@ -1,11 +1,15 @@
 import React from 'react';
 import './App.scss';
 
+import { fade } from '@material-ui/core/styles';
+
+
 import Photo from './Class/Photo';
 
 import { BrowserRouter } from 'react-router-dom';
 
 import SwipeableDrawerLeft from './Componentes/SwipeableDrawerLeft';
+import GridItem from './Componentes/GridItem';
 import NavbarTop from './Componentes/NavbarTop';
 import GridPrincipal from './Componentes/GridPrincipal';
 
@@ -14,6 +18,8 @@ import FModalPhoto from './Componentes/FModalPhoto';
 import ReactRouter from './Componentes/ReactRouter';
 
 import LinearProgress from '@material-ui/core/LinearProgress';
+
+import {Container} from '@material-ui/core';
 
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
@@ -73,7 +79,12 @@ class App extends React.Component {
   retornarGridPrincipal(){
     if (this.state.pageHome){
     return (
-      <GridPrincipal />
+      <div style={{ paddingTop: 10, paddingBottom: 10, backgroundColor: fade('#257627', 0.25)}} >
+        <Container maxWidth="md" >
+          <GridPrincipal />
+          <GridItem />
+        </Container>
+      </div>
       )
     }
   }

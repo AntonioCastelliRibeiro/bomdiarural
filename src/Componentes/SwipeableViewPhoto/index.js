@@ -74,7 +74,7 @@ class SwipePhoto extends React.Component {
     return (
       <>
       <div style={styles.root}>
-        <SwipeableViews style={{display: 'flex'}} draggable={'false'} onClick={()=>this.props.onClick(this.state.index)} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
+        <SwipeableViews open={this.props.open} style={{display: 'flex'}} draggable={'false'} onClick={()=>this.props.onClick(this.state.index)} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
           {
             this.props.listImage.map((AConteudo, ACont) => {
               return (

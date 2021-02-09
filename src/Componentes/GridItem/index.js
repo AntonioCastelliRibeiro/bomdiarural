@@ -1,12 +1,9 @@
 import React from 'react';
 
+import { Grid, Fade } from '@material-ui/core'; 
 import CardItem from '../TimeLine/CardItem';
-import { makeStyles, fade } from '@material-ui/core/styles';
-import { Container, Grid, Fade } from '@material-ui/core';
 
-import {Skeleton} from '@material-ui/lab';
-
-const ContainerImage = React.lazy(() => import('../ContainerImage'));
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   divPrincipalConteudo: {
@@ -35,47 +32,10 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       flexWrap: 'Wrap',
     },
-  gridContainer: {
-    paddingLeft: '2%',
-    // paddingTop: '10px',
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gridGap: '10px',
-    maxWidth: 150
-  },
-  divItemGrid1: {
-    gridRowStart: 1,
-    gridRowEnd: 3
-  },
-  gridListImg: {
-    cursor: 'pointer',
-    '&:hover': {
-      opacity: '90%',
-    },
-  }
 }));
 
-function GridPrincipal(props) {
+export default function GridItem(props){
   const classes = useStyles();
-
-  function retornarGridPrincipal(){
-    return (
-      <div 
-        // style={{paddingTop: "10px", paddingBottom: 10, backgroundColor: fade('#257627', 0.25)}}
-      >
-        <Container>
-          <div style={{ height: '100%', width: '100%'}}>
-            <React.Suspense fallback={<div style={{height: '100%', width: '100%'}}></div>}>
-              {/* <Skeleton> */}
-                <ContainerImage /> 
-              {/* </Skeleton> */}
-            </React.Suspense>
-          </div>
-          {/* {retornarConteudo()} */}
-        </Container>
-      </div>
-    )
-  }
 
   function retornarConteudo(){
     return (
@@ -115,10 +75,8 @@ function GridPrincipal(props) {
     )
   }
 
-    return(
-      retornarGridPrincipal()
+    return (
+      retornarConteudo()
     )
+
 }
-
-
-export default GridPrincipal;

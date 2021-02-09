@@ -3,7 +3,7 @@ import AutoPlaySwipeableViews from '../AutoPlaySwipeableViews';
 import {Hidden, Grid, Zoom} from '@material-ui/core';
 
 
-class ContainerImage extends React.Component {
+class ContainerImage extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {date: new Date()};

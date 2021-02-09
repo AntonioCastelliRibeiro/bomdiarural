@@ -25,9 +25,7 @@ class ImageComp extends React.Component {
   }
 
   render() {
-    return <React.Suspense fallback={<div style={{ fontSize: '30px', height: '350px', width: '100%'}}>carregando...</div>}>
-      {this.retornarImagem()}
-    </React.Suspense>
+    return this.retornarImagem()
   }
 }
 

@@ -56,7 +56,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function FShare(props) {
+function FShare(props) {
   const classes = useStyles();
 
   const handleClose = () => {
@@ -165,3 +165,5 @@ export default function FShare(props) {
     </div>
   );
 }
+
+export default React.memo(FShare);

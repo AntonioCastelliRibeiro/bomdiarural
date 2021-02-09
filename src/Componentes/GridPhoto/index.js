@@ -3,7 +3,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import { makeStyles, fade } from '@material-ui/core/styles';
 
-import { Container, GridListTileBar, GridList, GridListTile, IconButton, Zoom } from '@material-ui/core';
+import { Container, GridListTileBar, GridList, GridListTile, IconButton, Zoom, Fade } from '@material-ui/core';
 
 import FModalPhoto from '../FModalPhoto';
 
@@ -211,7 +211,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function GridPhoto(props) {
+function GridPhoto(props) {
   // const [onModal, setarOnModal] = React.useState({open: false, Image: [{
   //   Image: ''
   // }], Index: ''
@@ -274,7 +274,6 @@ export default function GridPhoto(props) {
         listImage={onModal.ConteudoImageComp} 
         handleChangeIndex={(e)=>setarOnIndex(e)}
         onClick={(AIndex)=>setarOnModal({open: true, ConteudoImageComp: onModal.ConteudoImageComp, Index: AIndex})} 
-        open={true} 
         setModalShare={(AVisible, AIndex)=>setarModalShare(AVisible, AIndex)}
       />
       )
@@ -282,25 +281,27 @@ export default function GridPhoto(props) {
 
   function retornarGridListTile(ACols, AKey){
     return (
-      <Zoom key="princi" in={true} timeout={500} >
-      <GridListTile className={classes.gridListItem} key={AKey} cols={ACols}>
-        {retornarSwipeableViews()}
-        {/* <GridListTileBar
-          // title="Imagem"
-          titlePosition="top"
-          className={classes.titleBar}
-          actionPosition="left"
-          actionIcon={
-            <IconButton 
-              aria-label="Imagem" 
-              className={classes.icon}
-              onClick={()=>setModalShare(true)} 
-              children={<ShareIcon />}
-            />
-          }
-        /> */}
-      </GridListTile>
-      </Zoom>
+      // <Zoom key="princi" in={true} timeout={500} >
+      <Fade in={props.open} timeout={500}>
+        <GridListTile className={classes.gridListItem} key={AKey} cols={ACols}>
+          {retornarSwipeableViews()}
+          {/* <GridListTileBar
+            // title="Imagem"
+            titlePosition="top"
+            className={classes.titleBar}
+            actionPosition="left"
+            actionIcon={
+              <IconButton 
+                aria-label="Imagem" 
+                className={classes.icon}
+                onClick={()=>setModalShare(true)} 
+                children={<ShareIcon />}
+              />
+            }
+          /> */}
+        </GridListTile>
+      </Fade>
+      // </Zoom>
     )
   }
 
@@ -369,3 +370,5 @@ export default function GridPhoto(props) {
       retornarGridPhoto()
     )
 }
+
+export default React.memo(GridPhoto);

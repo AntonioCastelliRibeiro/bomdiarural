@@ -23,27 +23,19 @@ const useStyles = makeStyles({
 export default function MediaCard() {
   const classes = useStyles();
 
-  const [onLoadImg, setOnLoadImg] = React.useState(false);
-  const img = new Image();
-  img.onload = () =>{setOnLoadImg(true)};
-  img.src = Imagem1;
+  // const [onLoadImg, setOnLoadImg] = React.useState(false);
+  // const img = new Image();
+  // img.onload = () =>{setOnLoadImg(true)};
+  // img.src = Imagem1;
 
   function retornarCardMedia(){
-    if (onLoadImg){
-      return (
-        <>
-          <CardMedia
-            className={classes.media}
-            image={img.src}
-            title="Paella dish"
-          />
-      </>
-      )
-    } else {
-     return (
-      <Skeleton variant="rect" className={classes.media} />
-     )
-    }
+    return (
+      <CardMedia
+        className={classes.media}
+        image={Imagem1}
+        title="Paella dish"
+      />
+    )
   }
 
   return (
