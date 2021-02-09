@@ -31,4 +31,4 @@ class ImageComp extends React.Component {
   }
 }
 
-  export default ImageComp;
+  export default React.memo(ImageComp);

@@ -3,7 +3,7 @@ import { useTrail, a } from 'react-spring'
 import './styles.css'
 
 function Trail({open, children, ...props }) {
-  const [onChange, setOnChange] = React.useState(false);
+  // const [onChange, setOnChange] = React.useState(false);
 
   const items = React.Children.toArray(children);
   const trail = useTrail(items.length, {
@@ -75,4 +75,4 @@ constructor(props){
 
 }
 
-export default App;
+export default React.memo(App);

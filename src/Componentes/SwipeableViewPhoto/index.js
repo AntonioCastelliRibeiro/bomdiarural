@@ -78,7 +78,7 @@ class SwipePhoto extends React.Component {
           {
             this.props.listImage.map((AConteudo, ACont) => {
               return (
-                <CardActionArea>
+                // <CardActionArea >
                   <ImageCompPhoto 
                     key={ACont} 
                     index={index} 
@@ -88,7 +88,7 @@ class SwipePhoto extends React.Component {
                     text3={AConteudo.text3}
                     text4={AConteudo.text4}
                   />
-                </CardActionArea>
+                // </CardActionArea>
               )
             })
           }

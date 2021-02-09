@@ -35,7 +35,7 @@ class ImageComp extends React.Component {
   retornarImagem(){
   if (this.state.onLoadImage){
       return (
-        <Parallax  bgImage ={this.props.image} parent={this.props.key+2} key={this.props.key+1} strength= {100}>
+        <Parallax  bgImage ={this.props.image} parent={this.props.key+2} key={this.props.key+1} strength= {0}>
           <div style={{height: (this.props.retornarDescricao)? (500) : (310), width: '100%'}}>
             {this.retornarSpring()}
           </div>
