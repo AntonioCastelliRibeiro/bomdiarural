@@ -9,6 +9,30 @@ import Imagem1 from '../../Image/Imagem7.jpg';
 import Imagem2 from '../../Image/Imagem8.jpg';
 import Imagem3 from '../../Image/Imagem9.jpg';
 
+const ConteudoImageComp =  [
+  {
+    text1: 'O Programa',
+    text2: 'de quem',
+    text3: 'Planta e',
+    text4: 'Produz',
+    Image: Imagem1
+  },
+  {
+    text1: 'As 08h30',
+    text2: 'todo Sábado',
+    text3: 'na Tv',
+    text4: 'Sudoeste 7.1',
+    Image: Imagem2
+  },
+  {
+    text1: 'Conteúdo',
+    text2: 'Exclusivo',
+    text3: 'do Campo',
+    text4: 'e Lavoura',
+    Image: Imagem3
+  },
+]
+
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const styles = {
   root: {
@@ -26,33 +50,11 @@ class Swipe extends React.Component {
   }
 
   componentDidMount(){
-    this.carregarConteudoImageComp();
+    // this.carregarConteudoImageComp();
   }
 
   carregarConteudoImageComp(){
-    this.setState({ConteudoImageComp: [
-      {
-        text1: 'O Programa',
-        text2: 'de quem',
-        text3: 'Planta e',
-        text4: 'Produz',
-        Image: Imagem1
-      },
-      {
-        text1: 'As 08h30',
-        text2: 'todo Sábado',
-        text3: 'na Tv',
-        text4: 'Sudoeste 7.1',
-        Image: Imagem2
-      },
-      {
-        text1: 'Conteúdo',
-        text2: 'Exclusivo',
-        text3: 'do Campo',
-        text4: 'e Lavoura',
-        Image: Imagem3
-      },
-    ]})
+    this.setState({})
   }
 
   handleChangeIndex = index => {
@@ -67,7 +69,7 @@ class Swipe extends React.Component {
       <div style={styles.root}>
         <AutoPlaySwipeableViews  interval={7500} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
           {
-            this.state.ConteudoImageComp.map((AConteudo, ACont) => {
+            ConteudoImageComp.map((AConteudo, ACont) => {
               return (
                 <ImageComp 
                   retornarDescricao={this.props.retornarDescricao}
@@ -83,9 +85,9 @@ class Swipe extends React.Component {
             })
           }
         </AutoPlaySwipeableViews>
-        <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
-          {/* <Slider theme={themeAutoPlay} max={2} numberImage={index} setarNumberImage={this.handleChangeIndex} /> */}
-        </div>
+        {/* <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}> */}
+          {/* <Slider  max={2} numberImage={index} setarNumberImage={this.handleChangeIndex} /> */}
+        {/* </div> */}
       </div>
     )
   }

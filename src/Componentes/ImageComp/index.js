@@ -4,17 +4,17 @@ import { Parallax, Background } from "react-parallax";
 import Spring from '../Spring';
 
 class ImageComp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      index: 0,
-      onLoadImage: true,
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     // index: 0,
+  //     // onLoadImage: true,
+  //   };
+  // }
 
-  handleChangeIndex = AIndex => {
-    this.setState({index: AIndex});
-  };
+  // handleChangeIndex = AIndex => {
+  //   this.setState({index: AIndex});
+  // };
 
   retornarSpring(){
     if (this.props.retornarDescricao){
@@ -22,7 +22,7 @@ class ImageComp extends React.Component {
         <Spring 
           key={this.props.key} 
           index={this.props.index} 
-          open={this.state.onLoadImage} 
+          open={true} 
           text1={this.props.text1} 
           text2={this.props.text2} 
           text3={this.props.text3}
@@ -33,7 +33,7 @@ class ImageComp extends React.Component {
   }
 
   retornarImagem(){
-  if (this.state.onLoadImage){
+  // if (this.state.onLoadImage){
       return (
         <Parallax  bgImage ={this.props.image} parent={this.props.key+2} key={this.props.key+1} strength= {0}>
           <div style={{height: (this.props.retornarDescricao)? (500) : (310), width: '100%'}}>
@@ -41,15 +41,15 @@ class ImageComp extends React.Component {
           </div>
         </Parallax>
       )
-    } else {
-      return (
-        <Skeleton 
-          style={{height: 500, width: '100%', borderRadius: 2}}
-          variant="rect" 
-          width="100%"
-          />
-      )
-    }
+    // } else {
+    //   return (
+    //     <Skeleton 
+    //       style={{height: 500, width: '100%', borderRadius: 2}}
+    //       variant="rect" 
+    //       width="100%"
+    //       />
+    //   )
+    // }
   }
 
   render() {

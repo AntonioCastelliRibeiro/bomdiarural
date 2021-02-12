@@ -7,30 +7,13 @@ function Trail({open, children, ...props }) {
 
   const items = React.Children.toArray(children);
   const trail = useTrail(items.length, {
-    to: async (next, cancel) => {
-      await next({
-        config: { mass: 5, tension: 2000, friction: 600 },
-        opacity: 1,
-        x: 0,
-        height: 110,
-      })
-    },
-
-      // await next({
-      // //   config: { mass: 5, tension: 2000, friction: 600 },
-      //   opacity: 0,
-      //   x: -50,
-      //   height: 0,
-      // })
-    // reverse: props.index === 2,
-    reset: props.index === 2,
-    reverse: props.index === 2,
-
-    delay: retornarTimeDelay(),
-    // immediate: props.index = 1,
-    // delay: 500,
-    from: {
-      opacity: 1, x: -5, height: 0  },
+    config: { mass: 100, tension: 900, friction: 300 },
+    opacity: 1,
+    x: 20,
+    height: 110,
+    from: { opacity: 0, x: 20, height: 0 },
+    delay: 90,
+    reset: true
   })
 
   function retornarTimeDelay(){

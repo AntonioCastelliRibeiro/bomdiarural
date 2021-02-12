@@ -6,7 +6,9 @@ import { Container, Grid, Fade } from '@material-ui/core';
 
 import {Skeleton} from '@material-ui/lab';
 
-const ContainerImage = React.lazy(() => import('../ContainerImage'));
+import ContainerImage from '../ContainerImage'
+
+// const ContainerImage = React.lazy(() => import('../ContainerImage'));
 
 const useStyles = makeStyles((theme) => ({
   divPrincipalConteudo: {
@@ -65,11 +67,11 @@ function GridPrincipal(props) {
       >
         <Container>
           <div style={{ height: '100%', width: '100%'}}>
-            <React.Suspense fallback={<div style={{height: '100%', width: '100%'}}></div>}>
+            {/* <React.Suspense fallback={<div style={{height: '100%', width: '100%'}}></div>}> */}
               {/* <Skeleton> */}
                 <ContainerImage /> 
               {/* </Skeleton> */}
-            </React.Suspense>
+            {/* </React.Suspense> */}
           </div>
           {/* {retornarConteudo()} */}
         </Container>
@@ -77,43 +79,43 @@ function GridPrincipal(props) {
     )
   }
 
-  function retornarConteudo(){
-    return (
-    <div className={classes.divPrincipalConteudo}>
-      <div className={classes.divContainer}>
-        <Grid container spacing={3} >
-          {retornarCarFood()}
-        </Grid>
-      </div>
-      </div>
-    );
-  }
+  // function retornarConteudo(){
+  //   return (
+  //   <div className={classes.divPrincipalConteudo}>
+  //     <div className={classes.divContainer}>
+  //       <Grid container spacing={3} >
+  //         {retornarCarFood()}
+  //       </Grid>
+  //     </div>
+  //     </div>
+  //   );
+  // }
 
-  function retornarCarFood(){
-    let rows = [];
-      for(let i=0; i<4; i++){
-          rows.push(i)
-      }
-      return ( 
-        rows.map((cont, aKey)=>retornarZoom(cont, aKey))
-      )
-  }
+  // function retornarCarFood(){
+  //   let rows = [];
+  //     for(let i=0; i<4; i++){
+  //         rows.push(i)
+  //     }
+  //     return ( 
+  //       rows.map((cont, aKey)=>retornarZoom(cont, aKey))
+  //     )
+  // }
 
-  function retornarZoom(aCont, aKey){
-    // const lvTransition = 500 * aCont;
-    return (
+  // function retornarZoom(aCont, aKey){
+  //   // const lvTransition = 500 * aCont;
+  //   return (
 
-        <Grid  item xs={12} sm={6} md={6} lg={6}>
-          <Fade 
-            key={aKey} 
-            in  
-            timeout={600}
-          >
-            <CardItem />
-          </Fade>
-        </Grid>
-    )
-  }
+  //       <Grid  item xs={12} sm={6} md={6} lg={6}>
+  //         <Fade 
+  //           key={aKey} 
+  //           in  
+  //           timeout={600}
+  //         >
+  //           <CardItem />
+  //         </Fade>
+  //       </Grid>
+  //   )
+  // }
 
     return(
       retornarGridPrincipal()
