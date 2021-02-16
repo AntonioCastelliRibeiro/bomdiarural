@@ -1,0 +1,11 @@
+.root{
+  max-width: '550px'
+}
+
+.imageItem{
+  height: 300px;
+}
+
+.imageItemScroll{
+  height: 450px;
+}

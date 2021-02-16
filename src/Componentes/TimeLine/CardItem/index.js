@@ -1,47 +1,59 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Skeleton from '@material-ui/lab/Skeleton';
-
+import './styles.css';
 import Imagem1 from '../../../Image/Imagem10.jpg';
 
-const useStyles = makeStyles({
+
+import { Grid, Fade } from '@material-ui/core'; 
+import {Card, CardActionArea, CardActions, CardContent, CardMedia, Typography, Button} from '@material-ui/core';
+
+const styles = {
   root: {
-    maxWidth: 550,
+    maxWidth: '550px',
   },
   media: {
-    height: 300,
+    height: '300px',
   },
-});
-
-export default function MediaCard() {
-  const classes = useStyles();
-
-  // const [onLoadImg, setOnLoadImg] = React.useState(false);
-  // const img = new Image();
-  // img.onload = () =>{setOnLoadImg(true)};
-  // img.src = Imagem1;
-
-  function retornarCardMedia(){
-    return (
-      <CardMedia
-        className={classes.media}
-        image={Imagem1}
-        title="Paella dish"
-      />
-    )
+  mediaScroll: {
+    height: '500px',
   }
 
-  return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        {retornarCardMedia()}
+};
+
+class CardItem extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      onScroll: "imageItem",
+    };
+  }
+
+  componentDidMount(){
+    window.onscroll = ()=> this.handleScroll();
+  }
+
+  handleScroll(){
+    this.setState({ onScroll: (document.documentElement.scrollTop > 40) ? ("imageItemScroll") : ("imageItem") });
+    console.log(document.documentElement.scrollTop);
+  }
+
+  render() {
+
+    return (
+      <Grid  item xs={12} sm={12} md={6} lg={6}>
+      <Fade 
+        key={this.props.key} 
+        in  
+        timeout={600}
+      >
+      <Card className={"root"}>
+        <CardActionArea>
+          <CardMedia
+            // className={ () =>this.state.onScroll ? AClasses.mediaScroll : AClasses.media}
+            className={"imageItem"}
+            // style={{height: 350}}
+            image={Imagem1}
+            title="Paella dish"
+          />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             Conteúdo Exclusivo
@@ -51,15 +63,20 @@ export default function MediaCard() {
             across all continents except Antarctica
           </Typography>
         </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Compartilhar
-        </Button>
-        <Button size="small" color="primary">
-          Saiba Mais
-        </Button>
-      </CardActions>
-    </Card>
-  );
+        </CardActionArea>
+        <CardActions>
+          <Button size="small" color="primary">
+            Compartilhar
+          </Button>
+          <Button size="small" color="primary">
+            Saiba Mais
+          </Button>
+        </CardActions>
+      </Card>
+      </Fade>
+    </Grid>
+    )
+  }
 }
+
+export default CardItem;

@@ -62,16 +62,17 @@ export default function GridItem(props){
   function retornarZoom(aCont, aKey){
     // const lvTransition = 500 * aCont;
     return (
+      <CardItem key={aKey}/>
 
-        <Grid  item xs={12} sm={6} md={6} lg={6}>
-          <Fade 
-            key={aKey} 
-            in  
-            timeout={600}
-          >
-            <CardItem />
-          </Fade>
-        </Grid>
+        // <Grid  item xs={12} sm={6} md={6} lg={6}>
+        //   <Fade 
+        //     key={aKey} 
+        //     in  
+        //     timeout={600}
+        //   >
+        //     <CardItem />
+        //   </Fade>
+        // </Grid>
     )
   }
 

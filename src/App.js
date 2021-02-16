@@ -3,7 +3,6 @@ import './App.scss';
 
 import { fade } from '@material-ui/core/styles';
 
-
 import Photo from './Class/Photo';
 
 import { BrowserRouter } from 'react-router-dom';
@@ -11,7 +10,7 @@ import { BrowserRouter } from 'react-router-dom';
 import SwipeableDrawerLeft from './Componentes/SwipeableDrawerLeft';
 import GridItem from './Componentes/GridItem';
 import NavbarTop from './Componentes/NavbarTop';
-import GridPrincipal from './Componentes/GridPrincipal';
+import ContainerImage from './Componentes/ContainerImage';
 
 import FModalPhoto from './Componentes/FModalPhoto';
 
@@ -38,7 +37,13 @@ class App extends React.Component {
 
   componentDidMount(){
     this.onSetarPageFoto(document.location.pathname);
+    // window.onscroll = ()=> this.handleScroll();
   }
+
+  
+  // handleScroll(){
+  //   this.setState({ onShowGrid: (document.documentElement.scrollTop > 400) ? (true) : (false) })
+  // }
 
   retornarNavbar(){
     return(
@@ -80,8 +85,8 @@ class App extends React.Component {
     if (this.state.pageHome){
     return (
       <div style={{ paddingTop: 10, paddingBottom: 10, backgroundColor: fade('#257627', 0.25)}} >
+        <ContainerImage />
         <Container maxWidth="md" >
-          <GridPrincipal />
           <GridItem />
         </Container>
       </div>
