@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Grid, Fade } from '@material-ui/core'; 
 import CardItem from '../TimeLine/CardItem';
+import ParallaxScroll from '../ParallaxScroll';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -63,6 +64,7 @@ export default function GridItem(props){
     // const lvTransition = 500 * aCont;
     return (
       <CardItem key={aKey}/>
+      // <ParallaxScroll />
 
         // <Grid  item xs={12} sm={6} md={6} lg={6}>
         //   <Fade 

@@ -28,7 +28,7 @@ class CardItem extends React.PureComponent {
   }
 
   componentDidMount(){
-    window.onscroll = ()=> this.handleScroll();
+    // window.onscroll = ()=> this.handleScroll();
   }
 
   handleScroll(){

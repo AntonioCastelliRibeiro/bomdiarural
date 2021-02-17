@@ -11,6 +11,8 @@ import SwipeableDrawerLeft from './Componentes/SwipeableDrawerLeft';
 import GridItem from './Componentes/GridItem';
 import NavbarTop from './Componentes/NavbarTop';
 import ContainerImage from './Componentes/ContainerImage';
+import ParallaxScroll from './Componentes/ParallaxScroll';
+
 
 import FModalPhoto from './Componentes/FModalPhoto';
 
@@ -30,6 +32,7 @@ class App extends React.Component {
     this.state = {
       pageHome: true,
       pageFoto: false,
+      pageVideos: false,
       SwipeableDrawerLeft : false,
       onCarousel: false
     }
@@ -74,10 +77,13 @@ class App extends React.Component {
 
   onSetarPageFoto(e){
     if (e === '/fotos'){
-      this.setState({pageFoto: true, pageHome: false})
+      this.setState({pageFoto: true, pageHome: false, pageVideos: false})
+    }
+    else if (e === '/videos'){
+      this.setState({pageFoto: false, pageHome: false, pageVideos: true})
     }
     else if (e === '/'){
-      this.setState({pageFoto: false, pageHome: true})
+      this.setState({pageFoto: false, pageHome: true, pageVideos: false})
     }
   }
 
@@ -130,6 +136,14 @@ class App extends React.Component {
       </Breadcrumbs>
     )
   }
+
+  retornarGridVideos(){
+    if (this.state.pageVideos){
+      return (
+        <ParallaxScroll />
+      )
+    }
+  }
   
   render()
   {
@@ -147,12 +161,13 @@ class App extends React.Component {
             {/* {this.retornarBreadCrumb()} */}
             {this.retornarGridPrincipal()}
             {this.retornarGridPhoto()}
+            {this.retornarGridVideos()}
           </main>
-          <footer >
+          {/* <footer >
             <div style={{ display: 'flex', height: 50 ,backgroundColor: '#257627'}}>
               <span style={{ paddingTop: 27, paddingLeft: 10, color: '#ffff'}}>© Copyright 2020-2021 Antonio Castelli Ribeiro</span>
             </div>
-          </footer>
+          </footer> */}
         </BrowserRouter>
       </>
       );

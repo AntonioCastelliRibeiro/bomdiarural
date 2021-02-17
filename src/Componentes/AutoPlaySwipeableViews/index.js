@@ -53,10 +53,6 @@ class Swipe extends React.Component {
     // this.carregarConteudoImageComp();
   }
 
-  carregarConteudoImageComp(){
-    this.setState({})
-  }
-
   handleChangeIndex = index => {
     this.setState({
       index,
@@ -72,7 +68,6 @@ class Swipe extends React.Component {
             ConteudoImageComp.map((AConteudo, ACont) => {
               return (
                 <ImageComp 
-                  retornarDescricao={this.props.retornarDescricao}
                   key={ACont} 
                   index={index} 
                   image={AConteudo.Image} 
@@ -121,7 +116,7 @@ class Swipe extends React.Component {
   }
 
   render() {
-    const SwipeableViews = (this.props.autoPlay) ? (this.retornarAutoPlaySwipe()) : (this.retornarSwipe())
+    const SwipeableViews = this.retornarAutoPlaySwipe();
     return SwipeableViews
   }
 }

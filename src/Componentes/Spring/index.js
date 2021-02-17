@@ -6,24 +6,25 @@ function Trail({open, children, ...props }) {
 
   const items = React.Children.toArray(children);
   const trail = useTrail(items.length, {
-    config: config.default,
+    config: config.gentle,
     x: 10,
+    y: 5,
     opacity: 1,
-    height: 110,
-    from: { opacity: 0, x: 0, y: 100, height: 160 },
-    delay: 100,
-    reset: true    
+    height: 120,
+    from: { opacity: 0, x: 0, y: -200, height: 160 },
+    delay: 50,
+    reset: true,    
   })
 
   return (
     <div className="trails-main" {...props}>
       <div>
-        {trail.map(({ x, height, ...rest }, index) => (
+        {trail.map(({ x, y, height, ...rest }, index) => (
           <a.div
             // onClick={()=>setRefresh(!refresh)}
             key={items[index*props.key]}
             className="trails-text"
-            style={{ ...rest, transform: x.interpolate((x) => `translate3d(0,${x}px,0)`) }}>
+            style={{ ...rest, transform: y.interpolate((y) => `translate3d(${y}px,0px,0)`) }}>
             <a.div style={{ height }}>{items[index]}</a.div>
           </a.div>
         ))}
