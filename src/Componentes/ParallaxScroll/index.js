@@ -15,7 +15,7 @@ const Gray = ({ children }) => <span style={{ color: '#909090' }}>{children}</sp
 class App extends React.Component {
   render() {
     return (
-      <Parallax ref={ref => (this.parallax = ref)} pages={4}>
+      <Parallax style={{position: 'fixed'}}  ref={ref => (this.parallax = ref)} pages={4}>
         <ParallaxLayer offset={1} speed={1} style={{ backgroundColor: '#805E73' }} />
         <ParallaxLayer offset={2} speed={1} style={{ backgroundColor: '#87BCDE' }} />
 

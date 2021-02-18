@@ -11,8 +11,8 @@ class ImageComp extends React.Component {
         in  
         timeout={600}
       >
-        <Parallax bgImage ={this.props.image} parent={this.props.key+2} key={this.props.key+1} strength= {0} >
-          <div style={{height: 510, width: '100%'}}>
+        <Parallax style={{width: '100%'}} bgImage ={this.props.image} parent={this.props.key+2} key={this.props.key+1} strength= {0} >
+          <div style={{height: 550, width: '100%'}}>
             <Spring 
               key={this.props.key} 
               index={this.props.index} 
