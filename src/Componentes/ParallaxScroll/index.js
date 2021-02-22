@@ -15,11 +15,12 @@ const Gray = ({ children }) => <span style={{ color: '#909090' }}>{children}</sp
 class App extends React.Component {
   render() {
     return (
-      <Parallax style={{position: 'fixed'}}  ref={ref => (this.parallax = ref)} pages={4}>
-        <ParallaxLayer offset={1} speed={1} style={{ backgroundColor: '#805E73' }} />
+      <Parallax style={{position: 'fixed'}}  ref={ref => (this.parallax = ref)} pages={3}>
+        <ParallaxLayer offset={1} speed={1} style={{ backgroundColor: 'black' }} />
         <ParallaxLayer offset={2} speed={1} style={{ backgroundColor: '#87BCDE' }} />
 
-        {/* <ParallaxLayer offset={0} speed={0} factor={3} style={{ backgroundImage: url('stars', true), backgroundSize: 'cover' }} /> */}
+        <ParallaxLayer offset={0} speed={0} factor={3} style={{ backgroundImage: url('stars', true), backgroundSize: 'cover' }} />
+        
 
         <ParallaxLayer offset={1.3} speed={-0.3} style={{ pointerEvents: 'none' }}>
           <img src={Mulher} style={{ width: '15%', marginLeft: '70%' }} />

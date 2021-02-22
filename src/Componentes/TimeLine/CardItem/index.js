@@ -2,6 +2,7 @@ import React from 'react';
 import './styles.css';
 import Imagem1 from '../../../Image/Imagem10.jpg';
 
+import CardItemMedia from '../../CardItemMedia';
 
 import { Grid, Fade } from '@material-ui/core'; 
 import {Card, CardActionArea, CardActions, CardContent, CardMedia, Typography, Button} from '@material-ui/core';
@@ -47,13 +48,14 @@ class CardItem extends React.PureComponent {
       >
       <Card className={"root"}>
         <CardActionArea>
-          <CardMedia
+          {/* <CardMedia
             // className={ () =>this.state.onScroll ? AClasses.mediaScroll : AClasses.media}
             className={"imageItem"}
             // style={{height: 350}}
             image={Imagem1}
             title="Paella dish"
-          />
+          /> */}
+          <CardItemMedia image={Imagem1}/>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             Conteúdo Exclusivo

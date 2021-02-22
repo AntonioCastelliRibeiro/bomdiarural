@@ -6,7 +6,7 @@ function Trail({open, children, ...props }) {
 
   const items = React.Children.toArray(children);
   const trail = useTrail(items.length, {
-    config: config.gentle,
+    config: config.default,
     x: 10,
     y: 5,
     opacity: 1,
