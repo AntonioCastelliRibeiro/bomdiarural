@@ -6,9 +6,10 @@ const themePhoto = createMuiTheme({
     MuiSlider: {
       // Name of the rule
       root: { // top do slider
-        top: '-37px',// Altura que ele ficará no componente
-        width: 185,
+        top: '-33px',// Altura que ele ficará no componente
+        width: '100%',
         height: '0px',
+        alignItems: 'center'
       },
       thumb: {
         width: 7,

@@ -7,16 +7,22 @@ import { Container, GridListTileBar, GridList, GridListTile, IconButton, Zoom, F
 
 import FModalPhoto from '../FModalPhoto';
 
-import SwipeableViewPhoto from '../SwipeableViewPhoto';
-
 import ShareIcon from '@material-ui/icons/Share';
 
 import FShare from '../FShare';
 import SnackBar from '../SnackBar';
 
-import Imagem11 from '../../Image/Imagem11.jpg';
-import Imagem2 from '../../Image/Imagem8.jpg';
-import Imagem3 from '../../Image/Imagem9.jpg';
+// import Imagem11 from '../../Image/Imagem11.jpg';
+// import Imagem2 from '../../Image/Imagem8.jpg';
+// import Imagem3 from '../../Image/Imagem9.jpg';
+
+import Imagem11 from '../../Image/floresta.jpg';
+import Imagem2 from '../../Image/cavalo.jpg';
+import Imagem3 from '../../Image/soja.jpg';
+
+import SwipeableViewPhoto from '../SwipeableViewPhoto';
+
+// const SwipeableViewPhoto = React.lazy(() => import());
 
 const useStyles = makeStyles((theme) => ({
   divPrincipalConteudo: {
@@ -47,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
   imgGridListTile: {
     height: '340px',
-    borderRadius: '7px',
+    // borderRadius: '7px',
     backgroundColor: '#25762712',
     color: '#fff',
   },
@@ -116,11 +122,11 @@ const useStyles = makeStyles((theme) => ({
 
   },
   titleBar: {
-    borderRadius: '7px',
+    // borderRadius: '7px',
     opacity: '80%',
-    background:
-    'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
-      'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+    background: 'transparent',
+    // 'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+    //   'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
       '&:hover': {
         opacity: '95%',
       },
@@ -240,8 +246,12 @@ function GridPhoto(props) {
   const [onSnackBar, setOnSnackBar] = React.useState(false);
   const classes = useStyles();
   const IsMobile = useMediaQuery("(max-width:600px)");
+  const IsQuebraContainer = useMediaQuery("(max-width:968px)");
+
 
   const GridListItem = [
+    { cols: 0  },
+    { cols: 0  },
     { cols: 0  },
     { cols: 0  },
     { cols: 0  },
@@ -308,7 +318,7 @@ function GridPhoto(props) {
   function retornarImageGridList(){
     return (
       <div >
-          <GridList cellHeight={340} className={classes.gridList} spacing={11} cols={(IsMobile)?(1):(2)}>
+          <GridList cellHeight={IsQuebraContainer ? 300 : 300} className={classes.gridList} spacing={IsMobile ? 3 : IsQuebraContainer ? 7 : 20} cols={(IsMobile)?(2):(3)}>
             {GridListItem.map((AConteudo, ACont)=>{
               return retornarGridListTile(AConteudo.cols, ACont)
             })}

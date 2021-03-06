@@ -1,26 +1,21 @@
 import React from 'react';
 
-import { Container, Grid, Fade } from '@material-ui/core';
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { Container } from '@material-ui/core';
 import ContainerImage from '../ContainerImage'
 
-function GridPrincipal(props) {
-  const IsMobile = useMediaQuery("(max-width:600px)");
+import GridItem from '../GridItem';
 
-  function retornarGridPrincipal(){
-    return (
-        <Container maxWidth="lg" >
-          <div style={{ height: '100%', width: '100%'}}>
-              <ContainerImage IsMobile={IsMobile}/> 
-          </div>
-        </Container>
+class GridPrincipal extends React.Component {
+  render(){
+    return(
+      <>
+      <ContainerImage IsMobile={true} />
+      <Container maxWidth="md" >
+        <GridItem />
+      </Container>
+      </>
     )
   }
-
-
-    return(
-      retornarGridPrincipal()
-    )
 }
 
 

@@ -13,6 +13,8 @@ import NavbarTop from './Componentes/NavbarTop';
 import ContainerImage from './Componentes/ContainerImage';
 import ParallaxScroll from './Componentes/ParallaxScroll';
 
+import GridPrincipal from './Componentes/GridPrincipal';
+
 
 import FModalPhoto from './Componentes/FModalPhoto';
 
@@ -91,10 +93,7 @@ class App extends React.Component {
     if (this.state.pageHome){
     return (
       <div style={{ paddingTop: 10, paddingBottom: 10, backgroundColor: fade('#257627', 0.25)}} >
-        <ContainerImage IsMobile={true} />
-        <Container maxWidth="md" >
-          <GridItem />
-        </Container>
+        <GridPrincipal />
       </div>
       )
     }

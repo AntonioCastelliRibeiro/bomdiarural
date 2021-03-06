@@ -4,6 +4,7 @@ import { autoPlay } from 'react-swipeable-views-utils';
 
 import ImageComp from '../ImageComp';
 import Slider from '../Slider';
+import CarrouselView from '../CarrouselView';
 
 import Imagem1 from '../../Image/Imagem7.jpg';
 import Imagem2 from '../../Image/Imagem8.jpg';
@@ -64,6 +65,7 @@ class Swipe extends React.Component {
     return (
       <div style={styles.root}>
         <AutoPlaySwipeableViews style={{width: '100%'}}  interval={7500} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
+            {/* <CarrouselView /> */}
           {
             ConteudoImageComp.map((AConteudo, ACont) => {
               return (

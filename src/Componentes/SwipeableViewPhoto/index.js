@@ -1,7 +1,7 @@
 import React from 'react';
 import SwipeableViews from 'react-swipeable-views';
+import Skeleton from '@material-ui/lab/Skeleton';
 
-import ImageCompPhoto from '../ImageCompPhoto';
 import Slider from '../Slider';
 import themePhoto from './themePhoto';
 
@@ -9,17 +9,24 @@ import ShareIcon from '@material-ui/icons/Share';
 
 
 
-import {CardActionArea, GridListTileBar, IconButton} from '@material-ui/core';
+import { GridListTileBar, IconButton} from '@material-ui/core';
 
-import Imagem11 from '../../Image/Imagem11.jpg';
-import Imagem2 from '../../Image/Imagem8.jpg';
-import Imagem3 from '../../Image/Imagem9.jpg';
+// import Imagem11 from '../../Image/Imagem11.jpg';
+// import Imagem2 from '../../Image/Imagem8.jpg';
+// import Imagem3 from '../../Image/Imagem9.jpg';
+
+import ImageCompPhoto from '../ImageCompPhoto';
+
+// const ImageCompPhoto = React.lazy(() => import('../ImageCompPhoto'));
 
 const styles = {
   root: {
     position: 'relative',
     flexDirection: 'column',
-    display: 'flex'
+    display: 'flex',
+    '&:hover': {
+      opacity: '90%',
+    },
   }
 };
 
@@ -75,8 +82,11 @@ class SwipePhoto extends React.Component {
     const { index } = this.state;
     return (
       <>
-      <div style={styles.root}>
-        <SwipeableViews open={this.props.open} style={{display: 'flex'}} draggable={'false'} onClick={()=>this.props.onClick(this.state.index)} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
+      {/* <React.Suspense fallback={<Skeleton style={{padding: 0}} height="500px" width="100px"/>}> */}
+
+      <div style={styles.root} >
+
+        <SwipeableViews open={this.props.open} style={{display: 'flex'}} draggable={false} onClick={()=>this.props.onClick(this.state.index)} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
           {
             this.props.listImage.map((AConteudo, ACont) => {
               return (
@@ -94,7 +104,10 @@ class SwipePhoto extends React.Component {
               )
             })
           }
+
+
         </SwipeableViews>
+
         <div style={{width: '100%', display: 'flex', alignItems: 'flex-start',  justifyContent: 'center'}}>
           <Slider theme={themePhoto} max={2} numberImage={index} setarNumberImage={this.handleChangeIndex} />
         </div>
@@ -113,6 +126,8 @@ class SwipePhoto extends React.Component {
             />
           }
         />
+{/* </React.Suspense> */}
+
       </>
     )
   }

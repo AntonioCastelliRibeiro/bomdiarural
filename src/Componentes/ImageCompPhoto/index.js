@@ -5,12 +5,13 @@ class ImageComp extends React.Component {
   
   retornarImagem(){
     return (
-        <img 
-          style={styles.Image}  
-          src={this.props.image}
-          key={this.props.key+1}
-          alt="afs"
-        ></img>
+      <img 
+      draggable={false}
+      style={styles.Image}  
+        src={this.props.image}
+        key={this.props.key+1}
+        alt="afs"
+      />
     )
   }
 

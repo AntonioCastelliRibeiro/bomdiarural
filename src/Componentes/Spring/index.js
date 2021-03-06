@@ -6,14 +6,17 @@ function Trail({open, children, ...props }) {
 
   const items = React.Children.toArray(children);
   const trail = useTrail(items.length, {
-    config: config.default,
+    config:  config.default,
     x: 10,
     y: 5,
     opacity: 1,
     height: 120,
     from: { opacity: 0, x: 0, y: -200, height: 160 },
-    delay: 50,
-    reset: true,    
+    // delay: 50,
+    reset: true,
+
+    reverse: true,
+        
   })
 
   return (
@@ -37,7 +40,7 @@ class App extends React.Component {
 
   render(){
     return (
-      <Trail key={this.props.key} index={this.props.index} >
+      <Trail open={false} key={this.props.key} index={this.props.index} >
         <span>{this.props.text1}</span>
         <span>{this.props.text2}</span>
         <span>{this.props.text3}</span>

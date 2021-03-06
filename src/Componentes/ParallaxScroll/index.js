@@ -20,7 +20,6 @@ class App extends React.Component {
         <ParallaxLayer offset={2} speed={1} style={{ backgroundColor: '#87BCDE' }} />
 
         <ParallaxLayer offset={0} speed={0} factor={3} style={{ backgroundImage: url('stars', true), backgroundSize: 'cover' }} />
-        
 
         <ParallaxLayer offset={1.3} speed={-0.3} style={{ pointerEvents: 'none' }}>
           <img src={Mulher} style={{ width: '15%', marginLeft: '70%' }} />

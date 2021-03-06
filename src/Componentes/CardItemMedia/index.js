@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     // height: '45ch',
     background: 'grey',
-    borderRadius: '5px',
+    // borderRadius: '5px',
     // backgroundImage:  theme,//'url(https://drscdn.500px.org/photo/435236/q%3D80_m%3D1500/v2?webp=true&sig=67031bdff6f582f3e027311e2074be452203ab637c0bd21d89128844becf8e40)',
     backgroundSize: 'cover',
     backgroundPosition: 'center center',
@@ -33,16 +33,11 @@ export default function CardItemMedia(AProps) {
 
   const [props, set] = useSpring(() => ({
     xys: [0, 0, 1],
-    config: { mass: 2, tension: 350, friction: 40 }
+    config: { mass: 1, tension: 380, friction: 54 }
   }));
 
   return (
-    <animated.div
-      className={classes.cardDiv}
-      // onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-      // onMouseLeave={() => set({ xys: [0, 0, 1] })}
-      // style={{ transform: props.xys.interpolate(trans) }}
-    >
+    <animated.div className={classes.cardDiv} >
       <animated.img 
       height={350}
       className={classes.card}

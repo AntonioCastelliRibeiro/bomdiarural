@@ -1,9 +1,10 @@
 const styles = {
   Image : { 
     display: 'flex', 
-    height: '341px', 
+    height: '300px', 
     width: '100%',
-    borderRadius: '7px'
+    // borderRadius: '7px',
+    cursor: 'pointer'
   }
 };
 
