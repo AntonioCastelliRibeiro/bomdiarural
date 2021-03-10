@@ -10,7 +10,7 @@ class ImageComp extends React.Component {
       style={styles.Image}  
         src={this.props.image}
         key={this.props.key+1}
-        alt="afs"
+        alt="imageCarrousel"
       />
     )
   }
@@ -20,4 +20,4 @@ class ImageComp extends React.Component {
   }
 }
 
-  export default React.memo(ImageComp);
+  export default ImageComp;

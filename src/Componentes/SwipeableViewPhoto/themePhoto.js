@@ -7,14 +7,15 @@ const themePhoto = createMuiTheme({
       // Name of the rule
       root: { // top do slider
         top: '-33px',// Altura que ele ficará no componente
-        width: '100%',
+        width: '32%',
         height: '0px',
+        marginLeft: '33%',
         alignItems: 'center'
       },
       thumb: {
-        width: 7,
-        height: 7,
-        marginTop: 0,
+        width: 12,
+        height: 12,
+        marginTop: -1,
         marginLeft: 0,
         transition: "0.3s ease"
       },
@@ -34,8 +35,8 @@ const themePhoto = createMuiTheme({
         display: "block",
         position: "absolute",
         opacity: '80%',
-        marginTop: 2.401,
-        height: 2,
+        marginTop: 2.801,
+        height: 3,
         borderRadius: 1,
         transition: "width 300ms",
         backgroundColor: "currentColor",
@@ -64,8 +65,8 @@ const themePhoto = createMuiTheme({
       mark: {
         position: "absolute",
         // border: 6,
-        width: 7,
-        height: 7,
+        width: 10,
+        height: 10,
         borderRadius: 7,
         backgroundColor: "currentColor"
       }

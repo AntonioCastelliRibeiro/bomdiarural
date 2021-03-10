@@ -1,27 +1,16 @@
 import React from 'react';
 import SwipeableViews from 'react-swipeable-views';
-import Skeleton from '@material-ui/lab/Skeleton';
-
 import Slider from '../Slider';
-import themePhoto from './themePhoto';
 
+import themePhoto from './themePhoto';
 import ShareIcon from '@material-ui/icons/Share';
 
-
-
-import { GridListTileBar, IconButton} from '@material-ui/core';
-
-// import Imagem11 from '../../Image/Imagem11.jpg';
-// import Imagem2 from '../../Image/Imagem8.jpg';
-// import Imagem3 from '../../Image/Imagem9.jpg';
-
+import { GridListTileBar, IconButton, Fade } from '@material-ui/core';
 import ImageCompPhoto from '../ImageCompPhoto';
-
-// const ImageCompPhoto = React.lazy(() => import('../ImageCompPhoto'));
 
 const styles = {
   root: {
-    position: 'relative',
+    position: 'absolute',
     flexDirection: 'column',
     display: 'flex',
     '&:hover': {
@@ -35,41 +24,10 @@ class SwipePhoto extends React.Component {
     super(props);
     this.state = {
       index: 0,
-      // ConteudoImageComp: [{
-      //   Image: ''
-      // }],
+      slider: false
     };
   }
 
-  componentDidMount(){
-    // this.carregarConteudoImageComp();
-  }
-
-  // carregarConteudoImageComp(){
-  //   this.setState({ConteudoImageComp: [
-  //     {
-  //       text1: 'O Programa',
-  //       text2: 'de quem',
-  //       text3: 'Planta e',
-  //       text4: 'Produz',
-  //       Image: Imagem11
-  //     },
-  //     {
-  //       text1: 'As 08h30',
-  //       text2: 'todo Sábado',
-  //       text3: 'na Tv',
-  //       text4: 'Sudoeste 7.1',
-  //       Image: Imagem2
-  //     },
-  //     {
-  //       text1: 'Conteúdo',
-  //       text2: 'Exclusivo',
-  //       text3: 'do Campo',
-  //       text4: 'e Lavoura',
-  //       Image: Imagem3
-  //     },
-  //   ]})
-  // }
 
   handleChangeIndex = index => {
     this.setState({
@@ -78,42 +36,11 @@ class SwipePhoto extends React.Component {
     this.props.handleChangeIndex(index);
   };
 
-  retornarSwipe(){
-    const { index } = this.state;
-    return (
-      <>
-      {/* <React.Suspense fallback={<Skeleton style={{padding: 0}} height="500px" width="100px"/>}> */}
-
-      <div style={styles.root} >
-
-        <SwipeableViews open={this.props.open} style={{display: 'flex'}} draggable={false} onClick={()=>this.props.onClick(this.state.index)} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
-          {
-            this.props.listImage.map((AConteudo, ACont) => {
-              return (
-                // <CardActionArea >
-                  <ImageCompPhoto 
-                    key={ACont} 
-                    index={index} 
-                    image={AConteudo.Image} 
-                    text1={AConteudo.text1} 
-                    text2={AConteudo.text2}
-                    text3={AConteudo.text3}
-                    text4={AConteudo.text4}
-                  />
-                // </CardActionArea>
-              )
-            })
-          }
-
-
-        </SwipeableViews>
-
-        <div style={{width: '100%', display: 'flex', alignItems: 'flex-start',  justifyContent: 'center'}}>
-          <Slider theme={themePhoto} max={2} numberImage={index} setarNumberImage={this.handleChangeIndex} />
-        </div>
-      </div>
+  retornarBtnShare(){
+    if (this.state.slider){
+    return(
+      <Fade in={this.state.slider} timeout={500}>
         <GridListTileBar
-          // title="Imagem"
           titlePosition="top"
           className={this.props.titleBarClass}
           actionPosition="left"
@@ -124,23 +51,53 @@ class SwipePhoto extends React.Component {
               onClick={()=>this.props.setModalShare(true, this.state.index)} 
               children={<ShareIcon />}
             />
-          }
-        />
-{/* </React.Suspense> */}
+            }
+          />
+      </Fade>
+      ) 
+    } else return false
+  }
 
-      </>
+  retornarSlider(){
+    return(
+      <Fade in={this.state.slider} timeou={500}>
+        <Slider theme={themePhoto} max={2} numberImage={this.state.index} setarNumberImage={this.handleChangeIndex} /> 
+      </Fade>
     )
   }
 
-  // onClick(){
-  //   return this.state.index
-    
-//[this.state.index].Image;
-
-  render() {
+  retornarSwipe(){
+    const { index } = this.state;
     return (
-        this.retornarSwipe()
+      <>
+      <div style={styles.root} onMouseOver={(e)=>this.setState({slider: true})} onMouseLeave={(e)=>this.setState({slider: false})} >
+        <SwipeableViews open={this.props.open} style={{display: 'flex'}} draggable={false} onClick={()=>this.props.onClick(this.state.index)} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
+          {
+            this.props.listImage.map((AConteudo, ACont) => {
+              return (
+                <ImageCompPhoto 
+                  key={ACont} 
+                  index={index} 
+                  image={AConteudo.Image} 
+                  text1={AConteudo.text1} 
+                  text2={AConteudo.text2}
+                  text3={AConteudo.text3}
+                  text4={AConteudo.text4}
+                />
+              )
+            })
+          }
+        </SwipeableViews>
+        <div style={{width: '100%', display: 'flex', alignItems: 'flex-start',  justifyContent: 'center'}}>
+          {this.retornarSlider()}
+        </div>
+          {/* {this.retornarBtnShare()} */}
+      </div>
+      </>
     )
+  }
+  render() {
+    return this.retornarSwipe()
   }
 }
 

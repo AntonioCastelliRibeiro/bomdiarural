@@ -14,8 +14,7 @@ function Trail({open, children, ...props }) {
     from: { opacity: 0, x: 0, y: -200, height: 160 },
     // delay: 50,
     reset: true,
-
-    reverse: true,
+    reverse: false,
         
   })
 

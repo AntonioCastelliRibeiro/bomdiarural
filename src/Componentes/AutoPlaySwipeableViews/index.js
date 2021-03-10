@@ -64,7 +64,7 @@ class Swipe extends React.Component {
     const { index } = this.state;
     return (
       <div style={styles.root}>
-        <AutoPlaySwipeableViews style={{width: '100%'}}  interval={7500} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
+        <AutoPlaySwipeableViews slideStyle={{width: '100%'}} style={{width: '100%'}}  interval={7500} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
             {/* <CarrouselView /> */}
           {
             ConteudoImageComp.map((AConteudo, ACont) => {

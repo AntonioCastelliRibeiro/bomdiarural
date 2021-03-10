@@ -163,6 +163,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function FModalPhoto(props) {
+  const isMobile = useMediaQuery("(max-width:600px)");
+
   const [onNumberImage, setOnNumberImage] = React.useState(1);
   const [onLoadImgModal, setOnLoadImgModal] = React.useState(false);
   const Image1 = Imagem1;
@@ -299,31 +301,32 @@ export default function FModalPhoto(props) {
 
   function setarNumberImage(AKey){
     const lvKey = AKey;
-    let lvNumer = onNumberImage;
+    let lvNumber = onNumberImage;
 
     if (lvKey === 'ArrowLeft'){
-      lvNumer = (onNumberImage === 1) ? (6) : (onNumberImage - 1);
+      lvNumber = (onNumberImage === 1) ? (3) : (onNumberImage - 1);
     } 
     else if (lvKey === 'ArrowRight') {
-      lvNumer = (onNumberImage === 6) ? (1) : (onNumberImage +1);
+      lvNumber = (onNumberImage === 3) ? (1) : (onNumberImage +1);
     }
 
-    setOnNumberImage(lvNumer); 
+    props.handleChangeIndex(lvNumber);
+    // setOnNumberImage(lvNumber); 
     // setOnLoadImgModal(false);
     }
 
   function setarNumberImageKey(AKey){
     const lvKey = AKey.key;
-    let lvNumer = onNumberImage;
+    let lvNumber = onNumberImage;
 
     if (lvKey === 'ArrowLeft'){
-      lvNumer = (onNumberImage === 1) ? (6) : (onNumberImage - 1);
+      lvNumber = (onNumberImage === 1) ? (6) : (onNumberImage - 1);
     } 
     else if (lvKey === 'ArrowRight') {
-      lvNumer = (onNumberImage === 6) ? (1) : (onNumberImage +1);
+      lvNumber = (onNumberImage === 6) ? (1) : (onNumberImage +1);
     }
     
-    setOnNumberImage(lvNumer); 
+    setOnNumberImage(lvNumber); 
     // setOnLoadImgModal(true);
     }
 
@@ -349,6 +352,7 @@ export default function FModalPhoto(props) {
         </div>
       <Grid container item style={{height: '100%'}}>
         <img 
+          draggable={false}
           src={AImagem} 
           alt="teste" 
           style={{borderRadius: '2px', height: '100%',width: '100%'}} 
@@ -383,19 +387,26 @@ export default function FModalPhoto(props) {
     return (
       <Zoom key="princi" in={props.open} timeout={0} >
         <div className={(matches)?(classes.divModalPhone) : (classes.divModal)} >
-            {/* <IconButton 
+        {/* {!isMobile ? <IconButton 
               aria-label={`info about antonio`} 
               className={classes.iconModalArrowLeft}
               onClick={()=>setarNumberImage('ArrowLeft')}
-              >
+              > 
             <ArrowBackIcon />
-            </IconButton> */}
+            </IconButton> : false} */}
           <SwipeableViews index={retornarIndexProps()} style={{height: '100%', width: '100%',  overflowX: 'hidden', overflowY: 'scroll'}} enableMouseEvents>
             {retornarGridImagem(setarImagem(0))}
             {retornarGridImagem(setarImagem(1))}
             {retornarGridImagem(setarImagem(2))}
             {/* {retornarGridImagem(console.log(props.Image))} */}
           </SwipeableViews>
+          {/* {!isMobile ? <IconButton 
+              aria-label={`info about antonio`} 
+              className={classes.iconModalArrowRight}
+              onClick={()=>setarNumberImage('ArrowRight')}
+              >
+            <ArrowForwardIcon />
+            </IconButton> : false} */}
         </div>
       </Zoom>
       

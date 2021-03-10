@@ -24,17 +24,9 @@ class ImageComp extends React.Component {
         parent={this.props.key+2} 
         key={this.props.key+1} 
         strength= {0} 
-        children={<Spring 
-          key={this.props.key} 
-          index={this.props.index} 
-          open={true} 
-          text1={this.props.text1} 
-          text2={this.props.text2} 
-          text3={this.props.text3}
-          text4={this.props.text4} 
-        />}>
-        {/* <div style={{height: 550, width: '100%'}}> */}
-          {/* <Spring 
+        >
+        <div style={{height: 550, width: '100%'}}> 
+          <Spring 
             key={this.props.key} 
             index={this.props.index} 
             open={true} 
@@ -42,8 +34,8 @@ class ImageComp extends React.Component {
             text2={this.props.text2} 
             text3={this.props.text3}
             text4={this.props.text4} 
-          /> */}
-        {/* </div> */}
+          />
+         </div>
       </Parallax>
     )
   }

@@ -103,14 +103,13 @@ export default function Slider(props) {
         <SliderComp
           track="normal"
           defaultValue={1}
-          // getAriaValueText={valuetext}
           aria-labelledby="discrete-slider"
-          // valueLabelDisplay="true"
           value={props.numberImage}
           // step={1}
           marks
           min={0}
           max={props.max}
+          
           onChange={(e)=>setarNumberClick(e.target)}
           // onChangeCommitted={(e)=>console.log(e.target)}
         />

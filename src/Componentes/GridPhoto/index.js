@@ -12,17 +12,11 @@ import ShareIcon from '@material-ui/icons/Share';
 import FShare from '../FShare';
 import SnackBar from '../SnackBar';
 
-// import Imagem11 from '../../Image/Imagem11.jpg';
-// import Imagem2 from '../../Image/Imagem8.jpg';
-// import Imagem3 from '../../Image/Imagem9.jpg';
-
 import Imagem11 from '../../Image/floresta.jpg';
 import Imagem2 from '../../Image/cavalo.jpg';
 import Imagem3 from '../../Image/soja.jpg';
 
 import SwipeableViewPhoto from '../SwipeableViewPhoto';
-
-// const SwipeableViewPhoto = React.lazy(() => import());
 
 const useStyles = makeStyles((theme) => ({
   divPrincipalConteudo: {
@@ -291,34 +285,18 @@ function GridPhoto(props) {
 
   function retornarGridListTile(ACols, AKey){
     return (
-      // <Zoom key="princi" in={true} timeout={500} >
       <Fade in={props.open} timeout={500}>
         <GridListTile className={classes.gridListItem} key={AKey} cols={ACols}>
           {retornarSwipeableViews()}
-          {/* <GridListTileBar
-            // title="Imagem"
-            titlePosition="top"
-            className={classes.titleBar}
-            actionPosition="left"
-            actionIcon={
-              <IconButton 
-                aria-label="Imagem" 
-                className={classes.icon}
-                onClick={()=>setModalShare(true)} 
-                children={<ShareIcon />}
-              />
-            }
-          /> */}
         </GridListTile>
       </Fade>
-      // </Zoom>
     )
   }
 
   function retornarImageGridList(){
     return (
       <div >
-          <GridList cellHeight={IsQuebraContainer ? 300 : 300} className={classes.gridList} spacing={IsMobile ? 3 : IsQuebraContainer ? 7 : 20} cols={(IsMobile)?(2):(3)}>
+          <GridList cellHeight={IsQuebraContainer ? 300 : 300} className={classes.gridList} spacing={IsMobile ? 3 : IsQuebraContainer ? 7 : 20} cols={(IsMobile)?(1):(3)}>
             {GridListItem.map((AConteudo, ACont)=>{
               return retornarGridListTile(AConteudo.cols, ACont)
             })}
@@ -352,6 +330,7 @@ function GridPhoto(props) {
         retornarImage={(e)=>onModal.ConteudoImageComp[e].Image}
         onClose={(e)=>setarModal(e)}
         index={onModal.Index}
+        handleChangeIndex={(e)=>setarOnIndex(e)}
       />
     )
     }
