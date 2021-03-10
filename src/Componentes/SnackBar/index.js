@@ -29,6 +29,7 @@ export default function SnackBar(props) {
   return (
     <div className={classes.root}>
       <Snackbar 
+        style={{ zIndex: props.zIndex }}
         open={props.open} 
         autoHideDuration={5000} 
         onClose={handleClose}

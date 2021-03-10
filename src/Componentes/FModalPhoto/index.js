@@ -13,9 +13,13 @@ import Slider from '../Slider';
 
 import SwipeableViews from 'react-swipeable-views';
 
+import FShare from '../FShare';
+import SnackBar from '../SnackBar';
+
 import { makeStyles, fade } from '@material-ui/core/styles';
 
-import { Modal, IconButton, Zoom } from '@material-ui/core';
+import { Modal, IconButton, Zoom, Fade } from '@material-ui/core';
+
 import Backdrop from '@material-ui/core/Backdrop';
 
 import Grid from '@material-ui/core/Grid';
@@ -52,6 +56,15 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
     alignItems: 'stretch',
     alignContent: 'flex-end',
+  },
+  divIconShareModal: {
+    opacity: '80%',
+    width: '50%',
+    display: 'flex',
+    position: 'absolute',
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+    alignContent: 'flex-start',
   },
   divIconArrow: {
     opacity: '80%',
@@ -165,6 +178,8 @@ const useStyles = makeStyles((theme) => ({
 export default function FModalPhoto(props) {
   const isMobile = useMediaQuery("(max-width:600px)");
 
+  const [onModalShare, setModalShare] = React.useState(false);
+  const [onSnackBar, setSnackBar] = React.useState(false);
   const [onNumberImage, setOnNumberImage] = React.useState(1);
   const [onLoadImgModal, setOnLoadImgModal] = React.useState(false);
   const Image1 = Imagem1;
@@ -338,18 +353,48 @@ export default function FModalPhoto(props) {
     
   }
 
+  function onShareClick(){
+    return setModalShare(true);
+  }
+
+  function retornarModalShare(){
+    return <FShare 
+      open={onModalShare} 
+      onSetClose={()=>setModalShare(false)} 
+      onSetSnackBar={(AObject)=>setSnackBar(AObject)}
+      image={()=>props.retornarImage(props.index)}
+      
+      />
+  }
+
+  function retornarSnackBar(){
+    const { open, message, success } = onSnackBar;
+    return (open) ? (<SnackBar zIndex={99999} open={open} message={message} success={success} onClose={(e)=>setSnackBar(e)}/>) : (false)
+  }
+
   function retornarGridImagem(AImagem){
     return (
       <Grid container >
-        <div className={classes.divIconCloseModal}>
-          <IconButton 
-            aria-label={`info about antonio`} 
-            className={classes.iconModalArrowRight}
-            onClick={()=>onClose()}
-            >
-          <IconClose />
-          </IconButton>
-        </div>
+          <div className={classes.divIconCloseModal}>
+            <IconButton 
+              aria-label={`info about antonio`} 
+              className={classes.iconModalArrowRight}
+              onClick={()=>onClose()}
+              >
+              <Fade in={onNumberImage}timeout={500}>
+                <IconClose />
+              </Fade>
+            </IconButton>
+          </div>
+          <div className={classes.divIconShareModal}>
+            <IconButton 
+              aria-label={`info about antonio`} 
+              className={classes.iconModalArrowLeft}
+              onClick={()=>onShareClick()}
+              >
+                <ShareIcon />
+            </IconButton>
+          </div>
       <Grid container item style={{height: '100%'}}>
         <img 
           draggable={false}
@@ -416,6 +461,7 @@ export default function FModalPhoto(props) {
   function retornarModal(){
 
       return (
+        <>
         <Modal
           // onMouseEnter={()=>console.log('mouse entrou')}
           // onMouseOut={()=>console.log('mouse saiu')}
@@ -434,6 +480,9 @@ export default function FModalPhoto(props) {
 
           onKeyDown={(e)=>setarNumberImageKey(e)}
       />
+      {retornarModalShare()}
+      {retornarSnackBar()}
+      </>
       )
     }
 

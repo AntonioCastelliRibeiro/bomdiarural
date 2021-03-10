@@ -41,9 +41,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const theme = createMuiTheme({
+
   palette: {
     primary: green,
   },
+  
 });
 
 const DialogContent = withStyles((theme) => ({
@@ -104,6 +106,7 @@ function FShare(props) {
     <div>
       <Dialog
         // style={{width: 250}}
+        style={{zIndex: 9999}}
         maxWidth="xs"
         open={props.open}
         TransitionComponent={Transition}

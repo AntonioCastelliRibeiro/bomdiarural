@@ -240,6 +240,9 @@ function GridPhoto(props) {
   const [onSnackBar, setOnSnackBar] = React.useState(false);
   const classes = useStyles();
   const IsMobile = useMediaQuery("(max-width:600px)");
+
+  const IsQuebraDoisItem = useMediaQuery("(max-width:740px)");
+
   const IsQuebraContainer = useMediaQuery("(max-width:968px)");
 
 
@@ -296,7 +299,7 @@ function GridPhoto(props) {
   function retornarImageGridList(){
     return (
       <div >
-          <GridList cellHeight={IsQuebraContainer ? 300 : 300} className={classes.gridList} spacing={IsMobile ? 3 : IsQuebraContainer ? 7 : 20} cols={(IsMobile)?(1):(3)}>
+          <GridList cellHeight={IsQuebraContainer ? 300 : 300} className={classes.gridList} spacing={IsMobile ? 3 : IsQuebraContainer ? 7 : 20} cols={(IsMobile)?(1):(IsQuebraDoisItem ? 2 : 3)}>
             {GridListItem.map((AConteudo, ACont)=>{
               return retornarGridListTile(AConteudo.cols, ACont)
             })}

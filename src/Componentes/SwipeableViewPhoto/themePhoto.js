@@ -16,7 +16,7 @@ const themePhoto = createMuiTheme({
         width: 12,
         height: 12,
         marginTop: -1,
-        marginLeft: 0,
+        marginLeft: -0.39,
         transition: "0.3s ease"
       },
       colorPrimary: {
@@ -32,7 +32,7 @@ const themePhoto = createMuiTheme({
         boxShadow: "none"
       },
       track: {
-        display: "block",
+        display: "none",
         position: "absolute",
         opacity: '80%',
         marginTop: 2.801,
@@ -65,6 +65,7 @@ const themePhoto = createMuiTheme({
       mark: {
         position: "absolute",
         // border: 6,
+        // marginLeft: 0.2,
         width: 10,
         height: 10,
         borderRadius: 7,
