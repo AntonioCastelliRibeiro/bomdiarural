@@ -1,12 +1,32 @@
 import React from "react";
 import { useSpring, animated } from "react-spring";
 // import "./styles.css";
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { CardActions } from '@material-ui/core';
+
+import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  props: {
+    MuiSvgIcon: {
+      root:{
+        width: '3mv'
+
+      }
+      
+    }
+  }
+});
+
 
 const useStyles = makeStyles((theme) => ({
+  cardDiv:{
+    display: 'flex'
+  },
   card: {
     width: '100%',
+    display: 'flex',
     // height: '45ch',
     background: 'grey',
     // borderRadius: '5px',
@@ -18,7 +38,28 @@ const useStyles = makeStyles((theme) => ({
     wilChange: 'transform',
     // border: '15px solid white',
   },
+  playDiv: {
+    height: '100%',
+    width: '100%',
+    position: 'absolute',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 }));
+
+const styles = {
+  root: {
+    maxWidth: '550px',
+  },
+  media: {
+    height: '300px',
+  },
+  mediaScroll: {
+    height: '500px',
+  }
+
+};
 
 const calc = (x, y) => [
   -(y - window.innerHeight / 2) / 5,
@@ -39,14 +80,18 @@ export default function CardItemMedia(AProps) {
   return (
     <animated.div className={classes.cardDiv} >
       <animated.img 
-      height={350}
-      className={classes.card}
-      onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-      onMouseLeave={() => set({ xys: [0, 0, 1] })}
-      style={{ transform: props.xys.interpolate(trans) }}
-
-      src={image}
+        height={350}
+        className={classes.card}
+        style={{ transform: props.xys.interpolate(trans) }}
+        src={image}
       />
+      <animated.div 
+        onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
+        onMouseLeave={() => set({ xys: [0, 0, 1] })}
+        className={classes.playDiv}
+        >
+        {AProps.gridMovie?<ThemeProvider theme={theme}><CardActions disableSpacing={false}><PlayCircleOutlineIcon color="action" style={{height: 80}}  /></CardActions></ThemeProvider> : false}
+      </animated.div >
     </animated.div>
   );
 }

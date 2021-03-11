@@ -2,7 +2,7 @@ import React from 'react';
 
 import GridPhoto from '../../Componentes/GridPhoto';
 
-class Photo extends React.Component {
+class MyMovie extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -24,10 +24,10 @@ class Photo extends React.Component {
       open={this.state.open} 
       cols={this.props.cols} 
       cont={this.props.ACont} 
-      gridPhoto={true}
+      gridPhoto={false}
       onSetarCarousel={(e)=>this.props.onSetarCarousel(e)}
      />
   }
 }
 
-export default Photo;
+export default MyMovie;

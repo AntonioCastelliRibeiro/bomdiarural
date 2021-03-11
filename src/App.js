@@ -15,6 +15,7 @@ import ParallaxScroll from './Componentes/ParallaxScroll';
 
 import GridPrincipal from './Componentes/GridPrincipal';
 
+import Movie from './Componentes/MyMovie';
 
 import FModalPhoto from './Componentes/FModalPhoto';
 
@@ -103,7 +104,7 @@ class App extends React.Component {
     return <LinearProgress />
   }
 
-  retornarGridPhoto(){
+  retornarPhoto(){
     if (this.state.pageFoto) {
       return (
         <Photo 
@@ -136,12 +137,21 @@ class App extends React.Component {
     )
   }
 
-  retornarGridVideos(){
+  retornarMovie(){
     if (this.state.pageVideos){
       return (
-        <ParallaxScroll />
+        <Movie />
+        // <ParallaxScroll />
       )
     }
+  }
+
+  retornarFooter(){
+    return (
+      <div style={{ display: 'flex', height: 50 ,backgroundColor: '#257627'}}>
+        <span style={{ paddingTop: 27, paddingLeft: 10, color: '#ffff'}}>© Copyright 2020-2021 Antonio Castelli Ribeiro</span>
+      </div>
+    )
   }
   
   render()
@@ -159,14 +169,12 @@ class App extends React.Component {
             <ReactRouter />
             {/* {this.retornarBreadCrumb()} */}
             {this.retornarGridPrincipal()}
-            {this.retornarGridPhoto()}
-            {this.retornarGridVideos()}
+            {this.retornarPhoto()}
+            {this.retornarMovie()}
           </main>
-          {/* <footer >
-            <div style={{ display: 'flex', height: 50 ,backgroundColor: '#257627'}}>
-              <span style={{ paddingTop: 27, paddingLeft: 10, color: '#ffff'}}>© Copyright 2020-2021 Antonio Castelli Ribeiro</span>
-            </div>
-          </footer> */}
+          <footer >
+            {this.retornarFooter()}
+          </footer>
         </BrowserRouter>
       </>
       );

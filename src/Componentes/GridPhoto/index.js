@@ -18,6 +18,9 @@ import Imagem3 from '../../Image/soja.jpg';
 
 import SwipeableViewPhoto from '../SwipeableViewPhoto';
 
+import CardItemMedia from '../CardItemMedia';
+import Imagem1 from '../../Image/service.jpg';
+
 const useStyles = makeStyles((theme) => ({
   divPrincipalConteudo: {
     flexGrow: 1,
@@ -274,6 +277,7 @@ function GridPhoto(props) {
   }
 
   function retornarSwipeableViews(){
+    if (props.gridPhoto){
     return (
       <SwipeableViewPhoto 
         iconClass={classes.icon}
@@ -283,7 +287,11 @@ function GridPhoto(props) {
         onClick={(AIndex)=>setarOnModal({open: true, ConteudoImageComp: onModal.ConteudoImageComp, Index: AIndex})} 
         setModalShare={(AVisible, AIndex)=>setarModalShare(AVisible, AIndex)}
       />
-      )
+    )
+    }
+    else{
+      return (<CardItemMedia gridMovie={true} image={Imagem1}/> )
+    }
   }
 
   function retornarGridListTile(ACols, AKey){
