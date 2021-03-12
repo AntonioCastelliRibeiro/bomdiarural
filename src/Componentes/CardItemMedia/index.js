@@ -1,7 +1,9 @@
 import React from "react";
 import { useSpring, animated } from "react-spring";
 // import "./styles.css";
-import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutlineRounded';
+
+import lightGreen from '@material-ui/core/colors/lightGreen';
 
 import { CardActions } from '@material-ui/core';
 
@@ -9,6 +11,9 @@ import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/sty
 
 const theme = createMuiTheme({
   props: {
+    MuiIcon:{
+      colorPrimary: 'write'
+    },
     MuiSvgIcon: {
       width: '100%',
     }
@@ -87,7 +92,7 @@ export default function CardItemMedia(AProps) {
         onMouseLeave={() => set({ xys: [0, 0, 1] })}
         className={classes.playDiv}
         >
-        {AProps.gridMovie?<ThemeProvider theme={theme}><CardActions style={{height: '810px', width: '100%'}} disableSpacing={false}><PlayCircleOutlineIcon color="action" style={{height: 70, width: '100%'}}  /></CardActions></ThemeProvider> : false}
+        {AProps.gridMovie?<ThemeProvider theme={theme}><CardActions style={{ height: '810px', width: '100%'}} disableSpacing={false}><PlayCircleOutlineIcon style={{ color: lightGreen[50], height: 70, width: '100%', opacity: '70%'}}  /></CardActions></ThemeProvider> : false}
       </animated.div >
     </animated.div>
   );

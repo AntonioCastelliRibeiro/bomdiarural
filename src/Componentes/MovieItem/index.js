@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Imagem1 from '../../Image/Imagem10.jpg';
+import Imagem1 from '../../Image/campo.jpg';
 
 import { Fade, GridListTileBar } from '@material-ui/core'; 
 
