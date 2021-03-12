@@ -3,9 +3,10 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import { makeStyles, fade } from '@material-ui/core/styles';
 
-import { Container, GridListTileBar, GridList, GridListTile, IconButton, Zoom, Fade } from '@material-ui/core';
+import { Container, GridListTileBar, GridList, GridListTile, IconButton, ListSubheader, Fade } from '@material-ui/core';
 
 import FModalPhoto from '../FModalPhoto';
+import MovieItem from '../MovieItem';
 
 import ShareIcon from '@material-ui/icons/Share';
 
@@ -220,6 +221,7 @@ function GridPhoto(props) {
   // }], Index: ''
   // });
   const [onIndex, setarOnIndex] = React.useState(0);
+  const [onHover, setHover] = React.useState(false);
 
   const [onModal, setarOnModal] = React.useState({open: false,
     ConteudoImageComp: [
@@ -290,7 +292,7 @@ function GridPhoto(props) {
     )
     }
     else{
-      return (<CardItemMedia gridMovie={true} image={Imagem1}/> )
+      return <MovieItem />
     }
   }
 
@@ -300,6 +302,7 @@ function GridPhoto(props) {
         <GridListTile className={classes.gridListItem} key={AKey} cols={ACols}>
           {retornarSwipeableViews()}
         </GridListTile>
+
       </Fade>
     )
   }
@@ -307,7 +310,7 @@ function GridPhoto(props) {
   function retornarImageGridList(){
     return (
       <div >
-          <GridList cellHeight={IsQuebraContainer ? 300 : 300} className={classes.gridList} spacing={IsMobile ? 3 : IsQuebraContainer ? 7 : 20} cols={(IsMobile)?(1):(IsQuebraDoisItem ? 2 : 3)}>
+          <GridList cellHeight={IsQuebraContainer ? 300 : 300} className={classes.gridList} spacing={IsMobile ? 6 : IsQuebraContainer ? 7 : 20} cols={(IsMobile)?(1):(IsQuebraDoisItem ? 2 : 3)}>
             {GridListItem.map((AConteudo, ACont)=>{
               return retornarGridListTile(AConteudo.cols, ACont)
             })}

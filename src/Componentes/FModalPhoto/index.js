@@ -362,7 +362,7 @@ export default function FModalPhoto(props) {
       open={onModalShare} 
       onSetClose={()=>setModalShare(false)} 
       onSetSnackBar={(AObject)=>setSnackBar(AObject)}
-      image={()=>props.retornarImage(props.index)}
+      image={retornarImage()}
       
       />
   }

@@ -10,11 +10,7 @@ import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/sty
 const theme = createMuiTheme({
   props: {
     MuiSvgIcon: {
-      root:{
-        width: '3mv'
-
-      }
-      
+      width: '100%',
     }
   }
 });
@@ -44,7 +40,8 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    cursor: 'pointer'
   }
 }));
 
@@ -90,7 +87,7 @@ export default function CardItemMedia(AProps) {
         onMouseLeave={() => set({ xys: [0, 0, 1] })}
         className={classes.playDiv}
         >
-        {AProps.gridMovie?<ThemeProvider theme={theme}><CardActions disableSpacing={false}><PlayCircleOutlineIcon color="action" style={{height: 80}}  /></CardActions></ThemeProvider> : false}
+        {AProps.gridMovie?<ThemeProvider theme={theme}><CardActions style={{height: '810px', width: '100%'}} disableSpacing={false}><PlayCircleOutlineIcon color="action" style={{height: 70, width: '100%'}}  /></CardActions></ThemeProvider> : false}
       </animated.div >
     </animated.div>
   );
