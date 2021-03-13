@@ -18,7 +18,7 @@ class MovieItem extends React.Component{
     return(
       <div onMouseEnter={()=>this.setState({onHover: true})} onMouseLeave={()=>this.setState({onHover: false})} >
         <CardItemMedia gridMovie={true} image={Imagem1}/>
-        <Fade in={this.state.onHover} timeout={500} >
+        <Fade in={this.props.isMobile ? true : this.state.onHover} timeout={500} >
           <GridListTileBar
             style={{ display: 'flex' }}
             title="Bom dia Rural"

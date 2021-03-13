@@ -292,7 +292,7 @@ function GridPhoto(props) {
     )
     }
     else{
-      return <MovieItem />
+      return <MovieItem isMobile={IsMobile} />
     }
   }
 
