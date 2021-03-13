@@ -4,10 +4,17 @@ import Spring from '../Spring';
 import Skeleton from '@material-ui/lab/Skeleton';
 
 class ImageComp extends React.Component {
-
+  constructor(props){
+    super(props);
+    this.state = {
+      open: false
+    }
+  }
   
   componentDidMount(){
-    this.setState({open: false});
+    setTimeout(() => {
+      this.setState({open: true});  
+    }, 2000);
   }
 
   componentDidUpdate(state, lastState){
@@ -15,7 +22,25 @@ class ImageComp extends React.Component {
 
   }
 
-  render() {
+  retornarSpring(){
+    if (this.state.open){
+      return (
+        <Spring 
+          key={this.props.key} 
+          index={this.props.index} 
+          open={true} 
+          text1={this.props.text1} 
+          text2={this.props.text2} 
+          text3={this.props.text3}
+          text4={this.props.text4} 
+        />
+      )  
+    } else {
+      return false
+    }
+  }
+
+  retornarParallax(){
     return (
       <Parallax  
         bgImageSizes={"height: 15px"} 
@@ -26,17 +51,15 @@ class ImageComp extends React.Component {
         strength= {0} 
         >
         <div style={{height: 550, width: '100%'}}> 
-          <Spring 
-            key={this.props.key} 
-            index={this.props.index} 
-            open={true} 
-            text1={this.props.text1} 
-            text2={this.props.text2} 
-            text3={this.props.text3}
-            text4={this.props.text4} 
-          />
-         </div>
+          {this.retornarSpring()}
+        </div>
       </Parallax>
+    )
+  }
+
+  render() {
+    return (
+      this.retornarParallax()
     )
   }
 }

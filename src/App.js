@@ -3,7 +3,7 @@ import './App.scss';
 
 import { fade } from '@material-ui/core/styles';
 
-import Photo from './Class/Photo';
+// import Photo from './Class/Photo';
 
 import { BrowserRouter } from 'react-router-dom';
 
@@ -57,26 +57,29 @@ class App extends React.Component {
         refresh={()=>this.setState({SwipeableDrawerLeft: this.SwipeableDrawerLeft })} 
         onClose={(e)=>this.onSetarPageFoto(e)}
         onClickSwipeableLeft={()=>this.setState({SwipeableDrawerLeft: true})} 
+        setarRouter={(e)=>this.setarRouter(e)}
+        onSetarPageFoto={(e)=>this.onSetarPageFoto(e)}
+        onCloseSwipeableLeft={(e)=>this.onCloseSwipeableLeft(e)}
       />
     )
   }
 
   onCloseSwipeableLeft(e){
-    this.setState({SwipeableDrawerLeft: e.state});
+    // this.setState({SwipeableDrawerLeft: e.state});
     this.onSetarPageFoto(e.page);
   }
 
-  retornarSwipeableDrawerLeft(){
-    // if (this.state.SwipeableDrawerLeft) {
-      return( 
-      <SwipeableDrawerLeft
-        setarRouter={(e)=>this.setarRouter(e)}
-        open={this.state.SwipeableDrawerLeft}
-        onClose={(e)=>this.onCloseSwipeableLeft(e)} 
-        onSetarPageFoto={(e)=>this.onSetarPageFoto(e)}
-      />)
-    // }
-  }
+  // retornarSwipeableDrawerLeft(){
+  //   // if (this.state.SwipeableDrawerLeft) {
+  //     return( 
+  //     <SwipeableDrawerLeft
+  //       setarRouter={(e)=>this.setarRouter(e)}
+  //       open={this.state.SwipeableDrawerLeft}
+  //       onClose={(e)=>this.onCloseSwipeableLeft(e)} 
+  //       onSetarPageFoto={(e)=>this.onSetarPageFoto(e)}
+  //     />)
+  //   // }
+  // }
 
   onSetarPageFoto(e){
     if (e === '/fotos'){
@@ -104,14 +107,14 @@ class App extends React.Component {
     return <LinearProgress />
   }
 
-  retornarPhoto(){
-    if (this.state.pageFoto) {
-      return (
-        <Photo 
-        onSetarCarousel={(e)=>this.setState({onCarousel: e})} />
-      ) 
-    } else return false
-  }
+  // retornarPhoto(){
+  //   if (this.state.pageFoto) {
+  //     return (
+  //       <Photo 
+  //       onSetarCarousel={(e)=>this.setState({onCarousel: e})} />
+  //     ) 
+  //   } else return false
+  // }
 
   retornarCarousel(){
     return (
@@ -159,18 +162,19 @@ class App extends React.Component {
     return (
       <>
         <BrowserRouter>
-        {this.retornarSwipeableDrawerLeft()}
+        {/* {this.retornarSwipeableDrawerLeft()} */}
         {this.retornarCarousel()}
           <header>
           {this.retornarNavbar()}
           </header>
           <main>
             {/* {this.retornarProgressLinear()} */}
-            <ReactRouter />
+            <ReactRouter onSetarCarousel={(e)=>this.setState({onCarousel: e})}/>
+            
             {/* {this.retornarBreadCrumb()} */}
-            {this.retornarGridPrincipal()}
-            {this.retornarPhoto()}
-            {this.retornarMovie()}
+            {/* {this.retornarGridPrincipal()} */}
+            {/* {this.retornarPhoto()} */}
+            {/* {this.retornarMovie()} */}
           </main>
           <footer >
             {this.retornarFooter()}

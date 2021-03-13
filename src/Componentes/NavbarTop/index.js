@@ -11,6 +11,8 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon  from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 
+import SwipeableDrawerLeft  from '../SwipeableDrawerLeft';
+
 const useStyles = makeStyles((theme) => ({
   AppBar:{
     backgroundColor: "#257627"
@@ -77,6 +79,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NavbarTop(AProps) {
+  const [onOpen, setOpen] = React.useState(false);
+
   const history = useHistory();
 
   const classes = useStyles();
@@ -125,6 +129,17 @@ function NavbarTop(AProps) {
     )
   }
 
+  function retornarSwipeableDrawerLeft(){
+    return(
+      <SwipeableDrawerLeft
+        setarRouter={(e)=>AProps.setarRouter(e)}
+        open={onOpen}
+        onClose={(e)=>setOpen(false)} 
+        onSetarPageFoto={(e)=>AProps.onSetarPageFoto(e)}
+      />
+    )
+  }
+
   function retornarNav(props){
     return(
       <React.Fragment>
@@ -138,7 +153,8 @@ function NavbarTop(AProps) {
                 className={classes.menuButton}
                 color="inherit"
                 aria-label="open drawer"
-                onClick={()=>AProps.onClickSwipeableLeft()}
+                // onClick={()=>AProps.onClickSwipeableLeft()}
+                onClick={()=>setOpen(true)}
               >
                 <MenuIcon />
               </IconButton>
@@ -161,6 +177,7 @@ function NavbarTop(AProps) {
         </AppBar>
       </HideOnScroll>
       <Toolbar />
+      {retornarSwipeableDrawerLeft()}
     </React.Fragment>
   )
     }

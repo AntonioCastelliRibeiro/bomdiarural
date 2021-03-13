@@ -55,7 +55,7 @@ export default function SwipeableDrawerLeft(props) {
     return (
       <div role="presentation">
         <div className={classes.toolbar}>
-          <IconButton onClick={()=>setarRouter(document.location.pathname)}>
+          <IconButton onClick={()=>onClose()}>
              <ChevronLeftIcon />
           </IconButton>
         </div>
@@ -100,12 +100,13 @@ export default function SwipeableDrawerLeft(props) {
       <>
           <SwipeableDrawer
             className={classes.swipeable}
+            color={red[900]}
             // swipeAreaWidth={"1000px"}
             // disableSwipeToOpen
             anchor="left"
             open={props.open}
-            onClose={()=>setarRouter(document.location.pathname)}
-            onOpen={()=>console.log('open')}
+            onClose={()=>props.onClose()}
+            // onOpen={()=>console.log('open')}
             disableBackdropTransition={!iOS} 
             disableDiscovery={iOS}
           >
