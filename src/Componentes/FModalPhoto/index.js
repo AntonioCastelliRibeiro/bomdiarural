@@ -178,6 +178,11 @@ const useStyles = makeStyles((theme) => ({
 export default function FModalPhoto(props) {
   const isMobile = useMediaQuery("(max-width:600px)");
 
+  const [onIndex, setIndex] = React.useState(0);
+  React.useEffect(() => {
+    return props.index > 0 ?  setIndex(props.index) : false
+  }, [props.index]);
+
   const [onModalShare, setModalShare] = React.useState(false);
   const [onSnackBar, setSnackBar] = React.useState(false);
   const [onNumberImage, setOnNumberImage] = React.useState(1);
@@ -362,8 +367,7 @@ export default function FModalPhoto(props) {
       open={onModalShare} 
       onSetClose={()=>setModalShare(false)} 
       onSetSnackBar={(AObject)=>setSnackBar(AObject)}
-      image={retornarImage()}
-      
+      image={setarImagem(onIndex)}
       />
   }
 
@@ -439,7 +443,7 @@ export default function FModalPhoto(props) {
               > 
             <ArrowBackIcon />
             </IconButton> : false} */}
-          <SwipeableViews index={retornarIndexProps()} style={{height: '100%', width: '100%',  overflowX: 'hidden', overflowY: 'scroll'}} enableMouseEvents>
+          <SwipeableViews onChangeIndex={(e)=>setIndex(e)} index={retornarIndexProps()} style={{height: '100%', width: '100%',  overflowX: 'hidden', overflowY: 'scroll'}} enableMouseEvents>
             {retornarGridImagem(setarImagem(0))}
             {retornarGridImagem(setarImagem(1))}
             {retornarGridImagem(setarImagem(2))}

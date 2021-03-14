@@ -10,6 +10,7 @@ import { AppBar, Toolbar, IconButton, Typography, InputBase,
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon  from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import HomeIcon from '@material-ui/icons/HomeRounded';
 
 import SwipeableDrawerLeft  from '../SwipeableDrawerLeft';
 
@@ -159,19 +160,22 @@ function NavbarTop(AProps) {
                 <MenuIcon />
               </IconButton>
               {retornarTitulo()}
-              <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                  <SearchIcon />
-                </div>
-                <InputBase
+              {/* <div className={classes.search}> */}
+                {/* <div className={classes.searchIcon}> */}
+                  {/* <SearchIcon /> */}
+                  <IconButton onClick={()=>history.push('/')} >
+                    <HomeIcon style={{color: '#ffff'}}/>
+                  </IconButton>
+                {/* </div> */}
+                {/* <InputBase
                   placeholder="Buscar…"
                   classes={{
                     root: classes.inputRoot,
                     input: classes.inputInput,
                   }}
                   inputProps={{ 'aria-label': 'search' }}
-                />
-              </div>
+                /> */}
+              {/* </div> */}
             </Toolbar>
           </Container>
         </AppBar>

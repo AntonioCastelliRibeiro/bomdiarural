@@ -130,7 +130,6 @@ function FShare(props) {
           >
           <CardMedia
             style={{display: 'flex', width: '100%', height: '158px', paddingRight: '0px'}}
-            
             image={props.image}//"https://picsum.photos/700/700"
             alt="Share"
           />

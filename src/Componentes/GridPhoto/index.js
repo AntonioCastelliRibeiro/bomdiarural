@@ -363,7 +363,7 @@ function GridPhoto(props) {
           {retornarImageGridList()}
         </Container>
         {retornarModal()}
-        {retornarModalShare()}
+        {/* {retornarModalShare()} */}
         {retornarSnackBar()}
       </div>
     )
