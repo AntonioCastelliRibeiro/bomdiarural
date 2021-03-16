@@ -108,7 +108,6 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     width: '100%',
     height: '100%',
-    flexDirection: 'column',
     left: '0%',
     top: '0%',
   },
@@ -116,59 +115,59 @@ const useStyles = makeStyles((theme) => ({
     outline: 0,
     display: 'flex',
     position: 'absolute',
-    flexDirection: 'row',
-    // width: '93.4%',
-    // height: '95%',
-    // left: '3.2%',
-    // top: '2%',
-    // [theme.breakpoints.down('sm')]: {
-    //   width: '95.49%',
-    //   height: '95%',
-    //   top: '0%',
-    //   left: '2%',
-    // },
+    width: '93.4%',
+    height: '95%',
+    left: '3.2%',
+    top: '2%',
     [theme.breakpoints.up('sm')]: {
       width: '95.49%',
       height: '95%',
-      top: '2%',
+      top: '1.2%',
       left: '2%',
     },
-    // [theme.breakpoints.down('md')]: {
-    //   width: '86.99%',
-    //   height: '97.5%',
-    //   top: '11%',
-    //   left: '6%',
-    // },
+    [theme.breakpoints.up('sm')]: {
+      width: '95.49%',
+      height: '95%',
+      top: '1.2%',
+      left: '2%',
+    },
     [theme.breakpoints.up('md')]: {
-      width: '94.99%',
+      width: '86.99%',
       height: '97.5%',
-      top: '11%',
-      left: '2%',
-    },
-    // [theme.breakpoints.down('lg')]: {
-    //   width: '84.99%',
-    //   height: '97.5%',
-    //   top: '10%',
-    //   left: '6%',
-    // },
-    [theme.breakpoints.up('lg')]: {
-      width: '77%',
-      height: '100%',
-      top: '10%',
-      left: '12%',
-    },
-    // [theme.breakpoints.up('xl')]: {
-    //   width: '80%',
-    //   height: '100%',
-    //   top: '7%',
-    //   left: '10%',
-    // },
-    [theme.breakpoints.up('xl')]: {
-      width: '84.99%',
-      height: '100%',
-      top: '7%',
+      top: '1.2%',
       left: '6%',
     },
+    [theme.breakpoints.up('md')]: {
+      width: '84.99%',
+      height: '97.5%',
+      top: '1.2%',
+      left: '6%',
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '84.99%',
+      height: '97.5%',
+      top: '1.2%',
+      left: '6%',
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '69%',
+      height: '97.5%',
+      top: '1.2%',
+      left: '15%',
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: '80.99%',
+      height: '97.5%',
+      top: '1.2%',
+      left: '10%',
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: '49%',
+      height: '97.5%',
+      top: '1.2%',
+      left: '25.5%',
+    },
+
   },
   gridModal: {
     height: '100%',
@@ -408,6 +407,14 @@ export default function FModalPhoto(props) {
           style={{borderRadius: '2px', height: '100%',width: '100%'}} 
         />
       </Grid>
+      <Grid container item >
+        <div style={{backgroundColor: Green[300], width: '100%', borderRadius: '1px', paddingTop: 5}}>
+          <h1 style={{textAlign: 'center'}}>Rancho Bem Viver</h1>
+          <div style={{textAlign: 'center', fontSize: '20px', padding: '0px 19px 0px 15px'}}>
+          <p >Rancho vem representando uma das diversidades encontradas no sudoeste do Paraná. Caros amigos, o comprometimento entre as equipes nos obriga à análise do investimento em reciclagem técnica. Por conseguinte, a percepção das dificuldades aponta para a melhoria da gestão inovadora da qual fazemos parte. É importante questionar o quanto a determinação clara de objetivos representa uma abertura para a melhoria das diretrizes de desenvolvimento para o futuro. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a consolidação das estruturas auxilia a preparação e a composição das posturas dos órgãos dirigentes com relação às suas atribuições. O empenho em analisar a crescente influência da mídia estende o alcance e a importância dos modos de operação convencionais.</p>
+          </div>
+        </div>
+      </Grid>
     </Grid>
     )
   }
@@ -427,9 +434,8 @@ export default function FModalPhoto(props) {
 
   function retornarSwipeableViews(){
     return (
-      <Zoom key="princi" in={props.open} timeout={0} style={{ height: '1024px', backgroundColor: Green[300] }} >
+      <Zoom key="princi" in={props.open} timeout={0} >
         <div className={(matches)?(classes.divModalPhone) : (classes.divModal)} >
-          <div style={{ display: 'contents', backgroundColor: 'rgb(88 88 88)', height: '1024px', width: '100%'}}/>
         {/* {!isMobile ? <IconButton 
               aria-label={`info about antonio`} 
               className={classes.iconModalArrowLeft}
@@ -437,21 +443,12 @@ export default function FModalPhoto(props) {
               > 
             <ArrowBackIcon />
             </IconButton> : false} */}
-          <SwipeableViews onChangeIndex={(e)=>setIndex(e)} index={retornarIndexProps()} style={{ height: '100%', width: '100%',  overflowX: 'hidden', overflowY: (matches)? 'scroll' : 'hidden'}} enableMouseEvents>
+          <SwipeableViews onChangeIndex={(e)=>setIndex(e)} index={retornarIndexProps()} style={{height: '100%', width: '100%',  overflowX: 'hidden', overflowY: 'scroll'}} enableMouseEvents>
             {retornarGridImagem(setarImagem(0))}
             {retornarGridImagem(setarImagem(1))}
             {retornarGridImagem(setarImagem(2))}
-           </SwipeableViews> 
-          <Grid container style={{ width: (matches) ? '100%' : '35%'}} >
-          <div style={{backgroundColor: Green[300], width: '100%', height: 'inherit', borderRadius: '1px', paddingTop: 0}}>
-              <div style={{ padding: '0 0 0 10px'}}>
-                <h1 style={{textAlign: 'center'}}>Rancho Bem Viver</h1>
-                <div style={{textAlign: 'center', fontSize: '16px', padding: '0px 19px 0px 15px'}}>
-                  <p >Rancho vem representando uma das diversidades encontradas no sudoeste do Paraná. Caros amigos, o comprometimento entre as equipes nos obriga à análise do investimento em reciclagem técnica. Por conseguinte, a percepção das dificuldades aponta para a melhoria da gestão inovadora da qual fazemos parte. É importante questionar o quanto a determinação clara de objetivos representa uma abertura para a melhoria das diretrizes de desenvolvimento para o futuro. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a consolidação das estruturas auxilia a preparação e a composição das posturas dos órgãos dirigentes com relação às suas atribuições. O empenho em analisar a crescente influência da mídia estende o alcance e a importância dos modos de operação convencionais.</p>
-                </div>
-              </div>
-            </div>
-          </Grid>
+            {/* {retornarGridImagem(console.log(props.Image))} */}
+          </SwipeableViews>
           {/* {!isMobile ? <IconButton 
               aria-label={`info about antonio`} 
               className={classes.iconModalArrowRight}
@@ -460,7 +457,7 @@ export default function FModalPhoto(props) {
             <ArrowForwardIcon />
             </IconButton> : false} */}
         </div>
-       </Zoom>
+      </Zoom>
       
     )
   }
