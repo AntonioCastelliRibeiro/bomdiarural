@@ -2,6 +2,16 @@ import React from 'react';
 
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
+import Avatar from '@material-ui/core/Avatar';
+
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListSubheader from '@material-ui/core/ListSubheader';
+
+
 import Imagem1 from '../../Image/Imagem1.jpg';
 import Imagem2 from '../../Image/Imagem2.jpg';
 import Imagem3 from '../../Image/Imagem3.jpg';
@@ -18,7 +28,7 @@ import SnackBar from '../SnackBar';
 
 import { makeStyles, fade } from '@material-ui/core/styles';
 
-import { Modal, IconButton, Zoom, Fade } from '@material-ui/core';
+import { Modal, IconButton, Zoom, Fade, Divider } from '@material-ui/core';
 
 import Backdrop from '@material-ui/core/Backdrop';
 
@@ -40,6 +50,9 @@ const useStyles = makeStyles((theme) => ({
     // '&::-webkit-scrollbar': {
     //   background: 'blue',
     // }
+  },
+  divZoom: {
+
   },
   divSlider: {
     // top: '100px',
@@ -173,7 +186,15 @@ const useStyles = makeStyles((theme) => ({
   gridModal: {
     height: '100%',
     width: '100%'
-  }
+  },
+  iconSmall: {
+    width: theme.spacing(3),
+    height: theme.spacing(3),
+  },
+  iconLarge: {
+    width: theme.spacing(7),
+    height: theme.spacing(7),
+  },
 }));
 
 export default function FModalPhoto(props) {
@@ -427,9 +448,9 @@ export default function FModalPhoto(props) {
 
   function retornarSwipeableViews(){
     return (
-      <Zoom key="princi" in={props.open} timeout={0} style={{ height: '1024px', backgroundColor: Green[300] }} >
+      <Zoom key="princi" in={props.open} timeout={0} style={{ height: '85%', backgroundColor: 'transparent' }} >
         <div className={(matches)?(classes.divModalPhone) : (classes.divModal)} >
-          <div style={{ display: 'contents', backgroundColor: 'rgb(88 88 88)', height: '1024px', width: '100%'}}/>
+          <div style={{ display: 'contents', backgroundColor: 'rgb(88 88 88)', height: 'inherit', width: '100%'}}/>
         {/* {!isMobile ? <IconButton 
               aria-label={`info about antonio`} 
               className={classes.iconModalArrowLeft}
@@ -442,14 +463,29 @@ export default function FModalPhoto(props) {
             {retornarGridImagem(setarImagem(1))}
             {retornarGridImagem(setarImagem(2))}
            </SwipeableViews> 
-          <Grid container style={{ width: (matches) ? '100%' : '35%'}} >
-          <div style={{backgroundColor: Green[300], width: '100%', height: 'inherit', borderRadius: '1px', paddingTop: 0}}>
-              <div style={{ padding: '0 0 0 10px'}}>
-                <h1 style={{textAlign: 'center'}}>Rancho Bem Viver</h1>
-                <div style={{textAlign: 'center', fontSize: '16px', padding: '0px 19px 0px 15px'}}>
-                  <p >Rancho vem representando uma das diversidades encontradas no sudoeste do Paraná. Caros amigos, o comprometimento entre as equipes nos obriga à análise do investimento em reciclagem técnica. Por conseguinte, a percepção das dificuldades aponta para a melhoria da gestão inovadora da qual fazemos parte. É importante questionar o quanto a determinação clara de objetivos representa uma abertura para a melhoria das diretrizes de desenvolvimento para o futuro. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a consolidação das estruturas auxilia a preparação e a composição das posturas dos órgãos dirigentes com relação às suas atribuições. O empenho em analisar a crescente influência da mídia estende o alcance e a importância dos modos de operação convencionais.</p>
+          <Grid container style={{ width: (matches) ? '100%' : '35%', height: '100%'}} >
+            <div style={{backgroundColor: Green[300], width: '100%', height: '100%', borderRadius: '1px', paddingTop: 0 }}>
+              <section>
+              <List style={{paddingTop: 0}}>
+                <ListItem style={{backgroundColor: Green[300], width: '100%', padding: '4%'}}>
+                  {/* <div > */}
+                    <Avatar alt="Remy Sharp" className={classes.iconLarge} src={Imagem6} />
+                    <h1 style={{fontSize: '26px', fontWeight: 400, lineHeight: 1.5, paddingLeft: '4%' }}>Bom Dia Rural</h1>
+                  {/* </div> */}
+                </ListItem>
+                <Divider />
+                <ListItem setIndex>
+                <div >
+                  <h1 style={{textAlign: 'center', fontWeight: 500,}}>Rancho Bem Viver</h1>
+                  <div style={{textAlign: 'center', fontSize: '16px', padding: '0px 19px 0px 15px', overflow: 'hidden scroll'}}>
+                    <p >Rancho vem representando uma das diversidades encontradas no sudoeste do Paraná. Caros amigos, o comprometimento entre as equipes nos obriga à análise do investimento em reciclagem técnica. Por conseguinte, a percepção das dificuldades aponta para a melhoria da gestão inovadora da qual fazemos parte. É importante questionar o quanto a determinação clara de objetivos representa uma abertura para a melhoria das diretrizes de desenvolvimento para o futuro. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a consolidação das estruturas auxilia a preparação e a composição das posturas dos órgãos dirigentes com relação às suas atribuições. O empenho em analisar a crescente influência da mídia estende o alcance e a importância dos modos de operação convencionais.</p>
+                  </div>
                 </div>
-              </div>
+                </ListItem>
+                <Divider />
+                </List>
+              </section>
+
             </div>
           </Grid>
           {/* {!isMobile ? <IconButton 
