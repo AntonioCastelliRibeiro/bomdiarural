@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     display: 'flex',
     position: 'absolute',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
     alignItems: 'stretch',
     alignContent: 'flex-end',
   },
@@ -117,7 +117,7 @@ const useStyles = makeStyles((theme) => ({
   iconModal: {
     opacity: '80%',
     color: 'white',
-    alignSelf: 'flex-start'
+    // alignSelf: 'flex-start'
 
   },
   divModalPhone:{
