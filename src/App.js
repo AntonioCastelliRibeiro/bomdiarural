@@ -151,7 +151,7 @@ class App extends React.Component {
 
   retornarFooter(){
     return (
-      <div style={{ display: 'flex', height: 50 ,backgroundColor: '#257627'}}>
+      <div style={{ display: 'flex', height: 50 ,backgroundColor: '#4b8a0c'}}>
         <span style={{ paddingTop: 27, paddingLeft: 10, color: '#ffff'}}>© Copyright 2020-2021 Antonio Castelli Ribeiro</span>
       </div>
     )

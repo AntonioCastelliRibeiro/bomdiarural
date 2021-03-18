@@ -18,6 +18,7 @@ import Imagem3 from '../../Image/Imagem3.jpg';
 import Imagem4 from '../../Image/Imagem4.jpg';
 import Imagem5 from '../../Image/Imagem5.jpg';
 import Imagem6 from '../../Image/Imagem6.jpg';
+import BomdiaRuralLogo from '../../Image/BomdiaRuralLogo.jpg';
 
 import Slider from '../Slider';
 
@@ -28,7 +29,7 @@ import SnackBar from '../SnackBar';
 
 import { makeStyles, fade } from '@material-ui/core/styles';
 
-import { Modal, IconButton, Zoom, Fade, Divider } from '@material-ui/core';
+import { Modal, IconButton, Zoom, Fade, Divider, Box } from '@material-ui/core';
 
 import Backdrop from '@material-ui/core/Backdrop';
 
@@ -37,11 +38,15 @@ import Grid from '@material-ui/core/Grid';
 import IconClose from '@material-ui/icons/Close';
 import Skeleton from '@material-ui/lab/Skeleton';
 import ShareIcon from '@material-ui/icons/Share';
+import IconChat from '@material-ui/icons/ModeComment';
+import IconLike from '@material-ui/icons/Favorite';
 
 import Green from '@material-ui/core/colors/green';
 
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import IconShare from '@material-ui/icons/Share';
+
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -188,8 +193,8 @@ const useStyles = makeStyles((theme) => ({
     width: '100%'
   },
   iconSmall: {
-    width: theme.spacing(3),
-    height: theme.spacing(3),
+    width: theme.spacing(5),
+    height: theme.spacing(5),
   },
   iconLarge: {
     width: theme.spacing(7),
@@ -216,7 +221,7 @@ export default function FModalPhoto(props) {
   const Image5 = Imagem5;
   const Image6 = Imagem6;
 
-  const matches = useMediaQuery("(max-width:600px)");
+  const matches = useMediaQuery("(max-width:906px)");
 
   const classes = useStyles();
 
@@ -412,7 +417,7 @@ export default function FModalPhoto(props) {
               </Fade>
             </IconButton>
           </div>
-          <div className={classes.divIconShareModal}>
+          {/* <div className={classes.divIconShareModal}>
             <IconButton 
               aria-label={`info about antonio`} 
               className={classes.iconModalArrowLeft}
@@ -420,7 +425,7 @@ export default function FModalPhoto(props) {
               >
                 <ShareIcon />
             </IconButton>
-          </div>
+          </div> */}
       <Grid container item style={{height: '100%'}}>
         <img 
           draggable={false}
@@ -448,7 +453,7 @@ export default function FModalPhoto(props) {
 
   function retornarSwipeableViews(){
     return (
-      <Zoom key="princi" in={props.open} timeout={0} style={{ height: '85%', backgroundColor: 'transparent' }} >
+      <Zoom key="princi" in={props.open} timeout={0} style={{ height: '85%', backgroundColor: Green[300] }} >
         <div className={(matches)?(classes.divModalPhone) : (classes.divModal)} >
           <div style={{ display: 'contents', backgroundColor: 'rgb(88 88 88)', height: 'inherit', width: '100%'}}/>
         {/* {!isMobile ? <IconButton 
@@ -458,34 +463,47 @@ export default function FModalPhoto(props) {
               > 
             <ArrowBackIcon />
             </IconButton> : false} */}
-          <SwipeableViews onChangeIndex={(e)=>setIndex(e)} index={retornarIndexProps()} style={{ height: '100%', width: '100%',  overflowX: 'hidden', overflowY: (matches)? 'scroll' : 'hidden'}} enableMouseEvents>
+          <SwipeableViews onChangeIndex={(e)=>setIndex(e)} index={retornarIndexProps()} style={{ height: '100%', width: '100%',  overflow: matches ? '' : 'hidden'}} enableMouseEvents>
             {retornarGridImagem(setarImagem(0))}
             {retornarGridImagem(setarImagem(1))}
             {retornarGridImagem(setarImagem(2))}
            </SwipeableViews> 
           <Grid container style={{ width: (matches) ? '100%' : '35%', height: '100%'}} >
             <div style={{backgroundColor: Green[300], width: '100%', height: '100%', borderRadius: '1px', paddingTop: 0 }}>
-              <section>
-              <List style={{paddingTop: 0}}>
-                <ListItem style={{backgroundColor: Green[300], width: '100%', padding: '4%'}}>
+            <Fade in={onNumberImage}timeout={500}>
+              <section style={{height: '100%' }}>
+              <List style={{paddingTop: 0, display: 'flex', flexDirection: 'column'}}>
+                <ListItem style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: Green[300], width: '100%', padding: '1% 0 0 4%'}}>
                   {/* <div > */}
-                    <Avatar alt="Remy Sharp" className={classes.iconLarge} src={Imagem6} />
-                    <h1 style={{fontSize: '26px', fontWeight: 400, lineHeight: 1.5, paddingLeft: '4%' }}>Bom Dia Rural</h1>
+                    <Avatar alt="Remy Sharp" className={classes.iconSmall} src={BomdiaRuralLogo} />
+                    <h1 style={{ flexGrow: 2, fontSize: '24px', fontFamily: '"Amaranth", sans-serif', fontWeight: 400, lineHeight: 1.5, paddingLeft: '3%' }}>Bom Dia Rural</h1>
+                    <IconButton style={{ marginRight: '3%' }} onClick={()=>onShareClick()}> 
+                      <IconShare />
+                    </IconButton>
                   {/* </div> */}
                 </ListItem>
                 <Divider />
                 <ListItem setIndex>
                 <div >
-                  <h1 style={{textAlign: 'center', fontWeight: 500,}}>Rancho Bem Viver</h1>
-                  <div style={{textAlign: 'center', fontSize: '16px', padding: '0px 19px 0px 15px', overflow: 'hidden scroll'}}>
+                  <h1 style={{fontFamily: '"Amaranth", sans-serif', textAlign: 'center', fontWeight: 500}}>Rancho Bem Viver</h1>
+                  <div style={{height: '210px', overflow: 'hidden scroll', textAlign: 'left', fontSize: '16px', padding: '0px 19px 0px 15px'}}>
                     <p >Rancho vem representando uma das diversidades encontradas no sudoeste do Paraná. Caros amigos, o comprometimento entre as equipes nos obriga à análise do investimento em reciclagem técnica. Por conseguinte, a percepção das dificuldades aponta para a melhoria da gestão inovadora da qual fazemos parte. É importante questionar o quanto a determinação clara de objetivos representa uma abertura para a melhoria das diretrizes de desenvolvimento para o futuro. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a consolidação das estruturas auxilia a preparação e a composição das posturas dos órgãos dirigentes com relação às suas atribuições. O empenho em analisar a crescente influência da mídia estende o alcance e a importância dos modos de operação convencionais.</p>
                   </div>
                 </div>
                 </ListItem>
                 <Divider />
                 </List>
+                <ListItem style={{ display: 'flex', justifyContent: 'flex-start', backgroundColor: Green[300], width: '100%'}}>
+                  <IconButton style={{ marginRight: '3%' }}> 
+                      <IconLike />
+                    </IconButton>
+                    <IconButton style={{ marginRight: '3%' }}> 
+                      <IconChat />
+                    </IconButton>
+                  </ListItem>
+                <Divider />
               </section>
-
+              </Fade >
             </div>
           </Grid>
           {/* {!isMobile ? <IconButton 
@@ -509,7 +527,7 @@ export default function FModalPhoto(props) {
           // onMouseEnter={()=>console.log('mouse entrou')}
           // onMouseOut={()=>console.log('mouse saiu')}
           className={classes.modal}
-          // style={{ overflowX: 'hidden', overflowY: 'hidden'}}
+          style={{ overflow: matches ? 'hidden scroll' : ''}}
           open={props.open}
           onClose={()=>onClose()}
           disableEnforceFocus 
