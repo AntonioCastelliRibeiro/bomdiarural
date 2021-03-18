@@ -333,7 +333,8 @@ export default function FModalPhoto(props) {
             </div>
           <IconButton  
             aria-label={`info about antonio`} 
-            className={classes.iconModal}
+            // className={classes.iconModal}
+
             onClick={()=>onClose()}
           >
             <IconClose />
@@ -411,14 +412,14 @@ export default function FModalPhoto(props) {
   function retornarGridImagem(AImagem){
     return (
       <Grid container >
-          <div className={classes.divIconCloseModal}>
+          <div className={classes.divIconCloseModal} >
             <IconButton 
               aria-label={`info about antonio`} 
               className={classes.iconModalArrowRight}
               onClick={()=>onClose()}
               >
               <Fade in={onNumberImage}timeout={500}>
-                <IconClose />
+                <IconClose  />                
               </Fade>
             </IconButton>
           </div>
@@ -491,7 +492,7 @@ export default function FModalPhoto(props) {
                 <ListItem setIndex>
                 <div >
                   <h1 style={{fontFamily: '"Amaranth", sans-serif', textAlign: 'center', fontWeight: 500}}>Rancho Bem Viver</h1>
-                  <div className={classes.divTexto} style={{height: '210px', overflow: matches ? 'scroll' : 'hidden scroll', textAlign: 'left', fontSize: '16px', padding: '0px 19px 0px 15px'}}>
+                  <div className={classes.divTexto} style={{height: '210px', overflowY: 'scroll', overflowX: 'hidden', WebkitOverflowScrolling: 'touch', textAlign: 'left', fontSize: '16px', padding: '0px 19px 0px 15px'}}>
                     <p >Rancho vem representando uma das diversidades encontradas no sudoeste do Paraná. Caros amigos, o comprometimento entre as equipes nos obriga à análise do investimento em reciclagem técnica. Por conseguinte, a percepção das dificuldades aponta para a melhoria da gestão inovadora da qual fazemos parte. É importante questionar o quanto a determinação clara de objetivos representa uma abertura para a melhoria das diretrizes de desenvolvimento para o futuro. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a consolidação das estruturas auxilia a preparação e a composição das posturas dos órgãos dirigentes com relação às suas atribuições. O empenho em analisar a crescente influência da mídia estende o alcance e a importância dos modos de operação convencionais.</p>
                   </div>
                 </div>

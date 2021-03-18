@@ -103,10 +103,8 @@ function FShare(props) {
   };
 
   return (
-    <div>
       <Dialog
-        // style={{width: 250}}
-        style={{zIndex: 9999}}
+        style={{ zIndex: 9999}}
         maxWidth="xs"
         open={props.open}
         TransitionComponent={Transition}
@@ -164,7 +162,6 @@ function FShare(props) {
             </ThemeProvider>
           </DialogContent>
       </Dialog>
-    </div>
   );
 }
 
