@@ -50,14 +50,19 @@ import IconShare from '@material-ui/icons/Share';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    overflowX: 'hidden', 
-    overflowY: 'hidden',
+    // overflowX: 'hidden', 
+    overflowY: 'scroll',
+    overflowX: 'hidden',
+    WebkitOverflowScrolling: 'touch',
     // '&::-webkit-scrollbar': {
     //   background: 'blue',
     // }
   },
   divZoom: {
 
+  },
+  divTexto: {
+    WebkitOverflowScrolling: 'touch',
   },
   divSlider: {
     // top: '100px',
@@ -472,7 +477,7 @@ export default function FModalPhoto(props) {
             <div style={{backgroundColor: Green[300], width: '100%', height: '100%', borderRadius: '1px', paddingTop: 0 }}>
             <Fade in={onNumberImage}timeout={500}>
               <section style={{height: '100%' }}>
-              <List style={{paddingTop: 0, display: 'flex', flexDirection: 'column'}}>
+              <List style={{ backgroundColor: Green[300], paddingTop: 0, display: 'flex', flexDirection: 'column'}}>
                 <ListItem style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: Green[300], width: '100%', padding: '1% 0 0 4%'}}>
                   {/* <div > */}
                     <Avatar alt="Remy Sharp" className={classes.iconSmall} src={BomdiaRuralLogo} />
@@ -486,7 +491,7 @@ export default function FModalPhoto(props) {
                 <ListItem setIndex>
                 <div >
                   <h1 style={{fontFamily: '"Amaranth", sans-serif', textAlign: 'center', fontWeight: 500}}>Rancho Bem Viver</h1>
-                  <div style={{height: '210px', overflow: 'hidden scroll', textAlign: 'left', fontSize: '16px', padding: '0px 19px 0px 15px'}}>
+                  <div className={classes.divTexto} style={{height: '210px', overflow: matches ? 'scroll' : 'hidden scroll', textAlign: 'left', fontSize: '16px', padding: '0px 19px 0px 15px'}}>
                     <p >Rancho vem representando uma das diversidades encontradas no sudoeste do Paraná. Caros amigos, o comprometimento entre as equipes nos obriga à análise do investimento em reciclagem técnica. Por conseguinte, a percepção das dificuldades aponta para a melhoria da gestão inovadora da qual fazemos parte. É importante questionar o quanto a determinação clara de objetivos representa uma abertura para a melhoria das diretrizes de desenvolvimento para o futuro. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a consolidação das estruturas auxilia a preparação e a composição das posturas dos órgãos dirigentes com relação às suas atribuições. O empenho em analisar a crescente influência da mídia estende o alcance e a importância dos modos de operação convencionais.</p>
                   </div>
                 </div>
@@ -526,8 +531,9 @@ export default function FModalPhoto(props) {
         <Modal
           // onMouseEnter={()=>console.log('mouse entrou')}
           // onMouseOut={()=>console.log('mouse saiu')}
+          // onScroll={(e)=>e.preventDefault()}
           className={classes.modal}
-          style={{ overflow: matches ? 'hidden scroll' : ''}}
+          // style={{overflowY: 'scroll'}}
           open={props.open}
           onClose={()=>onClose()}
           disableEnforceFocus 
