@@ -153,7 +153,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       width: '95.49%',
       height: '95%',
-      top: '2%',
+      top: '11%',
       left: '2%',
     },
     // [theme.breakpoints.down('md')]: {
@@ -165,7 +165,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       width: '94.99%',
       height: '97.5%',
-      top: '11%',
+      top: '10%',
       left: '2%',
     },
     // [theme.breakpoints.down('lg')]: {
@@ -176,7 +176,7 @@ const useStyles = makeStyles((theme) => ({
     // },
     [theme.breakpoints.up('lg')]: {
       width: '77%',
-      height: '100%',
+      // height: '70%',
       top: '10%',
       left: '12%',
     },
@@ -190,7 +190,7 @@ const useStyles = makeStyles((theme) => ({
       width: '84.99%',
       height: '100%',
       top: '7%',
-      left: '6%',
+      left: '8%',
     },
   },
   gridModal: {
@@ -200,6 +200,10 @@ const useStyles = makeStyles((theme) => ({
   iconSmall: {
     width: theme.spacing(5),
     height: theme.spacing(5),
+    '&:hover': {
+      cursor: 'pointer',
+      opacity: '90%',
+    },
   },
   iconLarge: {
     width: theme.spacing(7),
@@ -209,6 +213,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FModalPhoto(props) {
   const isMobile = useMediaQuery("(max-width:600px)");
+  const matches = useMediaQuery("(max-width:943px)");
+  const isLarge = useMediaQuery("(max-width:1920px)");
+  
 
   const [onIndex, setIndex] = React.useState(0);
   React.useEffect(() => {
@@ -226,7 +233,6 @@ export default function FModalPhoto(props) {
   const Image5 = Imagem5;
   const Image6 = Imagem6;
 
-  const matches = useMediaQuery("(max-width:906px)");
 
   const classes = useStyles();
 
@@ -409,6 +415,25 @@ export default function FModalPhoto(props) {
     return (open) ? (<SnackBar zIndex={99999} open={open} message={message} success={success} onClose={(e)=>setSnackBar(e)}/>) : (false)
   }
 
+  function retornarImagemComp(AImg){
+    const lvImage = new Image();
+    lvImage.onload = () => {
+      // console.log("natural:", lvImage.naturalWidth, lvImage.naturalHeight);
+      console.log("width,height:", lvImage.width, lvImage.height);
+      // console.log("offsetW,offsetH:", lvImage.offsetWidth, lvImage.offsetHeight);
+    }
+    lvImage.src = AImg;
+
+    return (
+      <img 
+      draggable={false}
+      src={AImg} 
+      alt="teste" 
+      style={{borderRadius: '2px', height: isMobile ? '100%' : isLarge ? '100%' : lvImage.height, width: '100%'}} 
+    />
+    )
+  }
+
   function retornarGridImagem(AImagem){
     return (
       <Grid container >
@@ -433,12 +458,7 @@ export default function FModalPhoto(props) {
             </IconButton>
           </div> */}
       <Grid container item style={{height: '100%'}}>
-        <img 
-          draggable={false}
-          src={AImagem} 
-          alt="teste" 
-          style={{borderRadius: '2px', height: '100%',width: '100%'}} 
-        />
+        {retornarImagemComp(AImagem)}
       </Grid>
     </Grid>
     )
@@ -459,7 +479,7 @@ export default function FModalPhoto(props) {
 
   function retornarSwipeableViews(){
     return (
-      <Zoom key="princi" in={props.open} timeout={0} style={{ height: '85%', backgroundColor: Green[300] }} >
+      <Zoom key="princi" in={props.open} timeout={0} style={{ height: 'inherit', backgroundColor: Green[300] }} >
         <div className={(matches)?(classes.divModalPhone) : (classes.divModal)} >
           <div style={{ display: 'contents', backgroundColor: 'rgb(88 88 88)', height: 'inherit', width: '100%'}}/>
         {/* {!isMobile ? <IconButton 
@@ -492,22 +512,22 @@ export default function FModalPhoto(props) {
                 <ListItem setIndex>
                 <div >
                   <h1 style={{fontFamily: '"Amaranth", sans-serif', textAlign: 'center', fontWeight: 500}}>Rancho Bem Viver</h1>
-                  <div className={classes.divTexto} style={{height: '210px', overflowY: 'scroll', overflowX: 'hidden', WebkitOverflowScrolling: 'touch', textAlign: 'left', fontSize: '16px', padding: '0px 19px 0px 15px'}}>
+                  <div className={classes.divTexto} style={{height: '210px', marginBottom: 10, overflowY: 'scroll', overflowX: 'hidden', WebkitOverflowScrolling: 'touch', textAlign: 'left', fontSize: '16px', padding: '0px 19px 0px 15px'}}>
                     <p >Rancho vem representando uma das diversidades encontradas no sudoeste do Paraná. Caros amigos, o comprometimento entre as equipes nos obriga à análise do investimento em reciclagem técnica. Por conseguinte, a percepção das dificuldades aponta para a melhoria da gestão inovadora da qual fazemos parte. É importante questionar o quanto a determinação clara de objetivos representa uma abertura para a melhoria das diretrizes de desenvolvimento para o futuro. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a consolidação das estruturas auxilia a preparação e a composição das posturas dos órgãos dirigentes com relação às suas atribuições. O empenho em analisar a crescente influência da mídia estende o alcance e a importância dos modos de operação convencionais.</p>
                   </div>
                 </div>
                 </ListItem>
                 <Divider />
-                </List>
-                <ListItem style={{ display: 'flex', justifyContent: 'flex-start', backgroundColor: Green[300], width: '100%'}}>
-                  <IconButton style={{ marginRight: '3%' }}> 
+                  <ListItem style={{ display: 'flex', paddingTop: 15, justifyContent: 'flex-start', backgroundColor: Green[300], width: '100%'}}>
+                    <IconButton style={{ marginRight: '3%' }}> 
                       <IconLike />
                     </IconButton>
                     <IconButton style={{ marginRight: '3%' }}> 
                       <IconChat />
                     </IconButton>
                   </ListItem>
-                <Divider />
+                </List>
+              <Divider />
               </section>
               </Fade >
             </div>

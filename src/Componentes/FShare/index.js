@@ -26,7 +26,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 
-import { green } from '@material-ui/core/colors';
+import Green from '@material-ui/core/colors/green';
 
 import Card from '@material-ui/core/Card';
 
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 const theme = createMuiTheme({
 
   palette: {
-    primary: green,
+    primary: Green,
   },
   
 });
@@ -69,16 +69,16 @@ function FShare(props) {
     return (
       <>
       <div style={{display: 'flex', paddingLeft: '2px'}}>
-        <IconButton  size='medium' children={<InstagramIcon  />} />
+        <IconButton  size='medium' children={<InstagramIcon style={{ color: '#dd2d76' }} />} />
       </div>
       <div style={{display: 'flex', paddingLeft: '2px'}}>
-        <IconButton  size='medium' children={<FacebookIcon  />} />
+        <IconButton  size='medium' children={<FacebookIcon style={{ color: '#3b5998' }} />} />
       </div>
       <div style={{display: 'flex', paddingLeft: '2px'}}>
-        <IconButton  size='medium' children={<TwitterIcon  />} />
+        <IconButton  size='medium' children={<TwitterIcon style={{ color: '#1DA1F2' }} />} />
       </div>
       <div style={{display: 'flex', paddingLeft: '2px'}}>
-        <IconButton  size='medium' children={<YouTubeIcon  />} />
+        <IconButton  size='medium' children={<YouTubeIcon style={{ color: '#FF0000' }} />} />
       </div>
     </>
     )
@@ -104,7 +104,7 @@ function FShare(props) {
 
   return (
       <Dialog
-        style={{ zIndex: 9999}}
+        style={{ zIndex: 9999 }}
         maxWidth="xs"
         open={props.open}
         TransitionComponent={Transition}
@@ -113,30 +113,30 @@ function FShare(props) {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <div style={{display: "flex", justifyContent: 'space-between'}}>
-          <DialogTitle id="alert-dialog-slide-title"><Typography variant="h6">Compartilhar</Typography></DialogTitle>
-          <div style={{padding:  '5px'}}>
+        <div style={{display: "flex", justifyContent: 'space-between', backgroundColor: Green[300] }}>
+          <DialogTitle id="alert-dialog-slide-title"><Typography variant="h6" style={{ flexGrow: 2, fontSize: '24px', fontFamily: '"Amaranth", sans-serif', fontWeight: 400, lineHeight: 1.5, paddingLeft: '0%' }}>Compartilhar</Typography></DialogTitle>
+          <div style={{padding:  '5px' }}>
             {props.open ? (
-              <IconButton aria-label="close" onClick={handleClose}>
+              <IconButton style={{ marginTop: '16%' }} aria-label="close" onClick={handleClose}>
                 <CloseIcon />
               </IconButton>
             ) : null}
           </div>
           </div>
           <div
-            style={{display: 'flex', width: '100%', maxWidth: '255px', height: '100%', paddingRight: '0px'}}
+            style={{ display: 'flex', width: '100%', maxWidth: '255px', height: '100%', paddingRight: '0px' }}
           >
           <CardMedia
-            style={{display: 'flex', width: '100%', height: '158px', paddingRight: '0px'}}
+            style={{ display: 'flex', width: '100%', height: '158px', paddingRight: '0px' }}
             image={props.image}//"https://picsum.photos/700/700"
             alt="Share"
           />
           </div>
-          <DialogContent  style={{display: 'flex', padding: '10px 0px 0px 22px'}}>
+          <DialogContent  style={{display: 'flex', padding: '10px 0px 0px 22px', backgroundColor: Green[300] }}>
             {retornarIcon()}
           </DialogContent>
-          <DialogContent >
-          <InputLabel htmlFor="filled-adornment-password">Link</InputLabel>
+          <DialogContent style={{ backgroundColor: Green[300] }} >
+          <InputLabel htmlFor="filled-adornment-password" style={{ fontWeight: 'bold' }} >Link</InputLabel>
           <ThemeProvider theme={theme}>
             <Input
               id="input-link"
