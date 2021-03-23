@@ -92,13 +92,15 @@ function FShare(props) {
     }
   }
 
-  function copiarTestoAreaTransferencia(){
+  function copiarTextoAreaTransferencia(){
     let textArea = document.querySelector('#input-link');
     textArea.select();
     try {
       var lvSuccessful = document.execCommand('copy');
       props.onSetSnackBar(retornarObjectSnackBar(lvSuccessful));
     } catch (err) {
+      props.onSetSnackBar(retornarObjectSnackBar(false));
+
     }
   };
 
@@ -135,7 +137,7 @@ function FShare(props) {
           <DialogContent  style={{display: 'flex', padding: '10px 0px 0px 22px', backgroundColor: Green[300] }}>
             {retornarIcon()}
           </DialogContent>
-          <DialogContent style={{ backgroundColor: Green[300] }} >
+          <DialogContent style={{ backgroundColor: Green[300], padding: 13 }} >
           <InputLabel htmlFor="filled-adornment-password" style={{ fontWeight: 'bold' }} >Link</InputLabel>
           <ThemeProvider theme={theme}>
             <Input
@@ -149,7 +151,7 @@ function FShare(props) {
                 <InputAdornment 
                   position="end">
                 <IconButton 
-                  onClick={(e)=>copiarTestoAreaTransferencia()}
+                  onClick={(e)=>copiarTextoAreaTransferencia()}
                   edge="end" 
                   size="small" 
                   children={

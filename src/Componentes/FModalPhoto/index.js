@@ -151,10 +151,10 @@ const useStyles = makeStyles((theme) => ({
     //   left: '2%',
     // },
     [theme.breakpoints.up('sm')]: {
-      width: '95.49%',
-      height: '95%',
-      top: '11%',
-      left: '2%',
+      width: '99%',
+      // // height: '95%',
+      top: '10%',
+      left: '0.5%',
     },
     // [theme.breakpoints.down('md')]: {
     //   width: '86.99%',
@@ -163,22 +163,22 @@ const useStyles = makeStyles((theme) => ({
     //   left: '6%',
     // },
     [theme.breakpoints.up('md')]: {
-      width: '94.99%',
-      height: '97.5%',
+      width: '99%',
+      //  height: '17.5%',
       top: '10%',
-      left: '2%',
+      left: '0.5%',
     },
-    // [theme.breakpoints.down('lg')]: {
-    //   width: '84.99%',
-    //   height: '97.5%',
-    //   top: '10%',
-    //   left: '6%',
-    // },
+    [theme.breakpoints.down('lg')]: {
+      width: '98%',
+      // height: '10%',
+      // top: '10%',
+      left: '1%',
+    },
     [theme.breakpoints.up('lg')]: {
-      width: '77%',
-      // height: '70%',
-      top: '10%',
-      left: '12%',
+      width: '80%',
+      // height: '10%',
+      // top: '10%',
+      left: '8%',
     },
     // [theme.breakpoints.up('xl')]: {
     //   width: '80%',
@@ -187,8 +187,8 @@ const useStyles = makeStyles((theme) => ({
     //   left: '10%',
     // },
     [theme.breakpoints.up('xl')]: {
-      width: '84.99%',
-      height: '100%',
+      width: '85.99%',
+      // height: '80%',
       top: '7%',
       left: '8%',
     },
@@ -198,8 +198,8 @@ const useStyles = makeStyles((theme) => ({
     width: '100%'
   },
   iconSmall: {
-    width: theme.spacing(5),
-    height: theme.spacing(5),
+    width: theme.spacing(4),
+    height: theme.spacing(4),
     '&:hover': {
       cursor: 'pointer',
       opacity: '90%',
@@ -214,6 +214,7 @@ const useStyles = makeStyles((theme) => ({
 export default function FModalPhoto(props) {
   const isMobile = useMediaQuery("(max-width:600px)");
   const matches = useMediaQuery("(max-width:943px)");
+  const isQuebraTituloMd = useMediaQuery("(max-width:1047px)");
   const isLarge = useMediaQuery("(max-width:1920px)");
   
 
@@ -489,36 +490,36 @@ export default function FModalPhoto(props) {
               > 
             <ArrowBackIcon />
             </IconButton> : false} */}
-          <SwipeableViews onChangeIndex={(e)=>setIndex(e)} index={retornarIndexProps()} style={{ height: '100%', width: '100%',  overflow: matches ? '' : 'hidden'}} enableMouseEvents>
+          <SwipeableViews onChangeIndex={(e)=>setIndex(e)} index={retornarIndexProps()} style={{ width: '100%',  overflow: matches ? '' : 'hidden'}} enableMouseEvents>
             {retornarGridImagem(setarImagem(0))}
             {retornarGridImagem(setarImagem(1))}
             {retornarGridImagem(setarImagem(2))}
            </SwipeableViews> 
-          <Grid container style={{ width: (matches) ? '100%' : '35%', height: '100%'}} >
+          <Grid container style={{ width: (matches) ? '100%' : '35%' }} >
             <div style={{backgroundColor: Green[300], width: '100%', height: '100%', borderRadius: '1px', paddingTop: 0 }}>
             <Fade in={onNumberImage}timeout={500}>
               <section style={{height: '100%' }}>
-              <List style={{ backgroundColor: Green[300], paddingTop: 0, display: 'flex', flexDirection: 'column'}}>
+              <List style={{ backgroundColor: Green[300], height: '100%', paddingTop: 0, display: 'flex', flexDirection: 'column'}}>
                 <ListItem style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: Green[300], width: '100%', padding: '1% 0 0 4%'}}>
                   {/* <div > */}
                     <Avatar alt="Remy Sharp" className={classes.iconSmall} src={BomdiaRuralLogo} />
-                    <h1 style={{ flexGrow: 2, fontSize: '24px', fontFamily: '"Amaranth", sans-serif', fontWeight: 400, lineHeight: 1.5, paddingLeft: '3%' }}>Bom Dia Rural</h1>
+                    <h1 style={{ flexGrow: 2, fontSize: isQuebraTituloMd ? isMobile || matches ? '20px' : '16px' : '20px', fontFamily: '"Amaranth", sans-serif', fontWeight: 400, lineHeight: 1.5, paddingLeft: '3%' }}>Rancho Bem Viver</h1>
                     <IconButton style={{ marginRight: '3%' }} onClick={()=>onShareClick()}> 
                       <IconShare />
                     </IconButton>
+                    <Divider />
                   {/* </div> */}
                 </ListItem>
-                <Divider />
-                <ListItem setIndex>
-                <div >
-                  <h1 style={{fontFamily: '"Amaranth", sans-serif', textAlign: 'center', fontWeight: 500}}>Rancho Bem Viver</h1>
-                  <div className={classes.divTexto} style={{height: '210px', marginBottom: 10, overflowY: 'scroll', overflowX: 'hidden', WebkitOverflowScrolling: 'touch', textAlign: 'left', fontSize: '16px', padding: '0px 19px 0px 15px'}}>
-                    <p >Rancho vem representando uma das diversidades encontradas no sudoeste do Paraná. Caros amigos, o comprometimento entre as equipes nos obriga à análise do investimento em reciclagem técnica. Por conseguinte, a percepção das dificuldades aponta para a melhoria da gestão inovadora da qual fazemos parte. É importante questionar o quanto a determinação clara de objetivos representa uma abertura para a melhoria das diretrizes de desenvolvimento para o futuro. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a consolidação das estruturas auxilia a preparação e a composição das posturas dos órgãos dirigentes com relação às suas atribuições. O empenho em analisar a crescente influência da mídia estende o alcance e a importância dos modos de operação convencionais.</p>
+                <ListItem style={{ height: '100%' }} setIndex>
+                <div style={{ height: '100%' }} >
+                  {/* <h1 style={{fontFamily: '"Amaranth", sans-serif', textAlign: 'center', fontWeight: 500}}>Rancho Bem Viver</h1> */}
+                  <div className={classes.divTexto} style={{ height: isQuebraTituloMd ? 350 : 400, marginBottom: 10, overflowY: 'scroll', overflowX: 'hidden', WebkitOverflowScrolling: 'touch', textAlign: 'left', fontSize: '16px', padding: '0px 19px 0px 15px'}}>
+                    <p >Rancho vem representando uma das diversidades encontradas no sudoeste do Paraná. Caros amigos, o comprometimento entre as equipes nos obriga à análise do investimento em reciclagem técnica. Por conseguinte, a percepção das dificuldades aponta para a melhoria da gestão inovadora da qual fazemos parte. É importante questionar o quanto a determinação clara de objetivos representa uma abertura para a melhoria das diretrizes de desenvolvimento para o futuro. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a consolidação das estruturas auxilia a preparação e a composição das posturas dos órgãos dirigentes com relação às suas atribuições. O empenho em analisar a crescente influência da mídia estende o alcance e a importância dos modos de operação convencionais.Caros amigos, o comprometimento entre as equipes nos obriga à análise do investimento em reciclagem técnica. Por conseguinte, a percepção das dificuldades aponta para a melhoria da gestão inovadora da qual fazemos parte. É importante questionar o quanto a determinação clara de objetivos representa uma abertura para a melhoria das diretrizes de desenvolvimento para o futuro. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a consolidação das estruturas auxilia a preparação e a composição das posturas dos órgãos dirigentes com relação às suas atribuições. O empenho em analisar a crescente influência da mídia estende o alcance e a importância dos modos de operação convencionais.</p>
                   </div>
                 </div>
                 </ListItem>
-                <Divider />
-                  <ListItem style={{ display: 'flex', paddingTop: 15, justifyContent: 'flex-start', backgroundColor: Green[300], width: '100%'}}>
+                {/* <Divider /> */}
+                  <ListItem style={{ display: 'flex', paddingTop: 10, justifyContent: 'flex-start', backgroundColor: Green[300], width: '100%'}}>
                     <IconButton style={{ marginRight: '3%' }}> 
                       <IconLike />
                     </IconButton>
@@ -526,8 +527,8 @@ export default function FModalPhoto(props) {
                       <IconChat />
                     </IconButton>
                   </ListItem>
+                {/* <Divider /> */}
                 </List>
-              <Divider />
               </section>
               </Fade >
             </div>
