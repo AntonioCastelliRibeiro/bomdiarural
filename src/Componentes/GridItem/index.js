@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   divPrincipalConteudo: {
     flexGrow: 1,
-    backgroundColor: 'rgba(37, 118, 39, 0.25)',
+    // backgroundColor: 'rgba(37, 118, 39, 0.25)',
   },
   divContainer: {
       paddingTop: theme.spacing(2),
