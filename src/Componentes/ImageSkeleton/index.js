@@ -56,7 +56,7 @@ export default function ImageSkeleton() {
       )
     } else {
       return (
-        <Skeleton variant="rect" width="100%">
+        <Skeleton style={{backgroundColor: '#9ea490'}} variant="rect" width="100%">
           <div style={{ paddingTop: '57%' }} />
         </Skeleton>
       )

@@ -6,16 +6,16 @@ function Trail({open, children, ...props }) {
 
   const items = React.Children.toArray(children);
   const trail = useTrail(items.length, {
-    config:  config.default,
+    config:  {  },
     x: 10,
-    y: 5,
+    y: 0,
     opacity: 1,
     height: 120,
-    from: { opacity: 0, x: 0, y: -200, height: 160 },
-    // delay: 50,
+    from: { opacity: 0, x: 10, y: 5 },
+    delay: 90,
     reset: true,
     reverse: false,
-        
+    immediate: false        
   })
 
   return (

@@ -163,22 +163,22 @@ const useStyles = makeStyles((theme) => ({
     //   left: '6%',
     // },
     [theme.breakpoints.up('md')]: {
-      width: '99%',
-      //  height: '17.5%',
-      top: '10%',
+      // width: '99%',
+       height: '17.5%',
+      top: '7%',
       left: '0.5%',
     },
     [theme.breakpoints.down('lg')]: {
       width: '98%',
       // height: '10%',
       // top: '10%',
-      left: '1%',
+      left: '1.3%',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '80%',
+      width: '81%',
       // height: '10%',
       // top: '10%',
-      left: '8%',
+      left: '9%',
     },
     // [theme.breakpoints.up('xl')]: {
     //   width: '80%',
@@ -189,7 +189,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('xl')]: {
       width: '85.99%',
       // height: '80%',
-      top: '7%',
+      top: '5%',
       left: '8%',
     },
   },
