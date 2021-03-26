@@ -4,6 +4,8 @@ import { Grid, Fade, Container } from '@material-ui/core';
 import CardItem from '../TimeLine/CardItem';
 import CardFood from '../../Componentes/CardFood';
 
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+
 import ParallaxScroll from '../ParallaxScroll';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -40,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function GridItem(props){
   const classes = useStyles();
+  const isMobile = useMediaQuery("(max-width:750px)");
 
   function retornarConteudo(){
     return (
@@ -66,7 +69,7 @@ export default function GridItem(props){
   function retornarCardFood(){
     return (
         <Container maxWidth="md">
-          <div style={{ padding: '10px 0px 10px 0px' }} >
+          <div style={{ padding: isMobile ? '10px 0 10px 0' : '10px 120px 10px 120px'  }} >
             <CardFood isRecipe={true} />
           </div>
         </Container>

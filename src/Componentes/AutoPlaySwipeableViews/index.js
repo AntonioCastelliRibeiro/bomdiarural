@@ -1,4 +1,5 @@
 import React from 'react';
+
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 
@@ -38,7 +39,10 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const styles = {
   root: {
     position: 'relative',
-  }
+  },
+  slide: {
+    width: '100%',
+  },
 };
 
 class Swipe extends React.Component {
@@ -64,7 +68,7 @@ class Swipe extends React.Component {
     const { index } = this.state;
     return (
       <div style={styles.root}>
-        <AutoPlaySwipeableViews slideStyle={{width: '100%'}} style={{width: '100%'}}  interval={7500} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
+        <AutoPlaySwipeableViews style={styles.slide} interval={7500} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
             {/* <CarrouselView /> */}
           {
             ConteudoImageComp.map((AConteudo, ACont) => {
@@ -82,9 +86,9 @@ class Swipe extends React.Component {
             })
           }
         </AutoPlaySwipeableViews>
-        {/* <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}> */}
-          {/* <Slider  max={2} numberImage={index} setarNumberImage={this.handleChangeIndex} /> */}
-        {/* </div> */}
+        {/* <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}> 
+          <Slider  max={2} numberImage={index} setarNumberImage={this.handleChangeIndex} />
+         </div> */}
       </div>
     )
   }
@@ -93,7 +97,7 @@ class Swipe extends React.Component {
     const { index } = this.state;
     return (
       <div style={styles.root}>
-        <SwipeableViews onClick={()=>this.props.onClick()} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
+        <SwipeableViews slideStyle={styles.slide} slideClassName="react-parallax-bgimage" style={{ width: '100%' }} onClick={()=>this.props.onClick()} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
           {
             this.state.ConteudoImageComp.map((AConteudo, ACont) => {
               return (

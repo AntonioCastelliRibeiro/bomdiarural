@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
+import {Fade , GridListTileBar} from '@material-ui/core';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
@@ -71,9 +71,7 @@ export default function CardFood(props) {
       <Card className={classes.root} >
         <CardHeader
           avatar={
-            <Avatar src={BdrlLogo} aria-label="recipe" >
-              
-            </Avatar>
+            <Avatar src={BdrlLogo} aria-label="recipe" />
           }
           action={
             <IconButton aria-label="share">
@@ -81,7 +79,6 @@ export default function CardFood(props) {
             </IconButton>
           }
           style={{ fontWeight: 800 }}
-          
           title="Receita de Nova Prata"
           subheader="14 de Maio, 2021"
         />
@@ -99,7 +96,7 @@ export default function CardFood(props) {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
+          <IconButton aria-label="like">
             <FavoriteIcon />
           </IconButton>
           <IconButton
@@ -108,7 +105,7 @@ export default function CardFood(props) {
             })}
             onClick={handleExpandClick}
             aria-expanded={expanded}
-            aria-label="show more"
+            aria-label="Saiba Mais"
           >
             <ExpandMoreIcon />
           </IconButton>

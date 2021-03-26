@@ -51,7 +51,7 @@ export default function ImageSkeleton() {
         <CardMedia
           className={classes.media}
           image={img.src}
-          title="Paella dish"
+          title="Bom dia Rural"
         />
       )
     } else {

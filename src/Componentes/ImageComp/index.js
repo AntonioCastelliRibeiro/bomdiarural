@@ -43,8 +43,7 @@ class ImageComp extends React.Component {
   retornarParallax(){
     return (
       <Parallax  
-        bgImageSizes={"height: 15px"} 
-        style={{width: '100%', height: 550}} 
+        bgImageStyle={{width: '100%', height: 550}} 
         bgImage ={this.props.image} 
         parent={this.props.key+2} 
         key={this.props.key+1} 
