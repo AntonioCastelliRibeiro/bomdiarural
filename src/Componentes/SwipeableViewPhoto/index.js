@@ -6,6 +6,9 @@ import themePhoto from './themePhoto';
 import ShareIcon from '@material-ui/icons/Share';
 
 import { GridListTileBar, IconButton, Fade } from '@material-ui/core';
+
+import Skeleton from '@material-ui/lab/Skeleton';
+
 import ImageCompPhoto from '../ImageCompPhoto';
 
 const styles = {
@@ -24,10 +27,16 @@ class SwipePhoto extends React.Component {
     super(props);
     this.state = {
       index: 0,
-      slider: false
+      slider: false,
+      onLoadImage: false
     };
   }
 
+    componentDidMount(){
+      setTimeout(() => {
+        this.setState({ onLoadImage: true })
+      }, 3000);
+    }
 
   handleChangeIndex = index => {
     this.setState({
@@ -68,33 +77,44 @@ class SwipePhoto extends React.Component {
 
   retornarSwipe(){
     const { index } = this.state;
-    return (
-      <>
-      <div style={styles.root} onMouseOver={(e)=>this.setState({slider: true})} onMouseLeave={(e)=>this.setState({slider: false})} >
-        <SwipeableViews open={this.props.open} style={{display: 'flex'}} draggable={false} onClick={()=>this.props.onClick(this.state.index)} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
-          {
-            this.props.listImage.map((AConteudo, ACont) => {
-              return (
-                <ImageCompPhoto 
-                  key={ACont} 
-                  index={index} 
-                  image={AConteudo.Image} 
-                  text1={AConteudo.text1} 
-                  text2={AConteudo.text2}
-                  text3={AConteudo.text3}
-                  text4={AConteudo.text4}
-                />
-              )
-            })
-          }
-        </SwipeableViews>
-        <div style={{width: '100%', display: 'flex', alignItems: 'flex-start',  justifyContent: 'center'}}>
-          {this.retornarSlider()}
+
+    if (this.state.onLoadImage){
+      return (
+        <>
+        <div style={styles.root} onMouseOver={(e)=>this.setState({slider: true})} onMouseLeave={(e)=>this.setState({slider: false})} >
+          <SwipeableViews open={this.props.open} style={{display: 'flex'}} draggable={false} onClick={()=>this.props.onClick(this.state.index)} index={index} enableMouseEvents onChangeIndex={this.handleChangeIndex}>
+            {
+              this.props.listImage.map((AConteudo, ACont) => {
+                return (
+                  <ImageCompPhoto 
+                    key={ACont} 
+                    index={index} 
+                    image={AConteudo.Image} 
+                    text1={AConteudo.text1} 
+                    text2={AConteudo.text2}
+                    text3={AConteudo.text3}
+                    text4={AConteudo.text4}
+                  />
+                )
+              })
+            }
+          </SwipeableViews>
+          <div style={{width: '100%', display: 'flex', alignItems: 'flex-start',  justifyContent: 'center'}}>
+            {this.retornarSlider()}
+          </div>
+            {/* {this.retornarBtnShare()} */}
         </div>
-          {/* {this.retornarBtnShare()} */}
-      </div>
-      </>
-    )
+        </>
+      )
+    } else {
+      return (
+        <div>
+          <Skeleton height={502} width="100%" style={{ marginTop: '-120px' }} >
+            {/* <div style={{  height: 300, width: '100%' }} /> */}
+          </Skeleton>
+        </div>
+      )
+    }
   }
   render() {
     return this.retornarSwipe()
