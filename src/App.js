@@ -28,6 +28,7 @@ import {Container} from '@material-ui/core';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
+import FooterComp from './Componentes/FooterComp';
 
 class App extends React.Component {
   constructor(props){
@@ -151,9 +152,10 @@ class App extends React.Component {
 
   retornarFooter(){
     return (
-      <div style={{ display: 'flex', height: 50 ,backgroundColor: '#4b8a0c'}}>
-        <span style={{ paddingTop: 27, paddingLeft: 10, color: '#ffff'}}>© Copyright 2020-2021 Antonio Castelli Ribeiro</span>
-      </div>
+      <FooterComp />
+      // <div style={{ display: 'flex', height: 50 ,backgroundColor: '#4b8a0c'}}>
+      //   <span style={{ paddingTop: 27, paddingLeft: 10, color: '#ffff'}}>© Copyright 2020-2021 Antonio Castelli Ribeiro</span>
+      // </div>
     )
   }
   
