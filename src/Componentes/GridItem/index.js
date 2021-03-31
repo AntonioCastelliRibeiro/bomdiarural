@@ -46,7 +46,7 @@ export default function GridItem(props){
 
   function retornarConteudo(){
     return (
-    <div style={{ backgroundColor: props.isRecipe ? 'rgba(37, 118, 39, 0.25)' : 'transparent' }} className={classes.divPrincipalConteudo}>
+    <div style={{ backgroundColor: props.isRecipe ? 'rgba(224, 255, 227, 0.25)' : 'transparent' }} className={classes.divPrincipalConteudo}>
       <div className={classes.divContainer}>
         <Grid container spacing={3} >
           {retornarCardItem()}

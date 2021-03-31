@@ -26,12 +26,12 @@ import Zoom from '@material-ui/core/Zoom';
 
 import Grow from '@material-ui/core/Grow';
 
-import BdrlLogo from '../../Image/BomdiaRuralLogo.jpg';
+import BdrlLogo from '../../Image/logo.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: '100%',
-    backgroundColor: 'rgb(129, 199, 132)',
+    backgroundColor: 'rgb(179 234 181 / 46%)',
   },
   media: {
     opacity: '97%',

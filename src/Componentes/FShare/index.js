@@ -115,7 +115,7 @@ function FShare(props) {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <div style={{display: "flex", justifyContent: 'space-between', backgroundColor: Green[300] }}>
+        <div style={{display: "flex", justifyContent: 'space-between', backgroundColor: '#f1f3f1e0' }}>
           <DialogTitle id="alert-dialog-slide-title"><Typography variant="h6" style={{ flexGrow: 2, fontSize: '24px', fontFamily: '"Amaranth", sans-serif', fontWeight: 400, lineHeight: 1.5, paddingLeft: '0%' }}>Compartilhar</Typography></DialogTitle>
           <div style={{padding:  '5px' }}>
             {props.open ? (
@@ -134,10 +134,10 @@ function FShare(props) {
             alt="Share"
           />
           </div>
-          <DialogContent  style={{display: 'flex', padding: '10px 0px 0px 22px', backgroundColor: Green[300] }}>
+          <DialogContent  style={{display: 'flex', padding: '10px 0px 0px 22px', backgroundColor: '#f1f3f1e0' }}>
             {retornarIcon()}
           </DialogContent>
-          <DialogContent style={{ backgroundColor: Green[300], padding: 13 }} >
+          <DialogContent style={{ backgroundColor: '#f1f3f1e0', padding: 13 }} >
           <InputLabel htmlFor="filled-adornment-password" style={{ fontWeight: 'bold' }} >Link</InputLabel>
           <ThemeProvider theme={theme}>
             <Input

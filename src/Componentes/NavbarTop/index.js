@@ -16,12 +16,14 @@ import SwipeableDrawerLeft  from '../SwipeableDrawerLeft';
 
 const useStyles = makeStyles((theme) => ({
   AppBar:{
-    backgroundColor: "#4b8a0c"
+    backgroundColor: 'rgb(241 243 241)'
   },
   menuButton: {
+    color: '#4caf50',
     marginRight: theme.spacing(2),
   },
   title: {
+    color: '#4caf50',
     flexGrow: 1,
     fontFamily:  "'Amaranth', sans-serif",
     fontSize: '20px',      
@@ -41,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: 0,
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
+    // backgroundColor: fade('#257627', 0.15),
     backgroundColor: fade('#257627', 0.15),
     '&:hover': {
       backgroundColor: fade('#257627', 0.25),
@@ -164,7 +167,7 @@ function NavbarTop(AProps) {
                 {/* <div className={classes.searchIcon}> */}
                   {/* <SearchIcon /> */}
                   <IconButton onClick={()=>history.push('/')} >
-                    <HomeIcon style={{color: '#ffff'}}/>
+                    <HomeIcon style={{color: '#4caf50'}}/>
                   </IconButton>
                 {/* </div> */}
                 {/* <InputBase

@@ -18,7 +18,7 @@ import Imagem3 from '../../Image/Imagem3.jpg';
 import Imagem4 from '../../Image/Imagem4.jpg';
 import Imagem5 from '../../Image/Imagem5.jpg';
 import Imagem6 from '../../Image/Imagem6.jpg';
-import BomdiaRuralLogo from '../../Image/BomdiaRuralLogo.jpg';
+import BomdiaRuralLogo from '../../Image/logo.png';
 
 import Slider from '../Slider';
 
@@ -198,8 +198,8 @@ const useStyles = makeStyles((theme) => ({
     width: '100%'
   },
   iconSmall: {
-    width: theme.spacing(4),
-    height: theme.spacing(4),
+    width: theme.spacing(5),
+    height: theme.spacing(5),
     '&:hover': {
       cursor: 'pointer',
       opacity: '90%',
@@ -294,7 +294,7 @@ export default function FModalPhoto(props) {
           {retornarImageModal()}
         </Grid>
         <Grid container item >
-          <div style={{backgroundColor: Green[300], width: '100%', borderRadius: '1px', paddingTop: 5}}>
+          <div style={{backgroundColor: 'rgb(241 243 241)', width: '100%', borderRadius: '1px', paddingTop: 5}}>
             <h1 style={{textAlign: 'center'}}>Rancho Bem Viver</h1>
             <div style={{textAlign: 'center', fontSize: '20px', padding: '0px 19px 0px 15px'}}>
             <p >Rancho vem representando uma das diversidades encontradas no sudoeste do Paraná. Caros amigos, o comprometimento entre as equipes nos obriga à análise do investimento em reciclagem técnica. Por conseguinte, a percepção das dificuldades aponta para a melhoria da gestão inovadora da qual fazemos parte. É importante questionar o quanto a determinação clara de objetivos representa uma abertura para a melhoria das diretrizes de desenvolvimento para o futuro. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a consolidação das estruturas auxilia a preparação e a composição das posturas dos órgãos dirigentes com relação às suas atribuições. O empenho em analisar a crescente influência da mídia estende o alcance e a importância dos modos de operação convencionais.</p>
@@ -480,9 +480,9 @@ export default function FModalPhoto(props) {
 
   function retornarSwipeableViews(){
     return (
-      <Zoom key="princi" in={props.open} timeout={0} style={{ height: 'inherit', backgroundColor: Green[300] }} >
+      <Zoom key="princi" in={props.open} timeout={0} style={{ height: 'inherit', backgroundColor: 'rgb(241 243 241)' }} >
         <div className={(matches)?(classes.divModalPhone) : (classes.divModal)} >
-          <div style={{ display: 'contents', backgroundColor: 'rgb(88 88 88)', height: 'inherit', width: '100%'}}/>
+          <div style={{ display: 'contents', backgroundColor: 'rgb(241 243 241)', height: 'inherit', width: '100%'}}/>
         {/* {!isMobile ? <IconButton 
               aria-label={`info about antonio`} 
               className={classes.iconModalArrowLeft}
@@ -496,11 +496,11 @@ export default function FModalPhoto(props) {
             {retornarGridImagem(setarImagem(2))}
            </SwipeableViews> 
           <Grid container style={{ width: (matches) ? '100%' : '35%' }} >
-            <div style={{backgroundColor: Green[300], width: '100%', height: '100%', borderRadius: '1px', paddingTop: 0 }}>
+            <div style={{backgroundColor: '', width: '100%', height: '100%', borderRadius: '1px', paddingTop: 0 }}>
             <Fade in={onNumberImage}timeout={500}>
               <section style={{height: '100%' }}>
-              <List style={{ backgroundColor: Green[300], height: '100%', paddingTop: 0, display: 'flex', flexDirection: 'column'}}>
-                <ListItem style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: Green[300], width: '100%', padding: '1% 0 0 4%'}}>
+              <List style={{ backgroundColor: 'rgb(241 243 241)' , height: '100%', paddingTop: 0, display: 'flex', flexDirection: 'column'}}>
+                <ListItem style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: 'rgb(241 243 241)', width: '100%', padding: '1% 0 0 4%'}}>
                   {/* <div > */}
                     <Avatar alt="Remy Sharp" className={classes.iconSmall} src={BomdiaRuralLogo} />
                     <h1 style={{ flexGrow: 2, fontSize: isQuebraTituloMd ? isMobile || matches ? '20px' : '16px' : '20px', fontFamily: '"Amaranth", sans-serif', fontWeight: 400, lineHeight: 1.5, paddingLeft: '3%' }}>Rancho Bem Viver</h1>
@@ -519,7 +519,7 @@ export default function FModalPhoto(props) {
                 </div>
                 </ListItem>
                 {/* <Divider /> */}
-                  <ListItem style={{ display: 'flex', paddingTop: 10, justifyContent: 'flex-start', backgroundColor: Green[300], width: '100%'}}>
+                  <ListItem style={{ display: 'flex', paddingTop: 10, justifyContent: 'flex-start', backgroundColor: 'rgb(241 243 241)', width: '100%'}}>
                     <IconButton style={{ marginRight: '3%' }}> 
                       <IconLike />
                     </IconButton>

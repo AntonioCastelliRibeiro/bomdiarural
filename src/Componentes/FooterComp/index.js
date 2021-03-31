@@ -1,6 +1,6 @@
 import React from "react";
 
-import BomdiaRuralLogo from "../../Image/BomdiaRuralLogo.jpg";
+import logo from "../../Image/logo.png";
 import IconButton from "@material-ui/core/IconButton";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import FacebookIcon from "@material-ui/icons/Facebook";
@@ -72,7 +72,7 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
 const FooterComp = React.memo(function FooterComp() {
   const classes = useStyles();
   return (
-    <Box bgcolor={'rgba(37, 118, 39, 0.25)'} width={"100%"}>
+    <Box bgcolor={'rgb(98 206 131 / 15%)'} width={"100%"}>
       <Container>
         <Box pt={8} pb={1}>
           <div style={{ display: "flex", flexWrap: "wrap" }}>
@@ -81,7 +81,7 @@ const FooterComp = React.memo(function FooterComp() {
                 <div style={{ paddingRight: 2 }}>
                   <Avatar
                     style={{ height: 38, width: 38 }}
-                    src={BomdiaRuralLogo}
+                    src={logo}
                   />
                 </div>
                 <div style={{ paddingLeft: 8 }}>
