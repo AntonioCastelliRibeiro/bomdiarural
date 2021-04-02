@@ -109,7 +109,7 @@ class SwipePhoto extends React.Component {
     } else {
       return (
         <div>
-          <Skeleton height={502} width="100%" style={{ marginTop: '-120px' }} >
+          <Skeleton animation="pulse" height={502} width="100%" style={{ marginTop: '-120px' }} >
             {/* <div style={{  height: 300, width: '100%' }} /> */}
           </Skeleton>
         </div>

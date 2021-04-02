@@ -357,7 +357,7 @@ function GridPhoto(props) {
   function retornarGridPhoto(){
     return (
       <div 
-        style={{ height: '100%', paddingTop: "10px", paddingBottom: "10px", backgroundColor: fade('#e0ffe3', 0.25)}}
+        style={{ height: '100%', paddingTop: "10px", paddingBottom: "10px", backgroundColor: fade('#rgb(255, 255, 255);', 0.25)}}
       >
         <Container className={classes.gridContainerPrincipal} maxWidth="md">
           {retornarImageGridList()}

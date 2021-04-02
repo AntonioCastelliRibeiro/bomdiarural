@@ -16,7 +16,7 @@ import SwipeableDrawerLeft  from '../SwipeableDrawerLeft';
 
 const useStyles = makeStyles((theme) => ({
   AppBar:{
-    backgroundColor: 'rgb(241 243 241)'
+    backgroundColor: 'rgb(255, 255, 255)'
   },
   menuButton: {
     color: '#4caf50',

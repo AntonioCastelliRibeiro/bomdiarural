@@ -164,7 +164,7 @@ const useStyles = makeStyles((theme) => ({
     // },
     [theme.breakpoints.up('md')]: {
       // width: '99%',
-       height: '17.5%',
+      height: '17.5%',
       top: '7%',
       left: '0.5%',
     },
@@ -175,10 +175,10 @@ const useStyles = makeStyles((theme) => ({
       left: '1.3%',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '81%',
+      width: '80%',
       // height: '10%',
       // top: '10%',
-      left: '9%',
+      left: '10%',
     },
     // [theme.breakpoints.up('xl')]: {
     //   width: '80%',
@@ -294,9 +294,9 @@ export default function FModalPhoto(props) {
           {retornarImageModal()}
         </Grid>
         <Grid container item >
-          <div style={{backgroundColor: 'rgb(241 243 241)', width: '100%', borderRadius: '1px', paddingTop: 5}}>
+          <div style={{backgroundColor: 'rgb(255, 255, 255)', width: '100%', borderRadius: '1px', paddingTop: 5}}>
             <h1 style={{textAlign: 'center'}}>Rancho Bem Viver</h1>
-            <div style={{textAlign: 'center', fontSize: '20px', padding: '0px 19px 0px 15px'}}>
+            <div style={{textAlign: 'center', fontSize: '35px' }}>
             <p >Rancho vem representando uma das diversidades encontradas no sudoeste do Paraná. Caros amigos, o comprometimento entre as equipes nos obriga à análise do investimento em reciclagem técnica. Por conseguinte, a percepção das dificuldades aponta para a melhoria da gestão inovadora da qual fazemos parte. É importante questionar o quanto a determinação clara de objetivos representa uma abertura para a melhoria das diretrizes de desenvolvimento para o futuro. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a consolidação das estruturas auxilia a preparação e a composição das posturas dos órgãos dirigentes com relação às suas atribuições. O empenho em analisar a crescente influência da mídia estende o alcance e a importância dos modos de operação convencionais.</p>
             </div>
           </div>
@@ -480,9 +480,9 @@ export default function FModalPhoto(props) {
 
   function retornarSwipeableViews(){
     return (
-      <Zoom key="princi" in={props.open} timeout={0} style={{ height: 'inherit', backgroundColor: 'rgb(241 243 241)' }} >
+      <Zoom key="princi" in={props.open} timeout={0} style={{ height: 'inherit', backgroundColor: 'rgb(255, 255, 255)' }} >
         <div className={(matches)?(classes.divModalPhone) : (classes.divModal)} >
-          <div style={{ display: 'contents', backgroundColor: 'rgb(241 243 241)', height: 'inherit', width: '100%'}}/>
+          <div style={{ display: 'contents', backgroundColor: 'rgb(255, 255, 255)', height: 'inherit', width: '100%'}}/>
         {/* {!isMobile ? <IconButton 
               aria-label={`info about antonio`} 
               className={classes.iconModalArrowLeft}
@@ -499,8 +499,8 @@ export default function FModalPhoto(props) {
             <div style={{backgroundColor: '', width: '100%', height: '100%', borderRadius: '1px', paddingTop: 0 }}>
             <Fade in={onNumberImage}timeout={500}>
               <section style={{height: '100%' }}>
-              <List style={{ backgroundColor: 'rgb(241 243 241)' , height: '100%', paddingTop: 0, display: 'flex', flexDirection: 'column'}}>
-                <ListItem style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: 'rgb(241 243 241)', width: '100%', padding: '1% 0 0 4%'}}>
+              <List style={{ backgroundColor: 'rgb(255, 255, 255)' , height: '100%', paddingTop: 0, paddingBottom: 0, display: 'flex', flexDirection: 'column'}}>
+                <ListItem style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: 'rgb(255, 255, 255)', width: '100%', padding: '1% 0 0 4%'}}>
                   {/* <div > */}
                     <Avatar alt="Remy Sharp" className={classes.iconSmall} src={BomdiaRuralLogo} />
                     <h1 style={{ flexGrow: 2, fontSize: isQuebraTituloMd ? isMobile || matches ? '20px' : '16px' : '20px', fontFamily: '"Amaranth", sans-serif', fontWeight: 400, lineHeight: 1.5, paddingLeft: '3%' }}>Rancho Bem Viver</h1>
@@ -510,16 +510,16 @@ export default function FModalPhoto(props) {
                     <Divider />
                   {/* </div> */}
                 </ListItem>
-                <ListItem style={{ height: '100%' }} setIndex>
+                <ListItem style={{ overflow: 'auto', height: '100%', padding: '0 0 0 20px' }} setIndex>
                 <div style={{ height: '100%' }} >
                   {/* <h1 style={{fontFamily: '"Amaranth", sans-serif', textAlign: 'center', fontWeight: 500}}>Rancho Bem Viver</h1> */}
-                  <div className={classes.divTexto} style={{ height: isQuebraTituloMd ? 350 : 400, marginBottom: 10, overflowY: 'scroll', overflowX: 'hidden', WebkitOverflowScrolling: 'touch', textAlign: 'left', fontSize: '16px', padding: '0px 19px 0px 15px'}}>
-                    <p >Rancho vem representando uma das diversidades encontradas no sudoeste do Paraná. Caros amigos, o comprometimento entre as equipes nos obriga à análise do investimento em reciclagem técnica. Por conseguinte, a percepção das dificuldades aponta para a melhoria da gestão inovadora da qual fazemos parte. É importante questionar o quanto a determinação clara de objetivos representa uma abertura para a melhoria das diretrizes de desenvolvimento para o futuro. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a consolidação das estruturas auxilia a preparação e a composição das posturas dos órgãos dirigentes com relação às suas atribuições. O empenho em analisar a crescente influência da mídia estende o alcance e a importância dos modos de operação convencionais.Caros amigos, o comprometimento entre as equipes nos obriga à análise do investimento em reciclagem técnica. Por conseguinte, a percepção das dificuldades aponta para a melhoria da gestão inovadora da qual fazemos parte. É importante questionar o quanto a determinação clara de objetivos representa uma abertura para a melhoria das diretrizes de desenvolvimento para o futuro. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a consolidação das estruturas auxilia a preparação e a composição das posturas dos órgãos dirigentes com relação às suas atribuições. O empenho em analisar a crescente influência da mídia estende o alcance e a importância dos modos de operação convencionais.</p>
+                  <div className={classes.divTexto} style={{ height: isQuebraTituloMd ? 350 : 10, WebkitOverflowScrolling: 'touch', textAlign: 'left', fontSize: '20px' , paddingRight: 20}}>
+                    <p style={{ display: 'contents' }} >Rancho vem representando uma das diversidades encontradas no sudoeste do Paraná. Caros amigos, o comprometimento entre as equipes nos obriga à análise do investimento em reciclagem técnica. Por conseguinte, a percepção das dificuldades aponta para a melhoria da gestão inovadora da qual fazemos parte. É importante questionar o quanto a determinação clara de objetivos representa uma abertura para a melhoria das diretrizes de desenvolvimento para o futuro. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a consolidação das estruturas auxilia a preparação e a composição das posturas dos órgãos dirigentes com relação às suas atribuições. O empenho em analisar a crescente influência da mídia estende o alcance e a importância dos modos de operação convencionais.Caros amigos, o comprometimento entre as equipes nos obriga à análise do investimento em reciclagem técnica. Por conseguinte, a percepção das dificuldades aponta para a melhoria da gestão inovadora da qual fazemos parte. É importante questionar o quanto a determinação clara de objetivos representa uma abertura para a melhoria das diretrizes de desenvolvimento para o futuro. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a consolidação das estruturas auxilia a preparação e a composição das posturas dos órgãos dirigentes com relação às suas atribuições. O empenho em analisar a crescente influência da mídia estende o alcance e a importância dos modos de operação convencionais.</p>
                   </div>
                 </div>
                 </ListItem>
                 {/* <Divider /> */}
-                  <ListItem style={{ display: 'flex', paddingTop: 10, justifyContent: 'flex-start', backgroundColor: 'rgb(241 243 241)', width: '100%'}}>
+                  <ListItem style={{ display: 'flex', paddingTop: 10, justifyContent: 'flex-start', backgroundColor: 'rgb(255, 255, 255)', width: '100%'}}>
                     <IconButton style={{ marginRight: '3%' }}> 
                       <IconLike />
                     </IconButton>

@@ -100,7 +100,7 @@ class Swipe extends React.Component {
     } else {
       return (
         <div>
-          <Skeleton height={920} width="100%" style={{ marginTop: '-222px', marginBottom: '-148px' }} >
+          <Skeleton animation="pulse" height={920} width="100%" style={{ marginTop: '-222px', marginBottom: '-148px' }} >
             {/* <div style={{  height: 300, width: '100%' }} /> */}
           </Skeleton>
         </div>

@@ -72,7 +72,7 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
 const FooterComp = React.memo(function FooterComp() {
   const classes = useStyles();
   return (
-    <Box bgcolor={'rgb(98 206 131 / 15%)'} width={"100%"}>
+    <Box bgcolor={'#e8f5e9'} width={"100%"}>
       <Container>
         <Box pt={8} pb={1}>
           <div style={{ display: "flex", flexWrap: "wrap" }}>
