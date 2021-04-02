@@ -17,14 +17,15 @@ const themePhoto = createMuiTheme({
         height: 12,
         marginTop: -1,
         marginLeft: -0.39,
-        transition: "0.3s ease"
+        transition: "0.3s ease",
       },
       colorPrimary: {
         color: "white"
       },
       thumbColorPrimary: {
+         boxShadow: 0,
         "&$focusVisible,&:hover": {
-          boxShadow: "none"
+          boxShadow: "none",
         }
       },
 
@@ -69,8 +70,14 @@ const themePhoto = createMuiTheme({
         width: 10,
         height: 10,
         borderRadius: 7,
-        backgroundColor: "currentColor"
-      }
+        backgroundColor: "currentColor",
+        transition: 'width 300ms, height 300ms',
+        "&:hover": {
+          top: 12,
+          width: 14,
+          height: 14,
+        }
+      },
     }
   }
 });
