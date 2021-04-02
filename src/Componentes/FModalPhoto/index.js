@@ -495,7 +495,7 @@ export default function FModalPhoto(props) {
             {retornarGridImagem(setarImagem(1))}
             {retornarGridImagem(setarImagem(2))}
            </SwipeableViews> 
-          <Grid container style={{ width: (matches) ? '100%' : '35%' }} >
+          <Grid container style={{ width: (matches) ? '100%' : '39%' }} >
             <div style={{backgroundColor: '', width: '100%', height: '100%', borderRadius: '1px', paddingTop: 0 }}>
             <Fade in={onNumberImage}timeout={500}>
               <section style={{height: '100%' }}>

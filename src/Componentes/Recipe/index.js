@@ -1,8 +1,11 @@
 import GridItem from '../GridItem';
+import { Container } from '@material-ui/core';
 
 export default function Recipe(){
 
   return (
-    <GridItem isRecipe={true} />
+    <Container maxWidth="md">
+      <GridItem isRecipe={true} />
+    </Container>
   )
 }

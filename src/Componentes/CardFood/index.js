@@ -19,7 +19,6 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-
 import Skeleton from '@material-ui/lab/Skeleton';
 
 import Zoom from '@material-ui/core/Zoom';
@@ -31,7 +30,7 @@ import BdrlLogo from '../../Image/logo.png';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: '100%',
-    backgroundColor: 'rgb(179 234 181 / 46%)',
+    backgroundColor: '#e8f5e9',
   },
   media: {
     opacity: '97%',
@@ -60,27 +59,53 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CardFood(props) {
   const classes = useStyles();
+  const [onLoad, setOnLoad] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [figure, setFigure] = useState('https://picsum.photos/700/700'); 
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setOnLoad(true);
+    }, 2500);
+
+  }, [onLoad])
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  function retornarDescricao() {
+    return ( 'Esta impressionante paella é um prato de festa perfeito e uma refeição divertida para cozinhar junto com seus convidados. Adicione 1 xícara de ervilhas congeladas junto com os músculos, se desejar.' )
+  }
+
+  function retornarSkeleton(AHeight, AWidth, AComp) {
+    if (onLoad){
+      return ( AComp )
+  } else {
+    return (
+      AWidth !== 0 ? <Skeleton width={AWidth}/> : <><Skeleton /><Skeleton /></>
+    )
+  }
+  }
   
   return (
       <Card className={classes.root} >
         <CardHeader
+          style={{ padding: 8, fontWeight: 800 }}
           avatar={
             <Avatar src={BdrlLogo} aria-label="recipe" />
           }
           action={
-            <IconButton aria-label="share">
-              <ShareIcon />
-            </IconButton>
+            <div style={{ paddingTop: 5, paddingRight: 6 }}>
+              <Fade in={onLoad} timeout={500}>
+                <IconButton disableFocusRipple={false} size="medium"  aria-label="share">
+                  <ShareIcon />
+                </IconButton>
+              </Fade>
+            </div>
           }
-          style={{ fontWeight: 800 }}
-          title="Receita de Nova Prata"
-          subheader="14 de Maio, 2021"
+          title={retornarSkeleton(0, 150, 'Receita de Nova Prata')}
+          subheader={retornarSkeleton(0, 110, '14 de Maio, 2021')} 
         />
         <div
           onClick={()=>setFigure('https://picsum.photos/700/700')}
@@ -89,27 +114,28 @@ export default function CardFood(props) {
             figure={figure}
           />
         </div>
-        <CardContent>
+        <CardContent style={{ padding: 8 }} >
           <Typography style={{ fontWeight: 800 }} variant="body2" color="textSecondary" component="p">
-          Esta impressionante paella é um prato de festa perfeito e uma refeição divertida para cozinhar junto com seus convidados. 
-          Adicione 1 xícara de ervilhas congeladas junto com os músculos, se desejar.
+            {retornarSkeleton(0, 0, retornarDescricao()) }
           </Typography>
         </CardContent>
-        <CardActions disableSpacing>
-          <IconButton aria-label="like">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: expanded,
-            })}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="Saiba Mais"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
-        </CardActions>
+        <Fade in={onLoad} timeout={500}>
+          <CardActions style={{ paddingTop: 4, paddingBottom: 4 }} disableSpacing>
+            <IconButton aria-label="like">
+              <FavoriteIcon />
+            </IconButton>
+              <IconButton
+                className={clsx(classes.expand, {
+                  [classes.expandOpen]: expanded,
+                })}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="Saiba Mais"
+              >
+                <ExpandMoreIcon />
+              </IconButton>
+          </CardActions>
+        </Fade>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography paragraph>Método:</Typography>

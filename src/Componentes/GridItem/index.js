@@ -68,11 +68,9 @@ export default function GridItem(props){
 
   function retornarCardFood(){
     return (
-        <Container maxWidth="md">
-          <div style={{ padding: isMobile ? '10px 0 10px 0' : '10px 120px 10px 120px'  }} >
-            <CardFood isRecipe={true} />
-          </div>
-        </Container>
+      <div style={{ width: '100%', padding: isMobile ? '10px 0 10px 0' : '10px 120px 10px 120px'  }} >
+        <CardFood isRecipe={true} />
+      </div>
     )
   }
 
