@@ -3,6 +3,7 @@ import './App.scss';
 
 import { fade } from '@material-ui/core/styles';
 
+import FShare from './Componentes/FShare';
 // import Photo from './Class/Photo';
 
 import { BrowserRouter } from 'react-router-dom';
@@ -116,6 +117,15 @@ class App extends React.Component {
   //     ) 
   //   } else return false
   // }
+
+  retornarModalShare(){
+    return <FShare 
+      open={this.ModalShare} 
+      // onSetClose={()=>setModalShare(false)} 
+      // onSetSnackBar={(AObject)=>setSnackBar(AObject)}
+      // image={setarImagem(onIndex)}
+      />
+  }
 
   retornarCarousel(){
     return (

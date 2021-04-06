@@ -2,6 +2,8 @@ import React, { useEffect, useState  } from 'react';
 
 import ImageSkeleton from '../ImageSkeleton';
 
+import image from '../../Image/Imagem11.jpg';
+
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -57,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CardFood(props) {
+function CardFood(props) {
   const classes = useStyles();
   const [onLoad, setOnLoad] = useState(false);
   const [expanded, setExpanded] = useState(false);
@@ -98,8 +100,8 @@ export default function CardFood(props) {
           action={
             <div style={{ paddingTop: 5, paddingRight: 6 }}>
               <Fade in={onLoad} timeout={500}>
-                <IconButton disableFocusRipple={false} size="medium"  aria-label="share">
-                  <ShareIcon />
+                <IconButton onClick={()=>props.onSetarFShare(image)} disableFocusRipple={false} size="medium"  aria-label="share">
+                  <ShareIcon style={{ color: '#4caf50' }} />
                 </IconButton>
               </Fade>
             </div>
@@ -111,7 +113,7 @@ export default function CardFood(props) {
           onClick={()=>setFigure('https://picsum.photos/700/700')}
         >
           <ImageSkeleton 
-            figure={figure}
+            image={image}
           />
         </div>
         <CardContent style={{ padding: 8 }} >
@@ -122,7 +124,7 @@ export default function CardFood(props) {
         <Fade in={onLoad} timeout={500}>
           <CardActions style={{ paddingTop: 4, paddingBottom: 4 }} disableSpacing>
             <IconButton aria-label="like">
-              <FavoriteIcon />
+              <FavoriteIcon style={{ color: '#4caf50' }} />
             </IconButton>
               <IconButton
                 className={clsx(classes.expand, {
@@ -132,7 +134,7 @@ export default function CardFood(props) {
                 aria-expanded={expanded}
                 aria-label="Saiba Mais"
               >
-                <ExpandMoreIcon />
+                <ExpandMoreIcon style={{ color: '#4caf50' }} />
               </IconButton>
           </CardActions>
         </Fade>
@@ -156,3 +158,5 @@ export default function CardFood(props) {
       </Card>
   );
 }
+
+export default React.memo(CardFood);

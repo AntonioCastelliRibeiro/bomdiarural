@@ -8,6 +8,7 @@ import { red } from '@material-ui/core/colors';
 
 import Skeleton from '@material-ui/lab/Skeleton';
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: '100%',
@@ -37,20 +38,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ImageSkeleton() {
+export default function ImageSkeleton(props) {
   const classes = useStyles();
-  const [onLoadImg, setOnLoadImg] = useState(false);
-
-  const img = new Image();
-  img.onload = () =>{setOnLoadImg(true)};
-  img.src = 'https://picsum.photos/700/700';
+  const [onLoad, setOnLoad] = useState(false);
+  React.useEffect(() => {
+    setTimeout(() => {
+      setOnLoad(true);
+    }, 2500);
+  }, [onLoad])
 
   function retornarImagem(){
-    if (onLoadImg){
+    if (onLoad){
       return (
         <CardMedia
           className={classes.media}
-          image={img.src}
+          image={props.image}
           title="Bom dia Rural"
         />
       )

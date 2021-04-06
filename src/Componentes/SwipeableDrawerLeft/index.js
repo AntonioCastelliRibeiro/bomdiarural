@@ -55,30 +55,30 @@ export default function SwipeableDrawerLeft(props) {
     return (
       <div role="presentation">
         <div className={classes.toolbar}>
-          <IconButton onClick={()=>onClose()}>
-             <ChevronLeftIcon />
+          <IconButton onClick={()=>setTimeout(() => { props.onClose() }, 100)}>
+             <ChevronLeftIcon style={{ color: '#4caf50' }} />
           </IconButton>
         </div>
-        <Divider />
+        {/* <Divider /> */}
         <List>
-            <ListItem onClick={()=>setarRouter("/fotos")} button key="1">
-                <ListItemIcon > <IconPhoto /> </ListItemIcon>
-                <ListItemText primary="Fotos" />
-            </ListItem> 
-            <ListItem onClick={()=>setarRouter("/videos")} button key="2">
-              <ListItemIcon > <IconMovie /> </ListItemIcon>
-              <ListItemText primary="Vídeos" />
-            </ListItem> 
-            <ListItem onClick={()=>setarRouter("/receitas")} button key="3">
-              <ListItemIcon > <ImportContactsIcon /> </ListItemIcon>
-              <ListItemText primary="Receitas" />
-            </ListItem>  
-            <ListItem onClick={()=>setarRouter("/conteudo")} button key="4">
-              <ListItemIcon > <IconNote /> </ListItemIcon>
-              <ListItemText primary="Conteúdo" />
-            </ListItem> 
+          {/* <ListItem onClick={()=>setarRouter("/conteudo")} button key="4">
+              <ListItemIcon > <IconNote  style={{ color: '#4caf50' }} /> </ListItemIcon>
+              <ListItemText primary="Matérias" />
+          </ListItem>  */}
+          <ListItem onClick={()=>setarRouter("/fotos")} button key="1">
+              <ListItemIcon > <IconPhoto  style={{ color: '#4caf50' }} /> </ListItemIcon>
+              <ListItemText primary="Fotos" />
+          </ListItem> 
+          <ListItem onClick={()=>setarRouter("/videos")} button key="2">
+            <ListItemIcon > <IconMovie  style={{ color: '#4caf50' }} /> </ListItemIcon>
+            <ListItemText primary="Vídeos" />
+          </ListItem> 
+          <ListItem onClick={()=>setarRouter("/receitas")} button key="3">
+            <ListItemIcon > <ImportContactsIcon  style={{ color: '#4caf50' }} /> </ListItemIcon>
+            <ListItemText primary="Receitas" />
+          </ListItem>  
         </List>
-      <Divider />
+      {/* <Divider />
         <ListItem onClick={()=>setarRouter("/equipe")} button key="5">
             <ListItemIcon > <IconGroup /> </ListItemIcon>
             <ListItemText primary="Equipe" />
@@ -86,7 +86,7 @@ export default function SwipeableDrawerLeft(props) {
          <ListItem onClick={()=>setarRouter("/contato")} button key="6">
             <ListItemIcon > <ContactSupport /> </ListItemIcon>
             <ListItemText primary="Contato" />
-         </ListItem> 
+         </ListItem>  */}
       </div>
     )
   }
@@ -105,7 +105,7 @@ export default function SwipeableDrawerLeft(props) {
             // disableSwipeToOpen
             anchor="left"
             open={props.open}
-            onClose={()=>props.onClose()}
+            onClose={()=>setTimeout(() => { props.onClose() }, 100)}
             // onOpen={()=>console.log('open')}
             disableBackdropTransition={!iOS} 
             disableDiscovery={iOS}

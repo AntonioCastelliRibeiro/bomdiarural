@@ -26,6 +26,8 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 
+import copy from "copy-to-clipboard";  
+
 import Green from '@material-ui/core/colors/green';
 
 import Card from '@material-ui/core/Card';
@@ -59,7 +61,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 function FShare(props) {
+  const inputTxt = React.useRef(null);
   const classes = useStyles();
+  const [txtValue, setTxtValue] = React.useState('https://bit.ly/2KIOYjW');
 
   const handleClose = () => {
     props.onSetClose();
@@ -93,15 +97,17 @@ function FShare(props) {
   }
 
   function copiarTextoAreaTransferencia(){
-    let textArea = document.querySelector('#input-link');
-    textArea.select();
-    try {
-      var lvSuccessful = document.execCommand('copy');
-      props.onSetSnackBar(retornarObjectSnackBar(lvSuccessful));
-    } catch (err) {
-      props.onSetSnackBar(retornarObjectSnackBar(false));
+    inputTxt.current.focus();
+    copy(txtValue);
+    // let textArea = document.querySelector("#input-link");
+    // textArea.select();
+    // try {
+    //   var lvSuccessful = document.execCommand('copy');
+      props.onSetSnackBar(retornarObjectSnackBar(true));
+    // } catch (err) {
+    //   props.onSetSnackBar(retornarObjectSnackBar(false));
 
-    }
+    // }
   };
 
   return (
@@ -141,9 +147,10 @@ function FShare(props) {
           <InputLabel htmlFor="filled-adornment-password" style={{ fontWeight: 'bold' }} >Link</InputLabel>
           <ThemeProvider theme={theme}>
             <Input
+              ref={inputTxt}
               id="input-link"
               type="text"
-              value="https://bit.ly/2KIOYjW"
+              value={txtValue}
               multiline="true"
               color="black"
               fullWidth
@@ -151,6 +158,7 @@ function FShare(props) {
                 <InputAdornment 
                   position="end">
                 <IconButton 
+                  id=""
                   onClick={(e)=>copiarTextoAreaTransferencia()}
                   edge="end" 
                   size="small" 

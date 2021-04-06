@@ -46,7 +46,7 @@ export default function GridItem(props){
 
   function retornarConteudo(){
     return (
-    <div style={{ backgroundColor: props.isRecipe ? 'rgba(224, 255, 227, 0.25)' : 'transparent' }} className={classes.divPrincipalConteudo}>
+    <div /*style={{ backgroundColor: props.isRecipe ? 'rgba(224, 255, 227, 0.25)' : 'transparent' }}*/ className={classes.divPrincipalConteudo}>
       <div className={classes.divContainer}>
         <Grid container spacing={3} >
           {retornarCardItem()}
@@ -69,7 +69,7 @@ export default function GridItem(props){
   function retornarCardFood(){
     return (
       <div style={{ width: '100%', padding: isMobile ? '10px 0 10px 0' : '10px 120px 10px 120px'  }} >
-        <CardFood isRecipe={true} />
+        <CardFood isRecipe={true} onSetarFShare={(e)=>props.onSetarFShare(e)} />
       </div>
     )
   }

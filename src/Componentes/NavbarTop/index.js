@@ -158,7 +158,7 @@ function NavbarTop(AProps) {
                 color="inherit"
                 aria-label="open drawer"
                 // onClick={()=>AProps.onClickSwipeableLeft()}
-                onClick={()=>setOpen(true)}
+                onClick={ ()=>setTimeout(() => { setOpen(true) }, 200)}
               >
                 <MenuIcon />
               </IconButton>

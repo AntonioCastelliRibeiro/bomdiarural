@@ -14,7 +14,7 @@ export default function ReactRouter(props) {
             <Route path="/" exact component={()=><GridPrincipal />} />
             <Route path="/fotos" component={()=><Photo onSetarCarousel={(e)=>props.onSetarCarousel(e)} />} /> 
             <Route path="/videos"  component={()=><Movie />} />
-            <Route path="/receitas" component={()=><Recipe />} />
+            <Route path="/receitas" component={()=><Recipe onSetarFShare={()=>props.onSetarFShare()} />} />
             <Route path="/conteudo" component={()=><h1>Conteudo</h1>} />
             <Route path="/equipe" component={()=><h1>Equipe</h1>} />
             <Route path="/contato" component={()=><h1>Contato</h1>} />
