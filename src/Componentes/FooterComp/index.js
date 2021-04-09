@@ -14,6 +14,8 @@ import { Avatar } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
+import { useHistory } from 'react-router-dom';
+
 const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
   legalLink: {
     ...typography.caption,
@@ -71,6 +73,16 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
 
 const FooterComp = React.memo(function FooterComp() {
   const classes = useStyles();
+  const history = useHistory();
+
+  function setarRouter(AQueryParams){
+  
+    history.push(AQueryParams);
+    // onClose({state: false, page: AQueryParams});
+    // props.onSetarPageFoto(AQueryParams);
+  }
+  
+
   return (
     <Box bgcolor={'#e8f5e9'} width={"100%"}>
       <Container>
@@ -94,7 +106,7 @@ const FooterComp = React.memo(function FooterComp() {
                 <Button className={classes.itemSobre} size="small">
                   Sobre
                 </Button>
-                <Button className={classes.itemSobre} size="small">
+                <Button className={classes.itemSobre} onClick={()=>setarRouter("/equipe")} size="small">
                   Equipe
                 </Button>
                 <Button className={classes.itemSobre} size="small">
@@ -111,8 +123,8 @@ const FooterComp = React.memo(function FooterComp() {
               }}
             >
               <Box textAlign={"center"} mt={{ xs: 2, md: 0 }} my={2}>
-                <IconButton size="medium" children={<InstagramIcon />} />
                 <IconButton size="medium" children={<FacebookIcon />} />
+                <IconButton size="medium" children={<InstagramIcon />} />
                 <IconButton size="medium" children={<YouTubeIcon />} />
               </Box>
             </div>

@@ -7,6 +7,7 @@ import Recipe from '../Recipe';
 
 import Movie from '../MyMovie';
 import Photo from '../Photo';
+import Equipe from '../Equipe';
 
 export default function ReactRouter(props) {
     return(
@@ -16,7 +17,7 @@ export default function ReactRouter(props) {
             <Route path="/videos"  component={()=><Movie />} />
             <Route path="/receitas" component={()=><Recipe onSetarFShare={()=>props.onSetarFShare()} />} />
             <Route path="/conteudo" component={()=><h1>Conteudo</h1>} />
-            <Route path="/equipe" component={()=><h1>Equipe</h1>} />
+            <Route path="/equipe" component={()=><Equipe />} />
             <Route path="/contato" component={()=><h1>Contato</h1>} />
         </Switch>
       )
