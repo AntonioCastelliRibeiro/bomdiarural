@@ -46,7 +46,7 @@ class CardItem extends React.PureComponent {
         in  
         timeout={600}
       >
-      <Card className={"root"}>
+      <Card style={{ boxShadow: 0 }} className={"root"}>
         <CardActionArea>
           {/* <CardMedia
             // className={ () =>this.state.onScroll ? AClasses.mediaScroll : AClasses.media}
