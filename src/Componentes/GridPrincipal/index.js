@@ -7,7 +7,11 @@ import { fade } from '@material-ui/core/styles';
 import GridItem from '../GridItem';
 
 class GridPrincipal extends React.Component {
-  render(){
+  componentDidMount(){
+    window.scrollTo(0,0);
+  }
+
+    render(){
     return(
       <div style={{ paddingTop: 10, paddingBottom: 10, backgroundColor: fade('rgb(255, 255, 255)', 0.25)}} >
       <ContainerImage IsMobile={true} />

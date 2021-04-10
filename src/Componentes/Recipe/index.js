@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import GridItem from '../GridItem';
 import { Container } from '@material-ui/core';
 import FShare from '../FShare';
 
 export default function Recipe(props){
   const [ modalShare, setModalShare ] = useState({ open: false, image: '' });
+
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  }, []);
 
   function retornarModalShare(){
     return <FShare 

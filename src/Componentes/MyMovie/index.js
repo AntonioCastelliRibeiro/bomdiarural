@@ -11,7 +11,8 @@ class MyMovie extends React.Component {
   }
 
   componentDidMount(){
-    this.setState({open: true})
+    window.scrollTo(0,0);
+    this.setState({open: true});
   }
 
   componentWillUnmount(){

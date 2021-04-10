@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Container, GridList, Box, Fade, GridListTile, List, ListItem, CardContent, Card, CardMedia } from "@material-ui/core";
 
 import { IconButton, Typography, useMediaQuery } from "@material-ui/core";
+import { Skeleton, SkeletonProps } from "@material-ui/lab";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 
@@ -61,6 +62,36 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
       opacity: 0.5
     }
   },
+  mediaSkeleton: {
+    width: "50%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: spacing(-14),
+    height: 300,
+    paddingBottom: "48%",
+    borderRadius: spacing(2),
+    // backgroundColor: "#fff",
+    position: "relative",
+    [breakpoints.up("md")]: {
+      width: "50%",
+      height: 100,
+      marginLeft: spacing(-3),
+      marginTop: 0,
+      // paddingLeft: 4,
+      transform: "translateX(-8px)"
+    },
+    "&:after": {
+      content: '" "',
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      // backgroundImage: "linear-gradient(147deg, #fe8a39 0%, #fd3838 74%)",
+      borderRadius: spacing(2), // 16
+      opacity: 0.5
+    }
+  },
   content: {
     padding: 22
   },
@@ -81,50 +112,49 @@ export const CardItem = function CardItem(props){
   return (
     <div style={{ paddingTop: 50,width: '100%' }}>
       <Card className={styles.root}>
-        <CardMedia
-          className={styles.media}
-          image={props.foto}
-        />
+        {props.showSkeleton ? <Skeleton className={styles.mediaSkeleton} /> : <CardMedia className={styles.media} image={props.foto} />}
         <CardContent>
         <Typography>
           <Box
+            children={props.showSkeleton ? <Skeleton width={160} /> : props.nome}
             fontFamily="'Amaranth', sans-serif"
             fontSize={20}
+            width={190}
             fontWeight="fontWeightBold"
-            // marginBottom="0.33em"
             lineHeight={2}
-          >
-            {props.nome}
-          </Box>
+          />
           <Box
+            children={props.showSkeleton ? <Skeleton /> : props.profissao }
             fontFamily="'Amaranth', sans-serif"
             fontSize={15}
             fontWeight="fontWeightBold"
             marginBottom="0.35em"
-          >
-            {props.profissao}
-          </Box>
+          />
             <Box
+              children={props.showSkeleton ? <Skeleton /> : props.cidadeMum}
               fontFamily="'Amaranth', sans-serif"
               fontSize={14}
               fontWeight="fontWeightBold"
               marginBottom="0.25em"
             >
-              {props.cidadeMum}
+              
             </Box>
           </Typography>
+            <Fade in={!props.showSkeleton} timeout={500} >
           <Box paddingLeft={0} style={{ display: 'flex', justifyContent: props.Is960px ? 'center' : 'flex-start' }} >
-            <IconButton
-              style={{ marginLeft: 0, padding: 8 }}
-              size="small"
-              // color="primary"
-            >
-              <FacebookIcon />
-            </IconButton>
-            <IconButton style={{ marginLeft: 3, padding: 8 }} size="small">
-              <InstagramIcon />
-            </IconButton>
+
+              <IconButton
+                style={{ marginLeft: 0, padding: 8 }}
+                size="small"
+              >
+                <FacebookIcon />
+              </IconButton>
+              <IconButton style={{ marginLeft: 3, padding: 8 }} size="small">
+                <InstagramIcon />
+              </IconButton>
           </Box>
+          </Fade>
+
         </CardContent>
       </Card>
     </div>
@@ -135,8 +165,7 @@ export class MyEquipe extends React.Component {
 
   render(){
     return (
-      <Container maxWidth="md" >
-        <GridList  cellHeight={this.props.Is960px ? 520 : 350} /*className={classes.gridList}*/ 
+        <GridList  cellHeight={this.props.Is960px ? 480 : 339} /*className={classes.gridList}*/ 
           style={{ width: '100%' }}
           spacing={0} 
           cols={1}
@@ -144,31 +173,52 @@ export class MyEquipe extends React.Component {
         >
           {GridListItem.map( (e, key) =>{
             return (
-              <Fade in={true} timeout={500}>
+              // <Fade in={true} timeout={500}>
                 <GridListTile key={key} cols={1}>
                   <Box display="flex" >
                     <List style={{ width: '100%' }} >
                       <ListItem style={{ width: '100%' }}>
-                        <CardItem Is960px={this.props.Is960px} nome={e.NM_PESSOA} profissao={e.NM_PROFISSAO} cidadeMum={e.NM_CIDADEMUN} foto={e.DS_FOTO} />
+                        <CardItem showSkeleton={this.props.showSkeleton} Is960px={this.props.Is960px} nome={e.NM_PESSOA} profissao={e.NM_PROFISSAO} cidadeMum={e.NM_CIDADEMUN} foto={e.DS_FOTO} />
                       </ListItem>
                     </List>
                   </Box>
                 </GridListTile>
-                </Fade>
+                // </Fade>
                 )
           })}
         </GridList>
-      </Container>
     )
   }
 }
 
 
 export default function Equipe(){
+  const [showSkeleton, onShowSkeleton] = React.useState(true);
+
+  React.useEffect(()=>{
+    window.scrollTo(0,0);
+    setTimeout(() => {
+      onShowSkeleton(false)
+    }, 1000);
+  }, [showSkeleton]);
+
   const Is960px = useMediaQuery("(max-width:960px)");
   return (
-    <Box paddingBottom={8}>
-      <MyEquipe Is960px={Is960px} />
-    </Box>
+    <Container maxWidth="md" >
+      <Box>
+        <Box paddingBottom={2}>
+          <Typography>
+            <Box children={showSkeleton ? <Skeleton width={120} /> : 'Equipe'} margin={"6px 0"} paddingTop={1} fontSize={40} fontFamily="'Amaranth', sans-serif" fontWeight={400} lineHeight={1.167} letterSpacing={"0em"}  />
+            <Box children={showSkeleton ?  <Skeleton width={Is960px ? '100%' : 880} /> : 'Uma visão geral da equipe fundadora do Bom Dia Rural.'} 
+              margin={"0 0 20px"} paddingTop={3} fontSize={"1.5rem"} fontFamily="'Amaranth', sans-serif" fontWeight={400} lineHeight={1.167} letterSpacing={"0em"} />
+            <Box children={showSkeleton ? <Skeleton width={Is960px ? '100%' : 880}  /> : 'Bom Dia Rural é mantido por um grupo de contribuidores essenciais de valor inestimável, com um enorme apoio.'}
+              margin={"0 0 0px"} fontSize={"1rem"} fontFamily="'Amaranth', sans-serif" fontWeight={400} lineHeight={1.167} letterSpacing={"0em"} />
+        </Typography>
+        </Box>  
+        <Box paddingBottom={8}>
+          <MyEquipe showSkeleton={showSkeleton} Is960px={Is960px} />
+        </Box>
+      </Box>
+    </Container>
   )
 }

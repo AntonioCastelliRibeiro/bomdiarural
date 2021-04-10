@@ -179,7 +179,7 @@ class App extends React.Component {
           <header>
           {this.retornarNavbar()}
           </header>
-          <main>
+          <main style={{ backgroundColor: '#e8f5e99b' }}>
             {/* {this.retornarProgressLinear()} */}
             <ReactRouter onSetarCarousel={(e)=>this.setState({onCarousel: e})}/>
             
