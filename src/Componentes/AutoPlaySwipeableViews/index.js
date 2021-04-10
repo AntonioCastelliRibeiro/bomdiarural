@@ -41,6 +41,7 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const styles = {
   root: {
     position: 'relative',
+    backgroundColor: '#7d7d7d',
   },
   slide: {
     width: '100%',
@@ -137,8 +138,7 @@ class Swipe extends React.Component {
   }
 
   render() {
-    const SwipeableViews = this.retornarAutoPlaySwipe();
-    return SwipeableViews
+    return this.retornarAutoPlaySwipe();
   }
 }
 
