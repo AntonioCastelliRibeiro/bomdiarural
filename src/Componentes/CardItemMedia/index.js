@@ -1,6 +1,9 @@
 import React from "react";
 import { useSpring, animated } from "react-spring";
 // import "./styles.css";
+
+import {Skeleton} from '@material-ui/lab';
+
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutlineRounded';
 
 import lightGreen from '@material-ui/core/colors/lightGreen';
@@ -40,9 +43,9 @@ const useStyles = makeStyles((theme) => ({
     // border: '15px solid white',
   },
   playDiv: {
-    height: '100%',
-    width: '100%',
-    position: 'absolute',
+    // height: '100%',
+    // width: '100%',
+    // position: 'absolute',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -66,34 +69,52 @@ const styles = {
 const calc = (x, y) => [
   -(y - window.innerHeight / 2) / 5,
   (x - window.innerWidth / 2) / 5,
-  1.1
+  1.02
 ];
 const trans = (x, y, s) => `perspective(300px) scale(${s})`;
 
 export default function CardItemMedia(AProps) {
+  const [ onSkeleton, setOnSkeleton ] = React.useState(true);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setOnSkeleton(false);
+    }, 3000);
+  }, [onSkeleton]);
+
   const classes = useStyles();
   const image = AProps.image;
 
   const [props, set] = useSpring(() => ({
     xys: [0, 0, 1],
-    config: { mass: 1, tension: 380, friction: 54 }
+    config: { mass: 1, tension: 380, friction: 50 }
   }));
 
-  return (
-    <animated.div className={classes.cardDiv} >
-      <animated.img 
-        height={350}
-        className={classes.card}
-        style={{ transform: props.xys.interpolate(trans) }}
-        src={image}
-      />
-      <animated.div 
-        onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-        onMouseLeave={() => set({ xys: [0, 0, 1] })}
-        className={classes.playDiv}
+  function retornarConteudo(){
+    if (onSkeleton) {
+      return <Skeleton height={595} style={{ marginTop: '-145px', marginBottom: '-100px' }} />
+    } else {
+      return (
+        <animated.div
+          onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
+          onMouseLeave={() => set({ xys: [0, 0, 1] })} 
+          className={classes.cardDiv} 
         >
-        {AProps.gridMovie?<ThemeProvider theme={theme}><CardActions style={{ height: '810px', width: '100%'}} disableSpacing={false}><PlayCircleOutlineIcon style={{ color: lightGreen[50], height: 70, width: '100%', opacity: '70%'}}  /></CardActions></ThemeProvider> : false}
-      </animated.div >
-    </animated.div>
-  );
+          <animated.img 
+            height={350}
+            className={classes.card}
+            style={{ transform: props.xys.interpolate(trans) }}
+            src={image}
+          />
+          <animated.div 
+            className={classes.playDiv}
+          >
+            {AProps.gridMovie?<ThemeProvider theme={theme}><CardActions style={{ height: '810px', width: '100%'}} disableSpacing={false}><PlayCircleOutlineIcon style={{ color: lightGreen[50], height: 70, width: '100%', opacity: '70%'}}  /></CardActions></ThemeProvider> : false}
+          </animated.div >
+        </animated.div>
+      )
+    }
+  }
+
+  return retornarConteudo();
 }

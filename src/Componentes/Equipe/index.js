@@ -119,7 +119,7 @@ export const CardItem = function CardItem(props){
             children={props.showSkeleton ? <Skeleton width={160} /> : props.nome}
             fontFamily="'Amaranth', sans-serif"
             fontSize={20}
-            width={190}
+            width={props.Is960px ? 150 : 190}
             fontWeight="fontWeightBold"
             lineHeight={2}
           />
@@ -194,6 +194,7 @@ export class MyEquipe extends React.Component {
 
 export default function Equipe(){
   const [showSkeleton, onShowSkeleton] = React.useState(true);
+  const Is600px = useMediaQuery("(max-width:600px)");
 
   React.useEffect(()=>{
     window.scrollTo(0,0);
@@ -202,6 +203,18 @@ export default function Equipe(){
     }, 1000);
   }, [showSkeleton]);
 
+  function retornarSkeleton(AWidth){
+    if (Is600px){
+      return (
+        <>
+          <Skeleton width={AWidth} />
+          <Skeleton width={AWidth} />
+      </>
+      )
+    } else return <Skeleton width={AWidth} />
+
+  }
+
   const Is960px = useMediaQuery("(max-width:960px)");
   return (
     <Container maxWidth="md" >
@@ -209,9 +222,9 @@ export default function Equipe(){
         <Box paddingBottom={2}>
           <Typography>
             <Box children={showSkeleton ? <Skeleton width={120} /> : 'Equipe'} margin={"6px 0"} paddingTop={1} fontSize={40} fontFamily="'Amaranth', sans-serif" fontWeight={400} lineHeight={1.167} letterSpacing={"0em"}  />
-            <Box children={showSkeleton ?  <Skeleton width={Is960px ? '100%' : 880} /> : 'Uma visão geral da equipe fundadora do Bom Dia Rural.'} 
+            <Box children={showSkeleton ? retornarSkeleton(Is960px ? '100%' : 880) : 'Uma visão geral da equipe fundadora do Bom Dia Rural.'} 
               margin={"0 0 20px"} paddingTop={3} fontSize={"1.5rem"} fontFamily="'Amaranth', sans-serif" fontWeight={400} lineHeight={1.167} letterSpacing={"0em"} />
-            <Box children={showSkeleton ? <Skeleton width={Is960px ? '100%' : 880}  /> : 'Bom Dia Rural é mantido por um grupo de contribuidores essenciais de valor inestimável, com um enorme apoio.'}
+            <Box children={showSkeleton ? retornarSkeleton(Is960px ? '100%' : 880) : 'Bom Dia Rural é mantido por um grupo de contribuidores essenciais de valor inestimável, com um enorme apoio.'}
               margin={"0 0 0px"} fontSize={"1rem"} fontFamily="'Amaranth', sans-serif" fontWeight={400} lineHeight={1.167} letterSpacing={"0em"} />
         </Typography>
         </Box>  

@@ -23,7 +23,7 @@ export default function Recipe(props){
   return (
     <Container maxWidth="md">
       {retornarModalShare()}
-      <GridItem isRecipe={true} onSetarFShare={(e)=>setModalShare({ open: true, image: e })} />
+      <GridItem isRecipe={true} isMateria={props.isMateria} onSetarFShare={(e)=>setModalShare({ open: true, image: e })} />
     </Container>
   )
 }

@@ -65,18 +65,18 @@ export default function SwipeableDrawerLeft(props) {
               <ListItemIcon > <IconNote  style={{ color: '#4caf50' }} /> </ListItemIcon>
               <ListItemText primary="Matérias" />
           </ListItem>  */}
-          <ListItem onClick={()=>setarRouter("/fotos")} button key="1">
-              <ListItemIcon > <IconPhoto  style={{ color: '#4caf50' }} /> </ListItemIcon>
-              <ListItemText primary="Fotos" />
-          </ListItem> 
-          <ListItem onClick={()=>setarRouter("/videos")} button key="2">
+          <ListItem onClick={()=>setarRouter("/materias")} button key="2">
             <ListItemIcon > <IconMovie  style={{ color: '#4caf50' }} /> </ListItemIcon>
-            <ListItemText primary="Vídeos" />
+          <ListItemText primary="Matérias" />
           </ListItem> 
           <ListItem onClick={()=>setarRouter("/receitas")} button key="3">
             <ListItemIcon > <ImportContactsIcon  style={{ color: '#4caf50' }} /> </ListItemIcon>
             <ListItemText primary="Receitas" />
-          </ListItem>  
+          </ListItem> 
+          <ListItem onClick={()=>setarRouter("/fotos")} button key="1">
+            <ListItemIcon > <IconPhoto  style={{ color: '#4caf50' }} /> </ListItemIcon>
+            <ListItemText primary="Fotos" />
+          </ListItem> 
         </List>
       {/* <Divider />
         <ListItem onClick={()=>setarRouter("/equipe")} button key="5">
